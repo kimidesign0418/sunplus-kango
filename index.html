@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sun Plus訪問看護ステーション | 合同会社Honest-25</title>
+    
+    <!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* --- 1. Custom Variables and Base Setup (Sun Plus ORANGE Palette) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
+        
+        :root {
+            --color-primary: #FFA000;      /* Warm Amber Orange (メインカラー: 太陽の暖かさ、情熱 - 微調整) */
+            --color-secondary: #F5EFE1;    /* Light Cream (優しい背景 - 微調整) */
+            --color-accent: #FFC107;       /* Bright Gold/Yellow (アクセント: 太陽の光、エネルギー) */
+            --color-text-dark: #1F2937;    /* 濃い文字色 (背景が明るいヒーローセクション用) */
+            --color-text-light: #F9FAFB;
+        }
+        
+        body {
+            font-family: 'Noto Sans JP', 'Inter', sans-serif;
+            background-color: var(--color-secondary);
+            color: var(--color-text-dark);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* --- 2. Hero Image Styling (ボケ効果のある背景に変更) --- */
+        .hero-section-bg {
+            /* 暖かく抽象的な光の画像（ボケ効果）を背景に設定 - アップロード画像に近いトーン */
+            background-image: url("https://storage.googleapis.com/generative-ai-production-411319-images/images/r/35d8e75e-99e5-4a69-95e2-04a11229a1e9"); 
+            background-size: cover;
+            background-position: center; /* 中央寄せ */
+            position: relative;
+        }
+        
+        /* --- 3. Stacked Scroll Effect --- */
+        .stack-item {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+        }
+        
+        .stack-item.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* チームメンバー画像（Placeholder） */
+        .team-image-placeholder {
+            background-color: var(--color-accent);
+            opacity: 0.9;
+            /* 幾何学模様の背景パターンを維持 */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.2'%3E%3Cpath d='M36 34L30 38.5 24 34V25l6-4.5 6 4.5v9zM30 0L0 22.5 30 45 60 22.5zM30 46.5L0 24 30 1.5 60 24z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: 20px;
+        }
+
+        /* 訪問看護の特徴カードのホバーエフェクト */
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 143, 0, 0.15); /* Primaryカラー（オレンジ）の影を強調 */
+        }
+
+        /* SNSアイコンのベーススタイル */
+        .social-link {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    
+    <!-- Header/Navigation -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-lg/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+            
+            <!-- Logo -->
+            <a href="#top" class="text-2xl sm:text-3xl font-extrabold text-[--color-primary] tracking-tight transition duration-300">
+                <i data-lucide="sun" class="inline-block w-7 h-7 mr-2 align-sub text-[--color-accent]"></i>
+                Sun Plus
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8 text-base font-medium">
+                <a href="#philosophy" class="hover:text-[--color-accent] transition">私たちの強み</a>
+                <a href="#service" class="hover:text-[--color-accent] transition">サービス内容</a>
+                <a href="#team" class="hover:text-[--color-accent] transition">スタッフ</a>
+                <a href="#company" class="hover:text-[--color-accent] transition">会社概要</a>
+                <a href="#contact" class="px-6 py-2 bg-[--color-primary] text-white rounded-full hover:bg-[#ffad33] transition shadow-lg font-semibold">無料相談・お問合せ</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-button" class="md:hidden p-2 rounded-md hover:bg-gray-100 transition">
+                <i data-lucide="menu" class="w-7 h-7 text-[--color-text-dark]"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu Overlay -->
+        <nav id="mobile-menu" class="hidden md:hidden absolute w-full bg-white shadow-xl py-4 z-40 transition-all duration-300">
+            <div class="px-4 space-y-3">
+                <a href="#philosophy" class="block py-2 text-lg font-medium hover:bg-gray-50 rounded-lg">私たちの強み</a>
+                <a href="#service" class="block py-2 text-lg font-medium hover:bg-gray-50 rounded-lg">サービス内容</a>
+                <a href="#team" class="block py-2 text-lg font-medium hover:bg-gray-50 rounded-lg">スタッフ</a>
+                <a href="#company" class="block py-2 text-lg font-medium hover:bg-gray-50 rounded-lg">会社概要</a>
+                <a href="#contact" class="block py-3 text-lg font-semibold text-center bg-[--color-primary] text-white rounded-full mt-3">無料相談・お問合せ</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <!-- 1. Hero Section (メインビジュアルとキャッチコピー) -->
+        <section id="top" class="relative overflow-hidden hero-section-bg h-[70vh] md:h-[80vh] flex items-center justify-center">
+            
+            <!-- Content -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 w-full">
+                
+                <!-- Top Subtitle: 白文字、シャドウを微調整 -->
+                <p class="text-lg sm:text-xl font-light opacity-90 stack-item text-white" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                    太陽のように、あたたかく、あなたに寄り添う。
+                </p>
+                
+                <!-- Main Title: 白文字、強調されたシャドウを微調整 -->
+                <h1 class="text-4xl sm:text-5xl lg:text-5xl font-extrabold leading-tight tracking-tight mt-4 stack-item text-white" style="transition-delay: 0.2s; text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);">
+                    <span class="block">太陽（Sun）の恵みを、</span><span class="block">あなたの日常に（Plus）。</span>
+                </h1>
+                
+                <!-- Call to Action & Phone Number: アップロード画像のデザインに合わせる -->
+                <div class="mt-12 stack-item" style="transition-delay: 0.4s;">
+                    <!-- ボタン -->
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full bg-[--color-primary] text-white hover:bg-[#ffad33] transition duration-300 transform hover:scale-105 shadow-2xl">
+                        <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                        無料相談・資料請求
+                    </a>
+                    <!-- 電話番号 -->
+                    <div class="mt-3 text-lg font-bold text-white" style="text-shadow: 0 1px 3px rgba(0,0,0,0.3);">
+                        <i data-lucide="phone" class="w-5 h-5 inline-block mr-1 align-sub"></i> 000-1234-5678 （平日 9:00〜18:00）
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- 2. Philosophy/Strengths Section -->
+        <section id="philosophy" class="py-24 sm:py-32 bg-[--color-secondary] relative z-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center">
+                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">Our Strengths</span>
+                    <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 stack-item">Sun Plusが選ばれる３つの理由</h2>
+                    <p class="mt-4 text-lg text-gray-700 max-w-3xl mx-auto stack-item" style="transition-delay: 0.05s;">
+                         精神疾患をお持ちの方や、ご家族へ。住み慣れた地域で安心して生活できるよう、専門的な知識と温かい心でサポートします。
+                    </p>
+                </div>
+
+                <div class="mt-20 grid gap-10 md:grid-cols-3">
+                    
+                    <!-- Feature 1 -->
+                    <div class="feature-card p-8 bg-white rounded-xl shadow-lg transition duration-300 stack-item" style="transition-delay: 0.1s;">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="brain-circuit" class="w-10 h-10 p-2 bg-[--color-accent]/20 text-[--color-primary] rounded-full mr-3"></i>
+                            <h3 class="text-2xl font-bold">専門特化のチーム</h3>
+                        </div>
+                        <p class="text-gray-600 text-base">精神科病院での勤務経験豊富な看護師のみが在籍。最新の知見に基づいた質の高い専門ケアを提供します。</p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="feature-card p-8 bg-white rounded-xl shadow-lg transition duration-300 stack-item" style="transition-delay: 0.3s;">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="handshake" class="w-10 h-10 p-2 bg-[--color-accent]/20 text-[--color-primary] rounded-full mr-3"></i>
+                            <h3 class="text-2xl font-bold">医療・福祉との強力連携</h3>
+                        </div>
+                        <p class="text-gray-600 text-base">主治医との密な情報共有はもちろん、行政・就労支援など多職種との連携で社会復帰を支援します。</p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="feature-card p-8 bg-white rounded-xl shadow-lg transition duration-300 stack-item" style="transition-delay: 0.5s;">
+                        <div class="flex items-center mb-4">
+                            <i data-lucide="calendar-check" class="w-10 h-10 p-2 bg-[--color-accent]/20 text-[--color-primary] rounded-full mr-3"></i>
+                            <h3 class="text-2xl font-bold">オーダーメイドケア</h3>
+                        </div>
+                        <p class="text-gray-600 text-base">画一的なプログラムは提供しません。ご利用者様一人ひとりのライフスタイルと目標に合わせたケアプランを作成します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- 3. Service Details Section -->
+        <section id="service" class="py-24 sm:py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">Service Details</span>
+                    <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 stack-item">私たちが提供する具体的なサポート</h2>
+                </div>
+
+                <div class="space-y-16">
+                    
+                    <!-- Service Card 1: Daily Life -->
+                    <div class="md:flex items-start bg-[--color-secondary] p-8 md:p-12 rounded-2xl shadow-md stack-item" style="transition-delay: 0.1s;">
+                        <div class="md:w-1/3 flex-shrink-0 mb-6 md:mb-0">
+                            <i data-lucide="activity" class="w-12 h-12 text-[--color-primary] mb-2"></i>
+                            <h3 class="text-3xl font-bold text-[--color-primary]">生活リズムの構築</h3>
+                            <p class="text-sm text-gray-500 mt-1">Daily Life Support</p>
+                        </div>
+                        <div class="md:w-2/3 md:pl-10">
+                            <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                <li>規則正しい睡眠・覚醒リズムを作るための助言と同行。</li>
+                                <li>服薬管理、副作用のチェック、自己管理能力向上のための支援。</li>
+                                <li>清潔保持、食事、金銭管理など、生活技術のトレーニング。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 2: Psychological Care -->
+                    <div class="md:flex items-start bg-white p-8 md:p-12 rounded-2xl shadow-lg stack-item" style="transition-delay: 0.3s;">
+                        <div class="md:w-1/3 flex-shrink-0 mb-6 md:mb-0">
+                            <i data-lucide="speech" class="w-12 h-12 text-[--color-primary] mb-2"></i>
+                            <h3 class="text-3xl font-bold text-[--color-primary]">症状への専門的ケア</h3>
+                            <p class="text-sm text-gray-500 mt-1">Psychological Care</p>
+                        </div>
+                        <div class="md:w-2/3 md:pl-10">
+                            <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                <li>精神状態、意欲、気分、対人関係など総合的な観察。</li>
+                                <li>不安や緊張の緩和、妄想や幻聴への適切な対応と傾聴。</li>
+                                <li>自傷・他害行為のリスク管理、危機介入、再発予防への助言。</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 3: Family Support -->
+                    <div class="md:flex items-start bg-[--color-secondary] p-8 md:p-12 rounded-2xl shadow-md stack-item" style="transition-delay: 0.5s;">
+                        <div class="md:w-1/3 flex-shrink-0 mb-6 md:mb-0">
+                            <i data-lucide="users" class="w-12 h-12 text-[--color-primary] mb-2"></i>
+                            <h3 class="text-3xl font-bold text-[--color-primary]">ご家族への支援</h3>
+                            <p class="text-sm text-gray-500 mt-1">Family Support</p>
+                        </div>
+                        <div class="md:w-2/3 md:pl-10">
+                            <ul class="space-y-2 list-disc list-inside text-gray-700">
+                                <li>病気に対する理解を深めるための教育と相談。</li>
+                                <li>ご家族の抱えるストレスや疲労の軽減、休息の確保。</li>
+                                <li>ご本人への接し方、より良いコミュニケーション方法の提案。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- 4. Team Section -->
+        <section id="team" class="py-24 sm:py-32 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 stack-item">
+                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">Our Team</span>
+                    <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900">太陽のような、温かいスタッフたち</h2>
+                    <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">全てのスタッフがあなたの「安心できる暮らし」を第一に考えています。</p>
+                </div>
+                
+                <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+                    
+                    <!-- Team Member 1 -->
+                    <div class="rounded-2xl overflow-hidden shadow-xl stack-item">
+                        <!-- Placeholder Image -->
+                        <div class="w-full h-56 team-image-placeholder flex items-end p-6">
+                            <h3 class="text-2xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">吉田 誠（Makoto Yoshida）</h3>
+                        </div>
+                        <div class="p-6 bg-white border-t-4 border-[--color-primary]">
+                            <p class="text-base text-[--color-primary] font-extrabold">管理者 / 精神科認定看護師</p>
+                            <p class="text-sm text-gray-600 mt-3 line-clamp-4">「合同会社Honest-25」代表として、常に誠実（Honest）なケアを追求しています。地域で暮らす希望を失わないよう、利用者様とご家族を全力でサポートします。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="rounded-2xl overflow-hidden shadow-xl stack-item" style="transition-delay: 0.1s;">
+                        <!-- Placeholder Image -->
+                        <div class="w-full h-56 team-image-placeholder flex items-end p-6">
+                            <h3 class="text-2xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">田中 明日香（Asuka Tanaka）</h3>
+                        </div>
+                        <div class="p-6 bg-white border-t-4 border-[--color-primary]">
+                            <p class="text-base text-[--color-primary] font-extrabold">訪問看護師 / 公認心理師</p>
+                            <p class="text-sm text-gray-600 mt-3 line-clamp-4">自宅という安心できる空間だからこそできる、個別のリハビリテーションと心理サポートを丁寧に提供します。小さな変化も見逃しません。</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="rounded-2xl overflow-hidden shadow-xl stack-item" style="transition-delay: 0.2s;">
+                        <!-- Placeholder Image -->
+                        <div class="w-full h-56 team-image-placeholder flex items-end p-6">
+                            <h3 class="text-2xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">井上 剛（Tsuyoshi Inoue）</h3>
+                        </div>
+                        <div class="p-6 bg-white border-t-4 border-[--color-primary]">
+                            <p class="text-base text-[--color-primary] font-extrabold">訪問看護師 / 地域連携担当</p>
+                            <p class="text-sm text-gray-600 mt-3 line-clamp-4">退院後の生活や就労へのステップアップを、医療・福祉サービスと連携してスムーズに支援します。外に出る一歩を一緒に踏み出しましょう。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- 5. Company Info Section -->
+        <section id="company" class="py-24 sm:py-32 bg-[--color-secondary]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16 stack-item">
+                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">About Us</span>
+                    <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900">会社概要・アクセス</h2>
+                </div>
+
+                <div class="bg-white p-8 md:p-12 rounded-2xl shadow-xl stack-item">
+                    <dl class="divide-y divide-gray-200">
+                        <div class="py-4 flex flex-col md:flex-row">
+                            <dt class="md:w-1/3 text-lg font-medium text-gray-500">商号</dt>
+                            <dd class="md:w-2/3 text-lg font-bold text-[--color-text-dark]">合同会社 Honest-25</dd>
+                        </div>
+                        <div class="py-4 flex flex-col md:flex-row">
+                            <dt class="md:w-1/3 text-lg font-medium text-gray-500">ステーション名</dt>
+                            <dd class="md:w-2/3 text-lg font-bold text-[--color-text-dark]">Sun Plus 訪問看護ステーション</dd>
+                        </div>
+                        <div class="py-4 flex flex-col md:flex-row">
+                            <dt class="md:w-1/3 text-lg font-medium text-gray-500">所在地</dt>
+                            <dd class="md:w-2/3 text-lg text-gray-700">〒000-0000 東京都〇〇区〇〇1-2-3 〇〇ビル</dd>
+                        </div>
+                        <div class="py-4 flex flex-col md:flex-row">
+                            <dt class="md:w-1/3 text-lg font-medium text-gray-500">電話番号</dt>
+                            <dd class="md:w-2/3 text-lg text-[--color-primary] font-bold">000-1234-5678</dd>
+                        </div>
+                        <div class="py-4 flex flex-col md:flex-row">
+                            <dt class="md:w-1/3 text-lg font-medium text-gray-500">営業日・時間</dt>
+                            <dd class="md:w-2/3 text-lg text-gray-700">平日 9:00〜18:00 （24時間オンコール対応可）</dd>
+                        </div>
+                        <div class="py-4 flex flex-col md:flex-row">
+                            <dt class="md:w-1/3 text-lg font-medium text-gray-500">事業内容</dt>
+                            <dd class="md:w-2/3 text-lg text-gray-700">精神科特化型 訪問看護サービス</dd>
+                        </div>
+                    </dl>
+                    
+                    <!-- Google Map Embed (Simulation) -->
+                    <div class="mt-12 pt-8 border-t border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">アクセス（Google Map）</h3>
+                        
+                        <!-- Responsive iframe container for the map -->
+                        <div class="relative w-full h-64 rounded-lg overflow-hidden shadow-xl">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828030275811!2d139.76419481525946!3d35.68123618019318!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x605d1b72e5ae5581%3A0x6a0d5c215286202c!2z5p2x5Lqs6YO955qH5Zmo!5e0!3m2!1sja!2sjp!4v1678877117822!5m2!1sja!2sjp"
+                                width="100%" 
+                                height="100%" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                aria-label="Sun Plus 訪問看護ステーションの所在地を示す地図 (東京駅付近のサンプル)"
+                                class="absolute top-0 left-0"
+                            ></iframe>
+                        </div>
+                        
+                        <!-- Link to Open in Google Maps -->
+                        <p class="mt-4 text-center">
+                            <a href="https://maps.app.goo.gl/YourActualMapLink" target="_blank" class="text-lg font-semibold text-[--color-primary] hover:text-[#ffad33] transition inline-flex items-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 mr-1"></i>
+                                Googleマップで開く
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- 6. Social Media Section -->
+        <section id="sns" class="py-16 bg-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center stack-item">
+                <h3 class="text-3xl font-bold text-gray-900 mb-8">最新情報や日々の活動をチェック</h3>
+
+                <div class="flex justify-center space-x-8">
+                    
+                    <!-- X (Twitter) -->
+                    <a href="#" target="_blank" class="social-link p-4 rounded-full bg-gray-800 text-white shadow-lg transform hover:bg-black" title="X (旧Twitter) でフォロー">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M18.901 1.153h3.684l-8.04 9.19h5.176l2.365 2.536h-6.27l-5.69 6.471h-3.41l8.038-9.19H2.438l-2.365-2.536h6.269l5.69-6.471z"/></svg>
+                    </a>
+                    
+                    <!-- Instagram -->
+                    <a href="#" target="_blank" class="social-link p-4 rounded-full bg-pink-600 text-white shadow-lg transform hover:bg-pink-700" title="Instagramで見る">
+                        <i data-lucide="instagram" class="w-8 h-8"></i>
+                    </a>
+
+                    <!-- LINE Placeholder -->
+                    <a href="#" target="_blank" class="social-link p-4 rounded-full bg-green-500 text-white shadow-lg transform hover:bg-green-600" title="LINEで友だち追加">
+                        
+                        <i data-lucide="message-square" class="w-8 h-8"></i>
+                    </a>
+                </div>
+                <p class="mt-6 text-sm text-gray-600">SNSを通じて、私たちの日常や訪問看護の情報を発信しています。</p>
+            </div>
+        </section>
+
+
+        <!-- 7. Final Contact Section -->
+        <section id="contact" class="py-24 bg-[--color-primary] text-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center stack-item">
+                <h2 class="text-4xl sm:text-5xl font-extrabold">まずは、お気軽にご相談ください。</h2>
+                <p class="mt-6 text-xl font-light opacity-90">ご利用者様、ご家族様、関係機関の皆様からのご相談をお待ちしております。</p>
+                
+                <div class="mt-12">
+                    <a href="#" class="inline-flex items-center justify-center px-12 py-4 text-xl font-extrabold rounded-full bg-[--color-accent] text-[--color-primary] hover:bg-white transition duration-300 transform hover:scale-105 shadow-2xl">
+                        <i data-lucide="mail-plus" class="w-6 h-6 mr-3"></i>
+                        メールで無料相談する
+                    </a>
+                </div>
+                <p class="mt-6 text-2xl font-bold">または 📞 000-1234-5678</p>
+                <p class="mt-1 text-sm opacity-80">（電話受付：平日 9:00〜18:00）</p>
+            </div>
+        </section>
+    </main>
+
+    
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-sm text-gray-400">運営：合同会社Honest-25 | &copy; 2025 Sun Plus 訪問看護ステーション. All rights reserved.</p>
+        </div>
+    </footer>
+
+    
+    <!-- JavaScript for Mobile Menu and Scroll Animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Lucide Icons
+            lucide.createIcons();
+            
+            // --- Mobile Menu Toggle ---
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // --- Stacked Scroll Animation Logic (Intersection Observer) ---
+            const stackItems = document.querySelectorAll('.stack-item');
+
+            const observerOptions = {
+                root: null, // relative to viewport
+                rootMargin: '0px 0px -15% 0px', // 画面の15%手前で発火
+                threshold: 0.01 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    // is-visibleクラスはスクロール時にもう一度適用されないよう、unobserveで解除しています。
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            stackItems.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
