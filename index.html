@@ -11,14 +11,15 @@
     <!-- Lucide Icons CDN -->
 <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* --- 1. Custom Variables and Base Setup (Sun Plus ORANGE Palette) --- */
+        /* --- 1. Custom Variables and Base Setup (TRUST TEAL & WARM ORANGE Palette) --- */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
         
         :root {
-            --color-primary: #FFA000;      /* Warm Amber Orange (メインカラー: 太陽の暖かさ、情熱 - 微調整) */
-            --color-secondary: #F5EFE1;    /* Light Cream (優しい背景 - 微調整) */
-            --color-accent: #FFC107;       /* Bright Gold/Yellow (アクセント: 太陽の光、エネルギー) */
-            --color-text-dark: #1F2937;    /* 濃い文字色 (背景が明るいヒーローセクション用) */
+            --color-primary: #008080;        /* New Primary: Trust Teal (信頼、専門性) */
+            --color-secondary: #FFFFFF;      /* New Base Background: White (清潔感) */
+            --color-accent: #F97316;         /* New Accent: Warm Orange (太陽、温かさ、CTA) */
+            --color-light-teal: #e6f4f4;     /* Light Teal for section backgrounds */
+            --color-text-dark: #1F2937;
             --color-text-light: #F9FAFB;
         }
         
@@ -30,12 +31,12 @@
             line-height: 1.7;
         }
 
-        /* --- 2. Hero Image Styling (ボケ効果のある背景に変更) --- */
+        /* --- 2. Hero Image Styling (ボケ効果のある背景に変更 - オレンジトーン維持) --- */
         .hero-section-bg {
             /* 暖かく抽象的な光の画像（ボケ効果）を背景に設定 - アップロード画像に近いトーン */
             background-image: url("https://storage.googleapis.com/generative-ai-production-411319-images/images/r/35d8e75e-99e5-4a69-95e2-04a11229a1e9"); 
             background-size: cover;
-            background-position: center; /* 中央寄せ */
+            background-position: center;
             position: relative;
         }
         
@@ -51,19 +52,19 @@
             transform: translateY(0) scale(1);
         }
 
-        /* チームメンバー画像（Placeholder） */
+        /* チームメンバー画像（Placeholder） - NEW PRIMARY COLOR (#008080)を使用 */
         .team-image-placeholder {
-            background-color: var(--color-accent);
+            background-color: var(--color-primary);
             opacity: 0.9;
             /* 幾何学模様の背景パターンを維持 */
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23FFFFFF' fill-opacity='0.2'%3E%3Cpath d='M36 34L30 38.5 24 34V25l6-4.5 6 4.5v9zM30 0L0 22.5 30 45 60 22.5zM30 46.5L0 24 30 1.5 60 24z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
             background-size: 20px;
         }
 
-        /* 訪問看護の特徴カードのホバーエフェクト */
+        /* 訪問看護の特徴カードのホバーエフェクト - NEW PRIMARY COLOR (#008080)を使用 */
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 143, 0, 0.15); /* Primaryカラー（オレンジ）の影を強調 */
+            box-shadow: 0 10px 30px rgba(0, 128, 128, 0.15); /* Primaryカラー（ティール）の影を強調 */
         }
 
         /* SNSアイコンのベーススタイル */
@@ -80,22 +81,23 @@
 <body class="antialiased">
     
     <!-- Header/Navigation -->
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-lg/50">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-lg/50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
             
-            <!-- Logo -->
+            <!-- Logo - Text is Primary (Teal), Icon is Accent (Orange) -->
             <a href="#top" class="text-2xl sm:text-3xl font-extrabold text-[--color-primary] tracking-tight transition duration-300">
                 <i data-lucide="sun" class="inline-block w-7 h-7 mr-2 align-sub text-[--color-accent]"></i>
                 Sun Plus
             </a>
             
-            <!-- Desktop Navigation -->
+            <!-- Desktop Navigation - Hover is Accent (Orange) -->
             <nav class="hidden md:flex space-x-8 text-base font-medium">
                 <a href="#philosophy" class="hover:text-[--color-accent] transition">私たちの強み</a>
                 <a href="#service" class="hover:text-[--color-accent] transition">サービス内容</a>
                 <a href="#team" class="hover:text-[--color-accent] transition">スタッフ</a>
                 <a href="#company" class="hover:text-[--color-accent] transition">会社概要</a>
-                <a href="#contact" class="px-6 py-2 bg-[--color-primary] text-white rounded-full hover:bg-[#ffad33] transition shadow-lg font-semibold">無料相談・お問合せ</a>
+                <!-- CTA Button is Accent (Orange) -->
+                <a href="#contact" class="px-6 py-2 bg-[--color-accent] text-white rounded-full hover:bg-orange-600 transition shadow-lg font-semibold">無料相談・お問合せ</a>
             </nav>
             
             <!-- Mobile Menu Button -->
@@ -111,7 +113,8 @@
                 <a href="#service" class="block py-2 text-lg font-medium hover:bg-gray-50 rounded-lg">サービス内容</a>
                 <a href="#team" class="block py-2 text-lg font-medium hover:bg-gray-50 rounded-lg">スタッフ</a>
                 <a href="#company" class="block py-2 text-lg font-medium hover:bg-gray-50 rounded-lg">会社概要</a>
-                <a href="#contact" class="block py-3 text-lg font-semibold text-center bg-[--color-primary] text-white rounded-full mt-3">無料相談・お問合せ</a>
+                <!-- CTA Button is Accent (Orange) -->
+                <a href="#contact" class="block py-3 text-lg font-semibold text-center bg-[--color-accent] text-white rounded-full mt-3">無料相談・お問合せ</a>
             </div>
         </nav>
     </header>
@@ -134,10 +137,10 @@
                     <span class="block">太陽（Sun）の恵みを、</span><span class="block">あなたの日常に（Plus）。</span>
                 </h1>
                 
-                <!-- Call to Action & Phone Number: アップロード画像のデザインに合わせる -->
+                <!-- Call to Action & Phone Number: CTA Button is Accent (Orange) -->
                 <div class="mt-12 stack-item" style="transition-delay: 0.4s;">
                     <!-- ボタン -->
-                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full bg-[--color-primary] text-white hover:bg-[#ffad33] transition duration-300 transform hover:scale-105 shadow-2xl">
+                    <a href="#contact" class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full bg-[--color-accent] text-white hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-2xl">
                         <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
                         無料相談・資料請求
                     </a>
@@ -150,14 +153,15 @@
         </section>
 
         
-        <!-- 2. Philosophy/Strengths Section -->
-        <section id="philosophy" class="py-24 sm:py-32 bg-[--color-secondary] relative z-20">
+        <!-- 2. Philosophy/Strengths Section - NEW LIGHT TEAL BACKGROUND -->
+        <section id="philosophy" class="py-24 sm:py-32 bg-[--color-light-teal] relative z-20">
             <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center">
-                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">Our Strengths</span>
+                    <!-- Text color remains Accent (Orange) -->
+                    <span class="text-base font-semibold text-[--color-accent] uppercase tracking-widest">Our Strengths</span>
                     <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 stack-item">Sun Plusが選ばれる３つの理由</h2>
                     <p class="mt-4 text-lg text-gray-700 max-w-3xl mx-auto stack-item" style="transition-delay: 0.05s;">
-                         精神疾患をお持ちの方や、ご家族へ。住み慣れた地域で安心して生活できるよう、専門的な知識と温かい心でサポートします。
+                        精神疾患をお持ちの方や、ご家族へ。住み慣れた地域で安心して生活できるよう、専門的な知識と温かい心でサポートします。
                     </p>
                 </div>
 
@@ -166,7 +170,8 @@
                     <!-- Feature 1 -->
                     <div class="feature-card p-8 bg-white rounded-xl shadow-lg transition duration-300 stack-item" style="transition-delay: 0.1s;">
                         <div class="flex items-center mb-4">
-                            <i data-lucide="brain-circuit" class="w-10 h-10 p-2 bg-[--color-accent]/20 text-[--color-primary] rounded-full mr-3"></i>
+                            <!-- Icon background uses Primary (Teal) -->
+                            <i data-lucide="brain-circuit" class="w-10 h-10 p-2 bg-[--color-primary]/20 text-[--color-primary] rounded-full mr-3"></i>
                             <h3 class="text-2xl font-bold">専門特化のチーム</h3>
                         </div>
                         <p class="text-gray-600 text-base">精神科病院での勤務経験豊富な看護師のみが在籍。最新の知見に基づいた質の高い専門ケアを提供します。</p>
@@ -175,7 +180,8 @@
                     <!-- Feature 2 -->
                     <div class="feature-card p-8 bg-white rounded-xl shadow-lg transition duration-300 stack-item" style="transition-delay: 0.3s;">
                         <div class="flex items-center mb-4">
-                            <i data-lucide="handshake" class="w-10 h-10 p-2 bg-[--color-accent]/20 text-[--color-primary] rounded-full mr-3"></i>
+                            <!-- Icon background uses Primary (Teal) -->
+                            <i data-lucide="handshake" class="w-10 h-10 p-2 bg-[--color-primary]/20 text-[--color-primary] rounded-full mr-3"></i>
                             <h3 class="text-2xl font-bold">医療・福祉との強力連携</h3>
                         </div>
                         <p class="text-gray-600 text-base">主治医との密な情報共有はもちろん、行政・就労支援など多職種との連携で社会復帰を支援します。</p>
@@ -184,7 +190,8 @@
                     <!-- Feature 3 -->
                     <div class="feature-card p-8 bg-white rounded-xl shadow-lg transition duration-300 stack-item" style="transition-delay: 0.5s;">
                         <div class="flex items-center mb-4">
-                            <i data-lucide="calendar-check" class="w-10 h-10 p-2 bg-[--color-accent]/20 text-[--color-primary] rounded-full mr-3"></i>
+                            <!-- Icon background uses Primary (Teal) -->
+                            <i data-lucide="calendar-check" class="w-10 h-10 p-2 bg-[--color-primary]/20 text-[--color-primary] rounded-full mr-3"></i>
                             <h3 class="text-2xl font-bold">オーダーメイドケア</h3>
                         </div>
                         <p class="text-gray-600 text-base">画一的なプログラムは提供しません。ご利用者様一人ひとりのライフスタイルと目標に合わせたケアプランを作成します。</p>
@@ -194,19 +201,21 @@
         </section>
 
         
-        <!-- 3. Service Details Section -->
-        <section id="service" class="py-24 sm:py-32 bg-white">
+        <!-- 3. Service Details Section - Background is White -->
+        <section id="service" class="py-24 sm:py-32 bg-[--color-secondary]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
-                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">Service Details</span>
+                    <!-- Text color remains Accent (Orange) -->
+                    <span class="text-base font-semibold text-[--color-accent] uppercase tracking-widest">Service Details</span>
                     <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900 stack-item">私たちが提供する具体的なサポート</h2>
                 </div>
 
                 <div class="space-y-16">
                     
-                    <!-- Service Card 1: Daily Life -->
-                    <div class="md:flex items-start bg-[--color-secondary] p-8 md:p-12 rounded-2xl shadow-md stack-item" style="transition-delay: 0.1s;">
+                    <!-- Service Card 1: Daily Life - NEW LIGHT TEAL BACKGROUND -->
+                    <div class="md:flex items-start bg-[--color-light-teal] p-8 md:p-12 rounded-2xl shadow-md stack-item" style="transition-delay: 0.1s;">
                         <div class="md:w-1/3 flex-shrink-0 mb-6 md:mb-0">
+                            <!-- Icon and text color are Primary (Teal) -->
                             <i data-lucide="activity" class="w-12 h-12 text-[--color-primary] mb-2"></i>
                             <h3 class="text-3xl font-bold text-[--color-primary]">生活リズムの構築</h3>
                             <p class="text-sm text-gray-500 mt-1">Daily Life Support</p>
@@ -220,9 +229,10 @@
                         </div>
                     </div>
 
-                    <!-- Service Card 2: Psychological Care -->
+                    <!-- Service Card 2: Psychological Care - Background is White -->
                     <div class="md:flex items-start bg-white p-8 md:p-12 rounded-2xl shadow-lg stack-item" style="transition-delay: 0.3s;">
                         <div class="md:w-1/3 flex-shrink-0 mb-6 md:mb-0">
+                            <!-- Icon and text color are Primary (Teal) -->
                             <i data-lucide="speech" class="w-12 h-12 text-[--color-primary] mb-2"></i>
                             <h3 class="text-3xl font-bold text-[--color-primary]">症状への専門的ケア</h3>
                             <p class="text-sm text-gray-500 mt-1">Psychological Care</p>
@@ -236,9 +246,10 @@
                         </div>
                     </div>
 
-                    <!-- Service Card 3: Family Support -->
-                    <div class="md:flex items-start bg-[--color-secondary] p-8 md:p-12 rounded-2xl shadow-md stack-item" style="transition-delay: 0.5s;">
+                    <!-- Service Card 3: Family Support - NEW LIGHT TEAL BACKGROUND -->
+                    <div class="md:flex items-start bg-[--color-light-teal] p-8 md:p-12 rounded-2xl shadow-md stack-item" style="transition-delay: 0.5s;">
                         <div class="md:w-1/3 flex-shrink-0 mb-6 md:mb-0">
+                            <!-- Icon and text color are Primary (Teal) -->
                             <i data-lucide="users" class="w-12 h-12 text-[--color-primary] mb-2"></i>
                             <h3 class="text-3xl font-bold text-[--color-primary]">ご家族への支援</h3>
                             <p class="text-sm text-gray-500 mt-1">Family Support</p>
@@ -256,11 +267,12 @@
         </section>
 
         
-        <!-- 4. Team Section -->
-        <section id="team" class="py-24 sm:py-32 bg-white">
+        <!-- 4. Team Section - Background is White -->
+        <section id="team" class="py-24 sm:py-32 bg-[--color-secondary]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 stack-item">
-                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">Our Team</span>
+                    <!-- Text color remains Accent (Orange) -->
+                    <span class="text-base font-semibold text-[--color-accent] uppercase tracking-widest">Our Team</span>
                     <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900">太陽のような、温かいスタッフたち</h2>
                     <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">全てのスタッフがあなたの「安心できる暮らし」を第一に考えています。</p>
                 </div>
@@ -269,7 +281,7 @@
                     
                     <!-- Team Member 1 -->
                     <div class="rounded-2xl overflow-hidden shadow-xl stack-item">
-                        <!-- Placeholder Image -->
+                        <!-- Placeholder Image uses Primary (Teal) -->
                         <div class="w-full h-56 team-image-placeholder flex items-end p-6">
                             <h3 class="text-2xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">吉田 誠（Makoto Yoshida）</h3>
                         </div>
@@ -281,7 +293,7 @@
                     
                     <!-- Team Member 2 -->
                     <div class="rounded-2xl overflow-hidden shadow-xl stack-item" style="transition-delay: 0.1s;">
-                        <!-- Placeholder Image -->
+                        <!-- Placeholder Image uses Primary (Teal) -->
                         <div class="w-full h-56 team-image-placeholder flex items-end p-6">
                             <h3 class="text-2xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">田中 明日香（Asuka Tanaka）</h3>
                         </div>
@@ -293,7 +305,7 @@
                     
                     <!-- Team Member 3 -->
                     <div class="rounded-2xl overflow-hidden shadow-xl stack-item" style="transition-delay: 0.2s;">
-                        <!-- Placeholder Image -->
+                        <!-- Placeholder Image uses Primary (Teal) -->
                         <div class="w-full h-56 team-image-placeholder flex items-end p-6">
                             <h3 class="text-2xl font-bold text-white [text-shadow:0_2px_4px_rgba(0,0,0,0.6)]">井上 剛（Tsuyoshi Inoue）</h3>
                         </div>
@@ -307,11 +319,12 @@
         </section>
 
         
-        <!-- 5. Company Info Section -->
-        <section id="company" class="py-24 sm:py-32 bg-[--color-secondary]">
+        <!-- 5. Company Info Section - NEW LIGHT TEAL BACKGROUND -->
+        <section id="company" class="py-24 sm:py-32 bg-[--color-light-teal]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16 stack-item">
-                    <span class="text-base font-semibold text-[--color-primary] uppercase tracking-widest">About Us</span>
+                    <!-- Text color remains Accent (Orange) -->
+                    <span class="text-base font-semibold text-[--color-accent] uppercase tracking-widest">About Us</span>
                     <h2 class="mt-2 text-4xl sm:text-5xl font-extrabold text-gray-900">会社概要・アクセス</h2>
                 </div>
 
@@ -331,6 +344,7 @@
                         </div>
                         <div class="py-4 flex flex-col md:flex-row">
                             <dt class="md:w-1/3 text-lg font-medium text-gray-500">電話番号</dt>
+                            <!-- Phone number uses Primary (Teal) -->
                             <dd class="md:w-2/3 text-lg text-[--color-primary] font-bold">000-1234-5678</dd>
                         </div>
                         <div class="py-4 flex flex-col md:flex-row">
@@ -362,9 +376,9 @@
                             ></iframe>
                         </div>
                         
-                        <!-- Link to Open in Google Maps -->
+                        <!-- Link to Open in Google Maps uses Primary (Teal) -->
                         <p class="mt-4 text-center">
-                            <a href="https://maps.app.goo.gl/YourActualMapLink" target="_blank" class="text-lg font-semibold text-[--color-primary] hover:text-[#ffad33] transition inline-flex items-center">
+                            <a href="https://maps.app.goo.gl/YourActualMapLink" target="_blank" class="text-lg font-semibold text-[--color-primary] hover:text-[#005757] transition inline-flex items-center">
                                 <i data-lucide="map-pin" class="w-5 h-5 mr-1"></i>
                                 Googleマップで開く
                             </a>
@@ -375,8 +389,8 @@
         </section>
 
         
-        <!-- 6. Social Media Section -->
-        <section id="sns" class="py-16 bg-white">
+        <!-- 6. Social Media Section - Background is White -->
+        <section id="sns" class="py-16 bg-[--color-secondary]">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center stack-item">
                 <h3 class="text-3xl font-bold text-gray-900 mb-8">最新情報や日々の活動をチェック</h3>
 
@@ -403,19 +417,21 @@
         </section>
 
 
-        <!-- 7. Final Contact Section -->
+        <!-- 7. Final Contact Section - Background is Primary (Teal) -->
         <section id="contact" class="py-24 bg-[--color-primary] text-white">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center stack-item">
                 <h2 class="text-4xl sm:text-5xl font-extrabold">まずは、お気軽にご相談ください。</h2>
                 <p class="mt-6 text-xl font-light opacity-90">ご利用者様、ご家族様、関係機関の皆様からのご相談をお待ちしております。</p>
                 
                 <div class="mt-12">
-                    <a href="#" class="inline-flex items-center justify-center px-12 py-4 text-xl font-extrabold rounded-full bg-[--color-accent] text-[--color-primary] hover:bg-white transition duration-300 transform hover:scale-105 shadow-2xl">
+                    <!-- CTA Button uses Accent (Orange) -->
+                    <a href="#" class="inline-flex items-center justify-center px-12 py-4 text-xl font-extrabold rounded-full bg-[--color-accent] text-white hover:bg-orange-600 transition duration-300 transform hover:scale-105 shadow-2xl">
                         <i data-lucide="mail-plus" class="w-6 h-6 mr-3"></i>
                         メールで無料相談する
                     </a>
                 </div>
-                <p class="mt-6 text-2xl font-bold">または 📞 000-1234-5678</p>
+                <!-- Phone number also uses Accent (Orange) for maximum visibility -->
+                <p class="mt-6 text-2xl font-bold text-[--color-accent]">または 📞 000-1234-5678</p>
                 <p class="mt-1 text-sm opacity-80">（電話受付：平日 9:00〜18:00）</p>
             </div>
         </section>
@@ -439,12 +455,19 @@
             // --- Mobile Menu Toggle ---
             const menuButton = document.getElementById('menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
+            const menuIcon = menuButton.querySelector('i');
 
             menuButton.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
+                // Change icon on toggle
+                const isOpen = !mobileMenu.classList.contains('hidden');
+                menuIcon.innerHTML = lucide.createIcons(isOpen ? 'x' : 'menu', { class: 'w-7 h-7 text-[--color-text-dark]' }).toSvg();
             });
             mobileMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    menuIcon.innerHTML = lucide.createIcons('menu', { class: 'w-7 h-7 text-[--color-text-dark]' }).toSvg();
+                });
             });
 
             // --- Stacked Scroll Animation Logic (Intersection Observer) ---
