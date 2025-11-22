@@ -292,6 +292,11 @@
             color: var(--primary-color);
             font-size: 50px;
         }
+        /* アイコンの調整: カードの色に合わせて調整 */
+        .card:nth-child(1) .card-img { color: #81C784; } /* グリーン系 */
+        .card:nth-child(2) .card-img { color: #FF8A65; } /* オレンジ系 */
+        .card:nth-child(3) .card-img { color: #64B5F6; } /* ブルー系 */
+
 
         .card-body { padding: 30px; }
         
@@ -726,38 +731,39 @@
     <section id="service" class="section services fade-in-up">
         <div class="section-title">
             Service
-            <span>サービス内容</span>
+            <!-- 画像に合わせ「サービス内容」から「訪問看護でできること」に修正 -->
+            <span>訪問看護でできること</span>
         </div>
         <div class="service-grid">
-            <!-- カード1 -->
+            <!-- カード1: 日常生活へのサポート (アイコンはfa-homeに変更) -->
             <div class="card fade-in-up delay-1">
-                <div class="card-img"><i class="fas fa-user-nurse"></i></div>
+                <div class="card-img"><i class="fas fa-home"></i></div>
                 <div class="card-body">
-                    <h3 class="card-title">訪問看護</h3>
+                    <h3 class="card-title">日常生活へのサポート</h3>
                     <p class="card-text">
-                        健康状態の観察、服薬管理、入浴介助など。24時間365日、緊急時も迅速に対応し、安心をお届けします。
+                        規則正しい生活リズムの確立、食事・睡眠・清潔の援助、金銭管理の助言など、自宅での安定した生活基盤作りを支援します。
                     </p>
                     <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-            <!-- カード2 -->
+            <!-- カード2: 病状の観察と服薬支援 (アイコンはfa-capsulesに変更) -->
             <div class="card fade-in-up delay-2">
-                <div class="card-img"><i class="fas fa-heartbeat"></i></div>
+                <div class="card-img"><i class="fas fa-capsules"></i></div>
                 <div class="card-body">
-                    <h3 class="card-title">リハビリテーション</h3>
+                    <h3 class="card-title">病状の観察と服薬支援</h3>
                     <p class="card-text">
-                        理学療法士・作業療法士がご自宅へ伺い、自分らしい生活動作の維持・向上をサポートします。
+                        専門的な視点から症状の変化を早期に察知し、医療機関と連携。服薬方法の確認や副作用のチェックを行い、確実な治療継続を支えます。
                     </p>
                     <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-            <!-- カード3 -->
+            <!-- カード3: 心理的なカウンセリング (アイコンはfa-comment-altに変更) -->
             <div class="card fade-in-up delay-3">
-                <div class="card-img"><i class="fas fa-hands-helping"></i></div>
+                <div class="card-img"><i class="fas fa-comment-alt"></i></div>
                 <div class="card-body">
-                    <h3 class="card-title">看取り・緩和ケア</h3>
+                    <h3 class="card-title">心理的なカウンセリング</h3>
                     <p class="card-text">
-                        住み慣れた家で最期まで過ごしたいという想いを尊重し、痛みや不安を和らげるケアを行います。
+                        不安や孤独感、ストレスなど、心の内を自由に話せる安心な場を提供します。利用者様の気持ちに寄り添い、共に回復への道を歩みます。
                     </p>
                     <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
                 </div>
