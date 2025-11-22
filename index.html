@@ -42,6 +42,9 @@
             --accent-color: #FFD54F;  /* ハイライト用：太陽の黄色 */
             --bg-soft: #E1F5FE;       /* 背景用：非常に薄い水色 */
             --text-color: #546E7A;    /* テキスト：青みがかったグレー */
+            
+            /* ステップ背景色を専用に定義し、Neumorphismの影の基礎にする */
+            --step-bg: #F7FAFF; 
         }
 
         /* --- アニメーション定義 --- */
@@ -339,76 +342,143 @@
 
         /* --- 利用開始までの安心ステップ (Flow) --- */
         .steps {
-            background-color: #f7faff; 
+            background-color: var(--step-bg); 
         }
 
         .step-container {
             position: relative;
-            /* 縦線と丸の中心を合わせるための基準 */
-            padding-left: 50px; 
-            /* 最後の丸の中心が底辺に来るようにパディングを追加 */
-            padding-bottom: 20px; 
+            /* 中央配置にするため、padding-leftをリセットし、最大幅をセンターに寄せる */
+            padding-left: 0; 
             max-width: 800px; 
             margin: 0 auto;
         }
-
-        /* 縦の線 */
+        
+        /* 縦の線: 中央に配置、デザインを洗練 */
         .step-container::before {
             content: '';
             position: absolute;
-            left: 20px; /* 縦線の位置: 丸の中心と合わせる (40px/2) */
+            /* 修正: 親要素 (step-container) の中央に線を配置 */
+            left: 50%; 
+            transform: translateX(-50%);
             top: 20px; 
-            /* ★修正点2: bottom を 0 にして、親要素の padding-bottom: 20px で終端を制御 */
-            bottom: 0; 
-            width: 2px;
-            background-color: var(--bg-soft); 
+            /* 線の幅を細く、色を背景に馴染ませる (薄い水色) */
+            width: 2px; 
+            background-color: #B3E5FC; /* より薄い水色 */
+            /* 影を非常に薄くする */
+            box-shadow: 0 0 5px rgba(79, 195, 247, 0.1); 
             z-index: 0;
+            border-radius: 1px;
+            /* 線の高さを調整するためのCSS変数を使用 */
+            height: calc(100% - var(--line-offset, 20px)); 
+        }
+        
+        /* 最後の要素の後の線が表示されないように調整 */
+        .step-item:last-child {
+            /* 丸の直径 (40px) に調整 */
+            --line-offset: 40px; 
+        }
+
+        .step-container:has(.step-item:last-child) > .step-container::before {
+            height: calc(100% - var(--line-offset));
         }
         
         .step-item {
             display: flex;
-            align-items: flex-start; 
-            margin-bottom: 40px; 
-            padding-bottom: 0px; 
+            align-items: center; 
+            margin-bottom: 60px; /* 間隔を広げる */
             position: relative;
             z-index: 1; 
         }
         
-        /* 最後のステップでは、丸の下マージンを完全に削除 */
         .step-item:last-child {
             margin-bottom: 0; 
         }
         
+        /* ステップ番号とアイコンのコンテナ */
+        .step-icon-container {
+            width: 40px;
+            height: 40px;
+            flex-shrink: 0; 
+            /* 修正: 中央の線と丸の中心を合わせる */
+            margin: 0; 
+            position: absolute; /* 親要素基準で絶対配置 */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2; 
+        }
+
+        /* PC/タブレット向けのステップ番号の丸デザイン (Neumorphism風を維持) */
         .step-number {
             width: 40px;
             height: 40px;
-            background-color: var(--primary-color); 
-            color: white;
+            background-color: var(--step-bg); 
+            color: var(--primary-dark); 
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
             font-size: 18px;
-            flex-shrink: 0; 
-            /* 縦線(left: 20px)の中心に丸の中心を合わせるためのオフセット */
-            /* 50px (padding-left) - 20px (line-left) = 30px */
-            margin-left: -30px; 
-            box-shadow: 0 2px 10px rgba(79, 195, 247, 0.3);
-            font-family: "Zen Maru Gothic", sans-serif;
+            
+            /* Neumorphism風の影 */
+            box-shadow: 
+                3px 3px 6px rgba(0,0,0,0.1), 
+                -3px -3px 6px #FFFFFF; 
+            border: 2px solid var(--primary-color); 
+            
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
+        .step-item:hover .step-number {
+            transform: scale(1.1);
+            /* ホバー時に影を強調 */
+            box-shadow: 
+                5px 5px 10px rgba(0,0,0,0.15),
+                -5px -5px 10px #FFFFFF;
+        }
 
+        .step-icon {
+            display: none; 
+        }
+        
+        /* ステップのコンテンツ（カードデザイン） */
         .step-content {
-            margin-left: 20px;
             text-align: left;
+            background-color: #fff;
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--accent-color); 
+            width: calc(50% - 30px); /* 50%幅 - マージン */
+            position: relative;
+            /* 修正: 中央の線から右側に配置 */
+            margin-left: calc(50% + 30px); /* 中央から右へオフセット (丸の幅の半分+余白) */
+            transition: box-shadow 0.3s;
         }
+        
+        /* 偶数番目のカードは左側に配置 */
+        .step-item:nth-child(even) .step-content {
+            /* 修正: 中央の線から左側に配置 */
+            margin-left: 0;
+            margin-right: calc(50% + 30px); /* 右にオフセット */
+            border-left: none; /* 左の縦線を削除 */
+            border-right: 5px solid var(--accent-color); /* 右に縦線を追加 */
+        }
+
+
+        .step-item:hover .step-content {
+            box-shadow: 0 8px 25px rgba(79, 195, 247, 0.1);
+        }
+
 
         .step-content h3 {
-            font-size: 20px;
+            font-size: 18px; 
             color: var(--primary-dark);
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             font-weight: bold;
+            display: flex; 
+            align-items: center;
+            gap: 10px;
             font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
         }
 
@@ -418,13 +488,120 @@
         }
 
 
+        /* --- モバイル対応 (768px以下) --- */
+        @media (max-width: 768px) {
+            
+            /* Flowセクションのモバイル最適化 */
+            .step-container {
+                /* モバイルでは左寄せのタイムラインに戻す */
+                padding-left: 20px; 
+                max-width: 100%;
+            }
+            
+            .step-container::before {
+                left: 0; 
+                top: 0; 
+                height: calc(100% - var(--line-offset-mobile, 0)); 
+                transform: none; /* 中央寄せ解除 */
+            }
+
+            /* 最後の要素の後の線が表示されないように調整 (モバイル) */
+            .step-item:last-child {
+                --line-offset-mobile: 40px; 
+                margin-bottom: 30px; 
+                /* PC向けの変数をリセット */
+                --line-offset: 20px; 
+            }
+            
+            .step-item {
+                flex-direction: column; 
+                margin-bottom: 30px;
+                align-items: flex-start; 
+            }
+
+            /* PC用の中央寄せ設定をリセット */
+            .step-icon-container {
+                display: none; 
+            }
+            
+            .step-content {
+                /* モバイルでは左寄せに戻す */
+                margin-left: 10px; 
+                margin-right: 0;
+                width: calc(100% - 10px); 
+                border-left: 5px solid var(--primary-color); 
+                border-right: none;
+            }
+            
+            /* 偶数番目のカードも左寄せに戻す */
+            .step-item:nth-child(even) .step-content {
+                margin-left: 10px;
+                margin-right: 0;
+                border-left: 5px solid var(--primary-color);
+                border-right: none;
+            }
+            
+            /* カード内でステップ番号とアイコンを表示 */
+            .step-content h3 {
+                flex-direction: row-reverse;
+                justify-content: flex-end;
+                font-size: 17px;
+            }
+            
+            .step-icon {
+                display: inline-block; 
+                color: var(--accent-color);
+                font-size: 20px;
+            }
+            
+            /* カード内のステップ番号のスタイル */
+            .step-content h3::before {
+                content: attr(data-step); 
+                display: inline-block;
+                background-color: var(--primary-color);
+                color: white;
+                font-size: 14px;
+                font-weight: bold;
+                width: 25px;
+                height: 25px;
+                line-height: 25px;
+                text-align: center;
+                border-radius: 50%;
+                margin-right: 10px;
+                flex-shrink: 0;
+            }
+            
+            /* Other mobile fixes */
+            .hamburger { display: block; }
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s ease-in-out;
+                z-index: 1000;
+            }
+            nav.active { right: 0; }
+            nav ul { flex-direction: column; text-align: center; gap: 40px; }
+            nav a { font-size: 18px; color: var(--text-color); }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+            .access-section { grid-template-columns: 1fr; }
+        }
+
         /* --- アクセス & お問い合わせ --- */
         .access-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 50px;
         }
-        @media (max-width: 768px) { .access-section { grid-template-columns: 1fr; } }
 
         .info-item { margin-bottom: 30px; }
         .info-item h3 {
@@ -587,35 +764,44 @@
             <span>ご利用開始までの安心ステップ</span>
         </div>
         <div class="step-container">
-            <!-- ステップ 1 -->
+            <!-- ステップ 1: ご相談 (右側) -->
             <div class="step-item fade-in-up delay-1">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h3>ご相談・お問い合わせ（無料）</h3>
+                <div class="step-icon-container">
+                    <div class="step-number">1</div>
+                </div>
+                <!-- data-step はモバイル表示の番号のために使用 -->
+                <div class="step-content" data-step="1">
+                    <h3><i class="fas fa-comments step-icon"></i>ご相談・お問い合わせ（無料）</h3>
                     <p>まずはお電話またはお問い合わせフォームからお気軽にご連絡ください。現在の状況やサービスに対するご希望をお伺いします。</p>
                 </div>
             </div>
-            <!-- ステップ 2 -->
+            <!-- ステップ 2: 指示書 (左側) -->
             <div class="step-item fade-in-up delay-2">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h3>主治医の先生からの指示書</h3>
+                <div class="step-icon-container">
+                    <div class="step-number">2</div>
+                </div>
+                <div class="step-content" data-step="2">
+                    <h3><i class="fas fa-file-medical step-icon"></i>主治医の先生からの指示書</h3>
                     <p>訪問看護のご利用には、主治医の先生からの「訪問看護指示書」が必要です。当ステーションから主治医の先生へ指示書を依頼します。</p>
                 </div>
             </div>
-            <!-- ステップ 3 -->
+            <!-- ステップ 3: 面談・契約 (右側) -->
             <div class="step-item fade-in-up delay-3">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h3>初回面談・契約</h3>
+                <div class="step-icon-container">
+                    <div class="step-number">3</div>
+                </div>
+                <div class="step-content" data-step="3">
+                    <h3><i class="fas fa-handshake step-icon"></i>初回面談・契約</h3>
                     <p>看護師がご自宅を訪問し、詳しいアセスメントとサービス内容のご説明、および重要事項のご確認を行います。</p>
                 </div>
             </div>
-            <!-- ステップ 4 (最後) -->
+            <!-- ステップ 4 (最後): 開始 (左側) -->
             <div class="step-item fade-in-up delay-4">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <h3>訪問看護の開始</h3>
+                <div class="step-icon-container">
+                    <div class="step-number">4</div>
+                </div>
+                <div class="step-content" data-step="4">
+                    <h3><i class="fas fa-home step-icon"></i>訪問看護の開始</h3>
                     <p>作成した計画に基づき、訪問看護サービスをスタートします。利用者様、ご家族様と共に、安心で豊かな生活を目指します。</p>
                 </div>
             </div>
