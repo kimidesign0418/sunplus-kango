@@ -46,10 +46,10 @@
             /* ステップ背景色を専用に定義し、Neumorphismの影の基礎にする */
             --step-bg: #F7FAFF; 
             
-            /* フッターカラー */
-            --footer-bg: #1A237E; /* 濃いインディゴブルー（信頼感と深み） */
-            --footer-text: #E3F2FD; /* 薄い水色（コントラスト） */
-            --footer-link: #90CAF9; /* リンク色 */
+            /* フッターカラー (明るめネイビー) */
+            --footer-bg: #0D47A1; 
+            --footer-text: #E3F2FD; 
+            --footer-link: #90CAF9; 
         }
 
         /* --- アニメーション定義 --- */
@@ -81,7 +81,6 @@
         .bubble {
             position: absolute;
             border-radius: 50%;
-            /* 背景が見えるように半透明かつ、背景より手前に表示される設定に変更 */
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(79, 195, 247, 0.2) 60%, rgba(79, 195, 247, 0.5) 100%);
             box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 10px rgba(79, 195, 247, 0.1);
             animation: float 6s ease-in-out infinite;
@@ -475,6 +474,67 @@
             color: #555;
         }
 
+        /* --- 採用情報 (Recruit) --- */
+        .recruit-section {
+            background-color: var(--bg-soft);
+        }
+
+        .recruit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .recruit-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 5px solid var(--primary-color);
+        }
+
+        .recruit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(3, 155, 229, 0.1);
+        }
+
+        .recruit-card h3 {
+            font-size: 22px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
+        }
+        
+        .recruit-card ul {
+            padding-left: 20px;
+            list-style-type: disc;
+            color: var(--text-color);
+            font-size: 15px;
+        }
+        .recruit-card li {
+            margin-bottom: 8px;
+        }
+        
+        .recruit-cta {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 16px;
+            border: 1px dashed var(--primary-color);
+        }
+        
+        .recruit-cta p {
+            font-size: 18px;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
 
         /* --- アクセス & お問い合わせ --- */
         .access-section {
@@ -514,17 +574,16 @@
 
         /* --- フッター (強化版) --- */
         footer {
-            /* 濃いインディゴブルーに変更 */
             background-color: var(--footer-bg); 
             color: var(--footer-text);
-            padding: 60px 5% 20px; /* 上パディングを増やす */
+            padding: 60px 5% 20px; 
         }
 
         .footer-container {
             max-width: 1100px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr; /* ロゴエリアを広めに */
+            grid-template-columns: 2fr 1fr 1fr 1fr; 
             gap: 40px;
             padding-bottom: 40px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -621,7 +680,7 @@
             .logo { font-size: 24px; }
             
             /* Hamburger Menu */
-            .hamburger { display: block; }
+            .hamburger { display: none; }
             nav {
                 position: fixed;
                 top: 0;
@@ -726,6 +785,20 @@
                 margin-right: 10px;
                 flex-shrink: 0;
             }
+
+            /* --- 採用情報 (Recruit) のモバイル修正 --- */
+            .recruit-grid {
+                grid-template-columns: 1fr;
+            }
+            .recruit-card {
+                padding: 25px;
+            }
+            .recruit-cta {
+                padding: 20px;
+            }
+            .recruit-cta .btn {
+                width: 100%;
+            }
             
             /* --- アクセス & お問い合わせのモバイル修正 --- */
             .access-section { 
@@ -797,8 +870,8 @@
                 <li><a href="#">HOME</a></li>
                 <li><a href="#philosophy">理念</a></li>
                 <li><a href="#service">サービス</a></li>
-                <!-- 新しいナビゲーション項目 -->
                 <li><a href="#flow">ご利用の流れ</a></li> 
+                <!-- 採用情報へのリンクを更新 -->
                 <li><a href="#recruit">採用情報</a></li>
                 <li><a href="#contact">お問い合わせ</a></li>
             </ul>
@@ -849,11 +922,10 @@
     <section id="service" class="section services fade-in-up">
         <div class="section-title">
             Service
-            <!-- 画像に合わせ「サービス内容」から「訪問看護でできること」に修正 -->
             <span>訪問看護でできること</span>
         </div>
         <div class="service-grid">
-            <!-- カード1: 日常生活へのサポート (アイコンはfa-homeに変更) -->
+            <!-- カード1: 日常生活へのサポート -->
             <div class="card fade-in-up delay-1">
                 <div class="card-img"><i class="fas fa-home"></i></div>
                 <div class="card-body">
@@ -864,7 +936,7 @@
                     <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-            <!-- カード2: 病状の観察と服薬支援 (アイコンはfa-capsulesに変更) -->
+            <!-- カード2: 病状の観察と服薬支援 -->
             <div class="card fade-in-up delay-2">
                 <div class="card-img"><i class="fas fa-capsules"></i></div>
                 <div class="card-body">
@@ -875,7 +947,7 @@
                     <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
                 </div>
             </div>
-            <!-- カード3: 心理的なカウンセリング (アイコンはfa-comment-altに変更) -->
+            <!-- カード3: 心理的なカウンセリング -->
             <div class="card fade-in-up delay-3">
                 <div class="card-img"><i class="fas fa-comment-alt"></i></div>
                 <div class="card-body">
@@ -939,6 +1011,56 @@
             </div>
         </div>
     </section>
+    
+    <!-- 採用情報 (Recruit) - 新規追加セクション -->
+    <section id="recruit" class="section recruit-section fade-in-up">
+        <div class="section-title">
+            Recruit
+            <span>私たちと働く仲間を募集しています</span>
+        </div>
+        
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: var(--text-color); font-size: 16px;">
+            「その人らしさ」を大切にする、温かい看護を私たちと一緒に届けませんか？<br>
+            経験者はもちろん、ブランクのある方や訪問看護未経験の方も大歓迎です。
+        </p>
+
+        <div class="recruit-grid">
+            <!-- 採用の魅力 1: 働きやすさ -->
+            <div class="recruit-card fade-in-up delay-1">
+                <h3><i class="fas fa-clock" style="color: #64B5F6;"></i> ワークライフバランス</h3>
+                <ul>
+                    <li>残業は月平均5時間以内と少なめ。プライベートも充実できます。</li>
+                    <li>完全週休二日制（土日祝休み）で、しっかりとリフレッシュ。</li>
+                    <li>有給休暇の取得を推奨しており、希望通りに休める環境です。</li>
+                </ul>
+            </div>
+
+            <!-- 採用の魅力 2: スキルアップ -->
+            <div class="recruit-card fade-in-up delay-2">
+                <h3><i class="fas fa-user-graduate" style="color: #81C784;"></i> 充実した研修制度</h3>
+                <ul>
+                    <li>訪問看護未経験でも安心のOJT研修を用意しています。</li>
+                    <li>外部研修費用の全額補助制度があり、専門性を高められます。</li>
+                    <li>定期的な症例検討会で、多角的な視点を養うことができます。</li>
+                </ul>
+            </div>
+
+            <!-- 採用の魅力 3: 待遇とサポート -->
+            <div class="recruit-card fade-in-up delay-3">
+                <h3><i class="fas fa-money-check-alt" style="color: #FF8A65;"></i> 納得のいく給与と手当</h3>
+                <ul>
+                    <li>業界平均以上の給与水準を設定。貢献度に応じた昇給があります。</li>
+                    <li>オンコール手当、訪問件数手当など各種手当が充実。</li>
+                    <li>訪問には電動アシスト自転車を貸与。移動も快適です。</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="recruit-cta fade-in-up delay-4">
+            <p>まずはお気軽にご応募・見学のお問い合わせください。</p>
+            <a href="#contact" class="btn">採用応募・見学はこちら</a>
+        </div>
+    </section>
 
     <!-- アクセス・お問い合わせ -->
     <section id="contact" class="section fade-in-up">
@@ -949,7 +1071,7 @@
         <div class="access-section">
             <div class="info-box fade-in-up delay-1">
                 <div class="info-item">
-                    <h3><i class="fas fa-map-marker-alt"></i> Sun Plus 訪問看護ステーション</h3>
+                    <h3><i class="fas fa-map-marker-alt"></i> サンプラス訪問看護ステーション</h3>
                     <p>〒000-0000<br>〇〇県〇〇市〇〇町 1-2-3 サンプラスビル1F</p>
                 </div>
                 <div class="info-item">
@@ -980,10 +1102,10 @@
                     </svg>
                     Sun Plus
                 </div>
-                <p class="footer-title">訪問看護ステーション</p>
+                <p class="footer-title">サンプラス訪問看護ステーション</p>
                 
                 <div class="footer-info">
-                    <p><i class="fas fa-map-marker-alt"></i> 〒000-0000 兵庫県神戸市〇〇町 1-2-3</p>
+                    <p><i class="fas fa-map-marker-alt"></i> 〒000-0000 〇〇県〇〇市〇〇町 1-2-3</p>
                     <!-- 電話番号をリンク化し、大きく表示 -->
                     <p><i class="fas fa-phone-alt"></i> 緊急時24時間対応</p>
                     <a href="tel:00-1234-5678" class="tel-link">00-1234-5678</a>
@@ -1001,12 +1123,13 @@
                 </ul>
             </div>
 
-            <!-- 3. サイトマップ - 会社情報 -->
+            <!-- 3. サイトマップ - 事業所情報 -->
             <div class="footer-links">
                 <h4>事業所情報</h4>
                 <ul>
                     <li><a href="#philosophy">私たちの想い (理念)</a></li>
                     <li><a href="#contact">アクセス・事業所概要</a></li>
+                    <!-- 採用情報へのリンクを更新 -->
                     <li><a href="#recruit">採用情報</a></li>
                     <li><a href="#">プライバシーポリシー</a></li>
                 </ul>
