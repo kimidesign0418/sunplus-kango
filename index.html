@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>サンプラス訪問看護ステーション</title>
+    
     <!-- アイコンの読み込み -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
@@ -38,7 +39,7 @@
         :root {
             --primary-color: #4FC3F7; /* メイン：優しい水色 */
             --primary-dark: #039BE5;  /* 文字や強調用：少し濃い水色 */
-            --accent-color: #FFD54F;  /* ★修正: ハイライト用として太陽の黄色を設定 */
+            --accent-color: #FFD54F;  /* ハイライト用：太陽の黄色 */
             --bg-soft: #E1F5FE;       /* 背景用：非常に薄い水色 */
             --text-color: #546E7A;    /* テキスト：青みがかったグレー */
         }
@@ -58,6 +59,8 @@
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
+        .delay-4 { transition-delay: 0.4s; }
+        .delay-5 { transition-delay: 0.5s; }
 
         /* シャボン玉のアニメーション */
         @keyframes float {
@@ -70,13 +73,11 @@
         .bubble {
             position: absolute;
             border-radius: 50%;
-            /* 修正: 背景が見えるように半透明かつ、背景より手前に表示される設定に変更 */
+            /* 背景が見えるように半透明かつ、背景より手前に表示される設定に変更 */
             background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(79, 195, 247, 0.2) 60%, rgba(79, 195, 247, 0.5) 100%);
             box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 10px rgba(79, 195, 247, 0.1);
             animation: float 6s ease-in-out infinite;
             pointer-events: none;
-            
-            /* ★重要修正: z-indexを0にして、背景色より手前、文字より奥にする */
             z-index: 0; 
         }
 
@@ -95,9 +96,8 @@
         }
 
         .logo {
-            /* ロゴをより目立つサイズに、手書き風のCaveatフォントを適用 */
             font-size: 28px; 
-            font-weight: 700; /* Caveatで太く見せる */
+            font-weight: 700;
             color: var(--primary-dark);
             letter-spacing: 0.05em;
             display: flex;
@@ -107,12 +107,10 @@
             font-family: 'Caveat', cursive, "Zen Maru Gothic", sans-serif;
         }
         
-        /* Font Awesomeのアイコンスタイルは削除し、SVG用のクラスを追加 */
         .sun-icon {
             width: 30px;
             height: 30px;
-            /* Font Awesome icon color replacement */
-            color: var(--accent-color); /* アクセントカラーの黄色を使用 */
+            color: var(--accent-color);
             flex-shrink: 0;
             transition: transform 0.8s ease-in-out;
         }
@@ -180,7 +178,6 @@
             overflow: hidden;
         }
 
-        /* ★変更点: メインキャッチコピーに Klee One フォントを適用（安心感のある手書き風） */
         .hero h1 {
             font-size: clamp(24px, 5vw, 46px);
             margin-bottom: 24px;
@@ -188,15 +185,14 @@
             line-height: 1.5;
             letter-spacing: 0.05em;
             position: relative;
-            z-index: 10; /* 文字を手前に */
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; /* 安心感のある手書き風フォントを適用 */
+            z-index: 10;
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif;
         }
         
-        /* ★修正: キーワードを黄色でハイライトするスタイル */
         .hero h1 .highlight {
-            color: var(--accent-color); /* 太陽の黄色で強調 */
-            font-weight: 600; /* Klee Oneの太字 */
-            text-shadow: 0 0 5px rgba(255, 213, 79, 0.4); /* 視認性向上のための軽い影 */
+            color: var(--accent-color);
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(255, 213, 79, 0.4);
         }
 
         .hero p {
@@ -205,7 +201,7 @@
             margin-bottom: 40px;
             font-weight: 500;
             position: relative;
-            z-index: 10; /* 文字を手前に */
+            z-index: 10;
         }
 
         .btn {
@@ -221,7 +217,8 @@
             cursor: pointer;
             letter-spacing: 0.05em;
             position: relative;
-            z-index: 10; /* ボタンを手前に */
+            z-index: 10;
+            scroll-behavior: smooth; 
         }
         .btn:hover {
             background-color: var(--primary-dark);
@@ -243,6 +240,7 @@
             margin-bottom: 60px;
             font-weight: bold;
             letter-spacing: 0.1em;
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
         }
         .section-title span {
             display: block;
@@ -271,6 +269,7 @@
             font-size: 24px;
             margin-bottom: 30px;
             color: var(--primary-dark);
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
         }
         
         .philosophy-box p {
@@ -320,6 +319,7 @@
             margin-bottom: 15px;
             color: var(--primary-dark);
             font-weight: bold;
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
         }
         
         .card-text {
@@ -337,6 +337,87 @@
             gap: 5px;
         }
 
+        /* --- 利用開始までの安心ステップ (Flow) --- */
+        .steps {
+            background-color: #f7faff; 
+        }
+
+        .step-container {
+            position: relative;
+            /* 縦線と丸の中心を合わせるための基準 */
+            padding-left: 50px; 
+            /* 最後の丸の中心が底辺に来るようにパディングを追加 */
+            padding-bottom: 20px; 
+            max-width: 800px; 
+            margin: 0 auto;
+        }
+
+        /* 縦の線 */
+        .step-container::before {
+            content: '';
+            position: absolute;
+            left: 20px; /* 縦線の位置: 丸の中心と合わせる (40px/2) */
+            top: 20px; 
+            /* ★修正点2: bottom を 0 にして、親要素の padding-bottom: 20px で終端を制御 */
+            bottom: 0; 
+            width: 2px;
+            background-color: var(--bg-soft); 
+            z-index: 0;
+        }
+        
+        .step-item {
+            display: flex;
+            align-items: flex-start; 
+            margin-bottom: 40px; 
+            padding-bottom: 0px; 
+            position: relative;
+            z-index: 1; 
+        }
+        
+        /* 最後のステップでは、丸の下マージンを完全に削除 */
+        .step-item:last-child {
+            margin-bottom: 0; 
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color); 
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            flex-shrink: 0; 
+            /* 縦線(left: 20px)の中心に丸の中心を合わせるためのオフセット */
+            /* 50px (padding-left) - 20px (line-left) = 30px */
+            margin-left: -30px; 
+            box-shadow: 0 2px 10px rgba(79, 195, 247, 0.3);
+            font-family: "Zen Maru Gothic", sans-serif;
+        }
+
+
+        .step-content {
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        .step-content h3 {
+            font-size: 20px;
+            color: var(--primary-dark);
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
+        }
+
+        .step-content p {
+            font-size: 15px;
+            color: #555;
+        }
+
+
         /* --- アクセス & お問い合わせ --- */
         .access-section {
             display: grid;
@@ -353,6 +434,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
         }
         .info-item p { font-size: 15px; color: #555; }
 
@@ -368,7 +450,6 @@
             color: var(--primary-dark);
             display: block;
             margin: 15px 0;
-            /* Zen Maru Gothic は電話番号でも残す */
             font-family: "Zen Maru Gothic", sans-serif;
         }
         .contact-note { font-size: 13px; color: #78909C; margin-bottom: 20px; }
@@ -389,11 +470,9 @@
     <!-- ヘッダー -->
     <header>
         <div class="logo">
-            <!-- Font Awesomeから手書き風のSVGアイコンに差し替え -->
+            <!-- SVGアイコン -->
             <svg class="sun-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- 中央の円 -->
                 <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
-                <!-- 丸い線で描かれた光線 (stroke-linecap="round"で柔らかい印象に) -->
                 <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
             </svg>
             Sun Plus
@@ -410,6 +489,8 @@
                 <li><a href="#">HOME</a></li>
                 <li><a href="#philosophy">理念</a></li>
                 <li><a href="#service">サービス</a></li>
+                <!-- 新しいナビゲーション項目 -->
+                <li><a href="#flow">ご利用の流れ</a></li> 
                 <li><a href="#recruit">採用情報</a></li>
                 <li><a href="#contact">お問い合わせ</a></li>
             </ul>
@@ -425,9 +506,11 @@
         <div class="bubble" style="width: 70px; height: 70px; top: 20%; right: 25%; animation-delay: 3.5s;"></div>
         <div class="bubble" style="width: 110px; height: 110px; bottom: 15%; left: 35%; animation-delay: 0.5s;"></div>
 
-        <!-- キャッチコピー（Klee Oneフォントを適用、安心とプラスを黄色でハイライト） -->
+        <!-- キャッチコピー -->
         <h1 class="fade-in-up">心ほどける<span class="highlight">安心</span>を、<br>日々の暮らしに<span class="highlight">プラス</span>する。</h1>
         <p class="fade-in-up delay-1">私たちは利用者様の「その人らしい生活」に<br>そっと寄り添うパートナーです。</p>
+        
+        <!-- ボタンは#contactへ遷移 -->
         <a href="#contact" class="btn fade-in-up delay-2">詳しく見る <i class="fas fa-arrow-right"></i></a>
     </section>
 
@@ -444,7 +527,6 @@
 
             <div class="philosophy-content">
                 <h3 class="fade-in-up">病気ではなく、その人を看る。</h3>
-                <!-- 変更された理念の説明文 -->
                 <p class="fade-in-up delay-1">
                     サンプラス訪問看護ステーションは、医療処置を行うだけの場所ではありません。<br>
                     利用者様の人生に、心ほどける「安心」と「安らぎ」をプラス（Plus）し続けること。<br>
@@ -498,6 +580,48 @@
         </div>
     </section>
 
+    <!-- ご利用開始までの安心ステップ (Flow) -->
+    <section id="flow" class="section steps fade-in-up">
+        <div class="section-title">
+            Flow
+            <span>ご利用開始までの安心ステップ</span>
+        </div>
+        <div class="step-container">
+            <!-- ステップ 1 -->
+            <div class="step-item fade-in-up delay-1">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>ご相談・お問い合わせ（無料）</h3>
+                    <p>まずはお電話またはお問い合わせフォームからお気軽にご連絡ください。現在の状況やサービスに対するご希望をお伺いします。</p>
+                </div>
+            </div>
+            <!-- ステップ 2 -->
+            <div class="step-item fade-in-up delay-2">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>主治医の先生からの指示書</h3>
+                    <p>訪問看護のご利用には、主治医の先生からの「訪問看護指示書」が必要です。当ステーションから主治医の先生へ指示書を依頼します。</p>
+                </div>
+            </div>
+            <!-- ステップ 3 -->
+            <div class="step-item fade-in-up delay-3">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>初回面談・契約</h3>
+                    <p>看護師がご自宅を訪問し、詳しいアセスメントとサービス内容のご説明、および重要事項のご確認を行います。</p>
+                </div>
+            </div>
+            <!-- ステップ 4 (最後) -->
+            <div class="step-item fade-in-up delay-4">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>訪問看護の開始</h3>
+                    <p>作成した計画に基づき、訪問看護サービスをスタートします。利用者様、ご家族様と共に、安心で豊かな生活を目指します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- アクセス・お問い合わせ -->
     <section id="contact" class="section fade-in-up">
         <div class="section-title">
@@ -528,7 +652,6 @@
     <!-- フッター -->
     <footer>
         <div class="footer-content">
-            <!-- フッターのロゴもCaveatフォントを継承 -->
             <h2>Sun Plus</h2>
             <p>サンプラス訪問看護ステーション</p>
         </div>
@@ -565,6 +688,7 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    // 一度表示されたら監視を停止
                     observer.unobserve(entry.target);
                 }
             });
