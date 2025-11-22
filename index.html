@@ -45,6 +45,11 @@
             
             /* ステップ背景色を専用に定義し、Neumorphismの影の基礎にする */
             --step-bg: #F7FAFF; 
+            
+            /* フッターカラー */
+            --footer-bg: #1A237E; /* 濃いインディゴブルー（信頼感と深み） */
+            --footer-text: #E3F2FD; /* 薄い水色（コントラスト） */
+            --footer-link: #90CAF9; /* リンク色 */
         }
 
         /* --- アニメーション定義 --- */
@@ -507,14 +512,106 @@
         }
         .contact-note { font-size: 13px; color: #78909C; margin-bottom: 20px; }
 
-        /* --- フッター --- */
+        /* --- フッター (強化版) --- */
         footer {
-            background-color: #37474F;
-            color: #fff;
-            padding: 50px 5%;
-            text-align: center;
+            /* 濃いインディゴブルーに変更 */
+            background-color: var(--footer-bg); 
+            color: var(--footer-text);
+            padding: 60px 5% 20px; /* 上パディングを増やす */
         }
-        .footer-copy { font-size: 12px; opacity: 0.6; margin-top: 20px; }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr; /* ロゴエリアを広めに */
+            gap: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* フッターロゴエリア */
+        .footer-logo-area {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-logo {
+            font-size: 36px; 
+            font-weight: 700;
+            color: var(--footer-text);
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-family: 'Caveat', cursive, "Zen Maru Gothic", sans-serif;
+        }
+        
+        .footer-logo .sun-icon {
+            width: 40px;
+            height: 40px;
+            color: var(--accent-color);
+        }
+
+        .footer-title {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .footer-info p {
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        
+        .footer-info i {
+            color: var(--accent-color);
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+        
+        .footer-info .tel-link {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--footer-link);
+            margin-top: 10px;
+        }
+
+
+        /* サイトマップ */
+        .footer-links h4 {
+            font-size: 16px;
+            color: var(--footer-link);
+            font-weight: bold;
+            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 5px;
+        }
+
+        .footer-links li { margin-bottom: 8px; }
+        .footer-links a {
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.3s, color 0.3s;
+        }
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--accent-color);
+        }
+
+        /* コピーライトエリア */
+        .footer-copy-area {
+            text-align: center;
+            padding-top: 20px;
+        }
+        .footer-copy { 
+            font-size: 12px; 
+            opacity: 0.6; 
+        }
 
 
         /* --- モバイル対応 (768px以下) --- */
@@ -651,6 +748,27 @@
                 padding: 12px 0; /* 左右パディングを削除して幅いっぱいに */
             }
 
+            /* --- フッターのモバイル対応 --- */
+            .footer-container {
+                /* 1列に変更 */
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-logo-area {
+                align-items: center; /* 中央寄せ */
+                text-align: center;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                padding-bottom: 30px;
+            }
+            
+            .footer-links {
+                text-align: center;
+            }
+            .footer-links h4 {
+                 /* モバイルではボーダーを削除してシンプルに */
+                border-bottom: none; 
+            }
         }
 
     </style>
@@ -831,7 +949,7 @@
         <div class="access-section">
             <div class="info-box fade-in-up delay-1">
                 <div class="info-item">
-                    <h3><i class="fas fa-map-marker-alt"></i> サンプラス訪問看護ステーション</h3>
+                    <h3><i class="fas fa-map-marker-alt"></i> Sun Plus 訪問看護ステーション</h3>
                     <p>〒000-0000<br>〇〇県〇〇市〇〇町 1-2-3 サンプラスビル1F</p>
                 </div>
                 <div class="info-item">
@@ -849,13 +967,66 @@
         </div>
     </section>
 
-    <!-- フッター -->
+    <!-- フッター (強化版) -->
     <footer>
-        <div class="footer-content">
-            <h2>Sun Plus</h2>
-            <p>サンプラス訪問看護ステーション</p>
+        <div class="footer-container">
+            <!-- 1. ロゴと事業所情報 -->
+            <div class="footer-logo-area">
+                <div class="footer-logo">
+                    <!-- SVGアイコン (ヘッダーと共通だがサイズを大きく) -->
+                    <svg class="sun-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                    Sun Plus
+                </div>
+                <p class="footer-title">訪問看護ステーション</p>
+                
+                <div class="footer-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 〒000-0000 兵庫県神戸市〇〇町 1-2-3</p>
+                    <!-- 電話番号をリンク化し、大きく表示 -->
+                    <p><i class="fas fa-phone-alt"></i> 緊急時24時間対応</p>
+                    <a href="tel:00-1234-5678" class="tel-link">00-1234-5678</a>
+                </div>
+            </div>
+
+            <!-- 2. サイトマップ - サービス -->
+            <div class="footer-links">
+                <h4>サービス</h4>
+                <ul>
+                    <li><a href="#service">訪問看護でできること</a></li>
+                    <li><a href="#flow">ご利用開始までの流れ</a></li>
+                    <li><a href="#">医療保険・介護保険について</a></li>
+                    <li><a href="#">よくある質問</a></li>
+                </ul>
+            </div>
+
+            <!-- 3. サイトマップ - 会社情報 -->
+            <div class="footer-links">
+                <h4>事業所情報</h4>
+                <ul>
+                    <li><a href="#philosophy">私たちの想い (理念)</a></li>
+                    <li><a href="#contact">アクセス・事業所概要</a></li>
+                    <li><a href="#recruit">採用情報</a></li>
+                    <li><a href="#">プライバシーポリシー</a></li>
+                </ul>
+            </div>
+
+            <!-- 4. サイトマップ - その他 -->
+            <div class="footer-links">
+                <h4>その他</h4>
+                <ul>
+                    <li><a href="#">法人概要</a></li>
+                    <li><a href="#">関連施設</a></li>
+                    <li><a href="#contact">お問い合わせ</a></li>
+                </ul>
+            </div>
         </div>
-        <p class="footer-copy">&copy; 2025 Sun Plus Visiting Nursing Station. All Rights Reserved.</p>
+
+        <div class="footer-copy-area">
+            <p class="footer-copy">Sun Plus Visiting Nursing Station.</p>
+            <p class="footer-copy">&copy; 2025 All Rights Reserved.</p>
+        </div>
     </footer>
 
     <script>
