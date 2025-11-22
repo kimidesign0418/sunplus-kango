@@ -143,29 +143,6 @@
             border-radius: 3px;
         }
 
-        @media (max-width: 768px) {
-            .hamburger { display: block; }
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background-color: rgba(255, 255, 255, 0.98);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: 0.4s ease-in-out;
-                z-index: 1000;
-            }
-            nav.active { right: 0; }
-            nav ul { flex-direction: column; text-align: center; gap: 40px; }
-            nav a { font-size: 18px; color: var(--text-color); }
-            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
-        }
-
         /* --- メインビジュアル (Hero) --- */
         .hero {
             background: linear-gradient(120deg, #E1F5FE 0%, #fff 100%);
@@ -222,6 +199,7 @@
             position: relative;
             z-index: 10;
             scroll-behavior: smooth; 
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
         .btn:hover {
             background-color: var(--primary-dark);
@@ -488,9 +466,83 @@
         }
 
 
+        /* --- アクセス & お問い合わせ --- */
+        .access-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .info-item { margin-bottom: 30px; }
+        .info-item h3 {
+            font-size: 18px;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
+        }
+        .info-item p { font-size: 15px; color: #555; }
+
+        .contact-area {
+            background-color: var(--bg-soft);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        .tel {
+            font-size: 32px;
+            font-weight: bold;
+            color: var(--primary-dark);
+            display: block;
+            margin: 15px 0 20px; /* 下マージンを少し増やす */
+            font-family: "Zen Maru Gothic", sans-serif;
+            line-height: 1.2; /* 複数行になった時の行間を調整 */
+        }
+        .contact-note { font-size: 13px; color: #78909C; margin-bottom: 20px; }
+
+        /* --- フッター --- */
+        footer {
+            background-color: #37474F;
+            color: #fff;
+            padding: 50px 5%;
+            text-align: center;
+        }
+        .footer-copy { font-size: 12px; opacity: 0.6; margin-top: 20px; }
+
+
         /* --- モバイル対応 (768px以下) --- */
         @media (max-width: 768px) {
             
+            header { padding: 10px 4%; }
+            .logo { font-size: 24px; }
+            
+            /* Hamburger Menu */
+            .hamburger { display: block; }
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 100%;
+                height: 100vh;
+                background-color: rgba(255, 255, 255, 0.98);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: 0.4s ease-in-out;
+                z-index: 1000;
+            }
+            nav.active { right: 0; }
+            nav ul { flex-direction: column; text-align: center; gap: 40px; }
+            nav a { font-size: 18px; color: var(--text-color); }
+            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+            
+            .section { padding: 60px 5%; }
+            .section-title { font-size: 28px; margin-bottom: 40px; }
+
             /* Flowセクションのモバイル最適化 */
             .step-container {
                 /* モバイルでは左寄せのタイムラインに戻す */
@@ -529,8 +581,10 @@
                 margin-left: 10px; 
                 margin-right: 0;
                 width: calc(100% - 10px); 
+                /* タイムラインの線と丸に合わせて、左側にラインを付ける */
                 border-left: 5px solid var(--primary-color); 
                 border-right: none;
+                padding: 15px 20px; /* モバイルでパディングを少し調整 */
             }
             
             /* 偶数番目のカードも左寄せに戻す */
@@ -571,74 +625,28 @@
                 flex-shrink: 0;
             }
             
-            /* Other mobile fixes */
-            .hamburger { display: block; }
-            nav {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 100%;
-                height: 100vh;
-                background-color: rgba(255, 255, 255, 0.98);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                transition: 0.4s ease-in-out;
-                z-index: 1000;
+            /* --- アクセス & お問い合わせのモバイル修正 --- */
+            .access-section { 
+                grid-template-columns: 1fr; /* 1列にする */
+                gap: 40px;
             }
-            nav.active { right: 0; }
-            nav ul { flex-direction: column; text-align: center; gap: 40px; }
-            nav a { font-size: 18px; color: var(--text-color); }
-            .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+            
+            .contact-area {
+                padding: 30px 20px;
+            }
 
-            .access-section { grid-template-columns: 1fr; }
-        }
+            /* 電話番号のサイズ調整 */
+            .tel {
+                font-size: 28px; 
+            }
+            
+            /* ボタンが必ず幅いっぱいになるようにする */
+            .contact-area .btn {
+                width: 100%;
+                padding: 12px 0; /* 左右パディングを削除して幅いっぱいに */
+            }
 
-        /* --- アクセス & お問い合わせ --- */
-        .access-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
         }
-
-        .info-item { margin-bottom: 30px; }
-        .info-item h3 {
-            font-size: 18px;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
-        }
-        .info-item p { font-size: 15px; color: #555; }
-
-        .contact-area {
-            background-color: var(--bg-soft);
-            padding: 40px;
-            border-radius: 16px;
-            text-align: center;
-        }
-        .tel {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--primary-dark);
-            display: block;
-            margin: 15px 0;
-            font-family: "Zen Maru Gothic", sans-serif;
-        }
-        .contact-note { font-size: 13px; color: #78909C; margin-bottom: 20px; }
-
-        /* --- フッター --- */
-        footer {
-            background-color: #37474F;
-            color: #fff;
-            padding: 50px 5%;
-            text-align: center;
-        }
-        .footer-copy { font-size: 12px; opacity: 0.6; margin-top: 20px; }
 
     </style>
 </head>
@@ -830,7 +838,7 @@
                 <h3>ご相談・ご依頼はこちら</h3>
                 <p class="contact-note">介護保険・医療保険のご利用など、お気軽にご相談ください。</p>
                 <span class="tel">00-1234-5678</span>
-                <a href="#" class="btn" style="width:100%; font-size:14px;">メールでのお問い合わせ</a>
+                <a href="#" class="btn" style="font-size:14px;">メールでのお問い合わせ</a>
             </div>
         </div>
     </section>
