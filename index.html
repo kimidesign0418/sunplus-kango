@@ -21,6 +21,11 @@
             padding: 0;
         }
 
+        html {
+            /* ページ全体のスムーズスクロールを有効化 */
+            scroll-behavior: smooth;
+        }
+
         body {
             /* 日本語の本文フォント */
             font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", Meiryo, sans-serif;
@@ -917,15 +922,18 @@
             /* Flowセクションのモバイル最適化 */
             .step-container {
                 /* モバイルでは左寄せのタイムラインに戻す */
-                padding-left: 20px; 
+                padding-left: 0; /* 左余白を削除し、Flexボックスで制御 */
                 max-width: 100%;
             }
             
             .step-container::before {
-                left: 0; 
+                /* 縦線を番号の真ん中を通るように配置 */
+                left: 20px; /* 番号(40px)の中心 */
                 top: 0; 
                 height: calc(100% - var(--line-offset-mobile, 0)); 
                 transform: none; /* 中央寄せ解除 */
+                width: 4px;
+                z-index: 0; /* 番号の下に線を配置 */
             }
 
             /* 最後の要素の後の線が表示されないように調整 (モバイル) */
@@ -937,25 +945,47 @@
             }
             
             .step-item {
-                flex-direction: column; 
+                flex-direction: row; /* ★横並びに変更（番号 -> カード） */
                 margin-bottom: 40px;
-                align-items: flex-start; 
+                align-items: flex-start; /* 上揃え */
             }
 
-            /* PC用の中央寄せ設定をリセット */
+            /* ★変更: スマホでも番号コンテナを表示する */
             .step-icon-container {
-                display: none; 
+                display: flex; 
+                position: relative;
+                left: auto;
+                top: auto;
+                transform: none;
+                width: 40px;
+                height: 40px;
+                margin-right: 15px; /* 番号とカードの間隔 */
+            }
+            
+            /* スマホ用の番号スタイル調整 */
+            .step-number {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+                background-color: #fff; /* 背景を白に */
+                border: 2px solid var(--primary-color); /* 枠線を強調 */
+                z-index: 2; /* 線より手前に */
             }
             
             .step-content {
-                /* モバイルでは左寄せに戻す */
-                margin-left: 15px; 
+                /* モバイルではフレックスで幅を自動調整 */
+                flex: 1;
+                margin-left: 0; 
                 margin-right: 0;
-                width: calc(100% - 15px); 
-                /* タイムラインの線と丸に合わせて、左側にラインを付ける */
-                border-left: 5px solid var(--primary-color); 
+                width: auto; 
+                
+                /* 左のボーダーを削除（線は別にあるため） */
+                border-left: none; 
                 border-right: none;
+                
+                /* モバイル用に少しコンパクトに */
                 padding: 20px; 
+                margin-top: -5px; /* 番号との位置合わせ微調整 */
             }
             
             /* 吹き出しの矢印（モバイルは全て左） */
@@ -964,20 +994,21 @@
                 right: auto !important;
                 border-width: 10px 10px 10px 0 !important;
                 border-color: transparent #fff transparent transparent !important;
+                top: 15px;
             }
             
-            /* 偶数番目のカードも左寄せに戻す */
+            /* 偶数番目のカードもスタイル統一 */
             .step-item:nth-child(even) .step-content {
-                margin-left: 15px;
+                margin-left: 0;
                 margin-right: 0;
-                border-left: 5px solid var(--primary-color);
+                border-left: none;
                 border-right: none;
             }
             
-            /* カード内でステップ番号とアイコンを表示 */
+            /* カード内のFlex設定 */
             .step-content h3 {
-                flex-direction: row-reverse;
-                justify-content: flex-end;
+                flex-direction: row;
+                justify-content: flex-start;
                 font-size: 18px;
             }
             
@@ -987,21 +1018,9 @@
                 font-size: 20px;
             }
             
-            /* カード内のステップ番号のスタイル */
+            /* ★削除: カード内の自動番号は不要になったので消す */
             .step-content h3::before {
-                content: attr(data-step); 
-                display: inline-block;
-                background-color: var(--primary-color);
-                color: white;
-                font-size: 14px;
-                font-weight: bold;
-                width: 26px;
-                height: 26px;
-                line-height: 26px;
-                text-align: center;
-                border-radius: 50%;
-                margin-right: 10px;
-                flex-shrink: 0;
+                display: none;
             }
 
             /* --- 採用情報 (Recruit) のモバイル修正 --- */
@@ -1103,13 +1122,14 @@
     <!-- モバイル用ナビゲーションオーバーレイ (グラスモーフィズム) -->
     <div class="mobile-nav-overlay" id="mobile-nav">
         <nav class="mobile-nav-content">
+            <!-- onclickを削除し、JS側で一括制御 -->
             <ul>
-                <li><a href="#" onclick="toggleMenu()">HOME</a></li>
-                <li><a href="#philosophy" onclick="toggleMenu()">理念</a></li>
-                <li><a href="#service" onclick="toggleMenu()">サービス</a></li>
-                <li><a href="#flow" onclick="toggleMenu()">ご利用の流れ</a></li> 
-                <li><a href="#recruit" onclick="toggleMenu()">採用情報</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">お問い合わせ</a></li>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#philosophy">理念</a></li>
+                <li><a href="#service">サービス</a></li>
+                <li><a href="#flow">ご利用の流れ</a></li> 
+                <li><a href="#recruit">採用情報</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
             </ul>
         </nav>
     </div>
@@ -1209,8 +1229,7 @@
                 <div class="step-icon-container">
                     <div class="step-number">1</div>
                 </div>
-                <!-- data-step はモバイル表示の番号のために使用 -->
-                <div class="step-content" data-step="1">
+                <div class="step-content">
                     <h3><i class="fas fa-comments step-icon"></i>ご相談・お問い合わせ</h3>
                     <p>まずはお電話またはお問い合わせフォームからお気軽にご連絡ください。現在の状況やサービスに対するご希望をお伺いします。</p>
                 </div>
@@ -1220,7 +1239,7 @@
                 <div class="step-icon-container">
                     <div class="step-number">2</div>
                 </div>
-                <div class="step-content" data-step="2">
+                <div class="step-content">
                     <h3><i class="fas fa-file-medical step-icon"></i>主治医からの指示書</h3>
                     <p>訪問看護のご利用には、主治医の先生からの「訪問看護指示書」が必要です。当ステーションから主治医の先生へ指示書を依頼します。</p>
                 </div>
@@ -1230,7 +1249,7 @@
                 <div class="step-icon-container">
                     <div class="step-number">3</div>
                 </div>
-                <div class="step-content" data-step="3">
+                <div class="step-content">
                     <h3><i class="fas fa-file-signature step-icon"></i>ご説明・ご契約</h3>
                     <p>サービス内容、料金、緊急時の対応などについて詳しくご説明いたします。ご同意いただけましたら契約の手続きを行います。</p>
                 </div>
@@ -1240,7 +1259,7 @@
                 <div class="step-icon-container">
                     <div class="step-number">4</div>
                 </div>
-                <div class="step-content" data-step="4">
+                <div class="step-content">
                     <h3><i class="fas fa-heart step-icon"></i>訪問看護スタート</h3>
                     <p>ケアプランに基づき、看護師がご自宅へ訪問します。利用者様、ご家族様との信頼関係を大切にしながらサポートします。</p>
                 </div>
@@ -1368,13 +1387,42 @@
         // --- ハンバーガーメニューの制御 ---
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
-
+        
+        // メニューの開閉切り替え関数
         function toggleMenu() {
             hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
         }
 
         hamburger.addEventListener('click', toggleMenu);
+
+        // --- モバイルメニュー内のリンククリック制御 (修正版) ---
+        // リンクをクリックしたら、メニューを閉じてから該当箇所へスムーズにスクロールする
+        document.querySelectorAll('.mobile-nav-content a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // デフォルトのジャンプ動作をキャンセル
+                toggleMenu(); // メニューを閉じる
+
+                const targetId = this.getAttribute('href');
+                
+                if (targetId === '#') {
+                    // HOMEの場合は一番上へ
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // 固定ヘッダーの高さ分、少し下にずらしてスクロール位置を調整
+                        const headerHeight = document.querySelector('header').offsetHeight;
+                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                        
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
 
         // --- スクロールアニメーション (Intersection Observer) ---
         const observerOptions = {
