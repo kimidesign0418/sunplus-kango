@@ -8,7 +8,7 @@
     <!-- アイコンの読み込み -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     
-    <!-- Google Fonts (Zen丸ゴシック、Caveat、Klee One) の読み込み -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
@@ -21,13 +21,9 @@
             padding: 0;
         }
 
-        html {
-            /* ページ全体のスムーズスクロールを有効化 */
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
-            /* 日本語の本文フォント */
             font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", Meiryo, sans-serif;
             color: #444;
             line-height: 1.8;
@@ -35,59 +31,47 @@
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
             position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         ul { list-style: none; }
 
-        /* --- カラーパレット (優しい水色) --- */
+        /* --- カラーパレット --- */
         :root {
-            --primary-color: #4FC3F7; /* メイン：優しい水色 */
-            --primary-dark: #039BE5;  /* 文字や強調用：少し濃い水色 */
-            --accent-color: #FFD54F;  /* ハイライト用：太陽の黄色 */
-            --bg-soft: #E1F5FE;       /* 背景用：非常に薄い水色 */
-            --text-color: #546E7A;    /* テキスト：青みがかったグレー */
-            
-            /* ステップ背景色を専用に定義し、Neumorphismの影の基礎にする */
+            --primary-color: #4FC3F7; 
+            --primary-dark: #039BE5;  
+            --accent-color: #FFD54F;  
+            --bg-soft: #E1F5FE;       
+            --text-color: #546E7A;    
             --step-bg: #F7FAFF; 
-            
-            /* フッターカラー (明るめネイビー) */
             --footer-bg: #0D47A1; 
             --footer-text: #E3F2FD; 
             --footer-link: #90CAF9; 
         }
 
-        /* --- アニメーション定義 --- */
+        /* --- アニメーション --- */
         .fade-in-up {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
-        .delay-4 { transition-delay: 0.4s; }
-        .delay-5 { transition-delay: 0.5s; }
 
-        /* シャボン玉のアニメーション */
         @keyframes float {
-            0% { transform: translateY(0) translateX(0); }
+            0%, 100% { transform: translateY(0) translateX(0); }
             50% { transform: translateY(-20px) translateX(10px); }
-            100% { transform: translateY(0) translateX(0); }
         }
-        
         @keyframes spin-slow {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
 
-        /* --- シャボン玉のスタイル --- */
         .bubble {
             position: absolute;
             border-radius: 50%;
@@ -104,7 +88,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 4%;
-            background-color: rgba(255, 255, 255, 0.85); /* 透過度を上げてガラス感を出す */
+            background-color: rgba(255, 255, 255, 0.85);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -114,13 +98,12 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
         }
 
-        /* ロゴのスタイル修正 */
         .logo {
             display: flex;
             align-items: center;
             gap: 12px;
             z-index: 1001;
-            text-decoration: none;
+            cursor: pointer;
         }
         
         .sun-icon {
@@ -128,12 +111,12 @@
             height: 38px;
             color: var(--accent-color);
             flex-shrink: 0;
-            animation: spin-slow 20s linear infinite; /* ゆっくり回して癒やしを演出 */
+            animation: spin-slow 20s linear infinite;
         }
 
         .logo-text-group {
             display: flex;
-            flex-direction: column; /* 縦並びに変更 */
+            flex-direction: column;
             justify-content: center;
             line-height: 1;
         }
@@ -148,15 +131,14 @@
 
         .brand-sub {
             font-family: "Zen Maru Gothic", sans-serif;
-            font-size: 11px; /* 小さくしてサブタイトル化 */
-            color: #90A4AE; /* 薄いグレーにして主張を抑える */
+            font-size: 11px;
+            color: #90A4AE;
             font-weight: 500;
             letter-spacing: 0.15em;
             margin-top: -2px;
             margin-left: 2px;
         }
 
-        /* PCナビゲーション */
         nav.desktop-nav ul { display: flex; gap: 30px; }
         nav.desktop-nav a {
             font-size: 15px;
@@ -164,9 +146,8 @@
             color: #78909C;
             position: relative;
             font-family: 'Klee One', sans-serif;
+            cursor: pointer;
         }
-        
-        /* リンクのホバーエフェクト（下線が伸びる） */
         nav.desktop-nav a::after {
             content: '';
             position: absolute;
@@ -181,11 +162,11 @@
         nav.desktop-nav a:hover { color: var(--primary-dark); }
         nav.desktop-nav a:hover::after { width: 100%; }
 
-        /* --- 2025年版 モバイル・ハンバーガーメニュー --- */
+        /* ハンバーガー */
         .hamburger {
-            display: none; /* PCでは非表示 */
+            display: none;
             cursor: pointer;
-            z-index: 2000; /* 最前面 */
+            z-index: 2000;
             width: 44px;
             height: 44px;
             position: relative;
@@ -194,8 +175,6 @@
             backdrop-filter: blur(4px);
             transition: 0.3s;
         }
-
-        /* バーのスタイル（スタイリッシュな細線） */
         .hamburger span {
             display: block;
             width: 22px;
@@ -204,65 +183,40 @@
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* バウンス効果 */
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             border-radius: 2px;
         }
-        
         .hamburger span:nth-child(1) { top: 16px; }
-        .hamburger span:nth-child(2) { top: 22px; } /* 中央 */
+        .hamburger span:nth-child(2) { top: 22px; }
         .hamburger span:nth-child(3) { top: 28px; }
+        
+        .hamburger.active span:nth-child(1) { top: 22px; transform: translateX(-50%) rotate(45deg); }
+        .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+        .hamburger.active span:nth-child(3) { top: 22px; transform: translateX(-50%) rotate(-45deg); }
 
-        /* --- モバイルナビゲーション（オーバーレイ） --- */
+        /* モバイルナビ */
         .mobile-nav-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            background-color: rgba(255, 255, 255, 0.6); /* 半透明の白 */
-            backdrop-filter: blur(20px); /* 強めのすりガラス効果 */
+            top: 0; left: 0; width: 100%; height: 100vh;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1500;
             display: flex;
             justify-content: center;
             align-items: center;
-            opacity: 0;
-            visibility: hidden;
+            opacity: 0; visibility: hidden;
             transition: all 0.5s ease;
-            clip-path: circle(0% at 90% 5%); /* 右上から円形に広がる演出用 */
+            clip-path: circle(0% at 90% 5%);
         }
-
-        .mobile-nav-overlay.active {
-            opacity: 1;
-            visibility: visible;
-            clip-path: circle(150% at 90% 5%); /* 全画面に広がる */
-        }
-
-        .mobile-nav-content ul {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-
+        .mobile-nav-overlay.active { opacity: 1; visibility: visible; clip-path: circle(150% at 90% 5%); }
+        .mobile-nav-content ul { text-align: center; display: flex; flex-direction: column; gap: 30px; }
         .mobile-nav-content a {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text-color);
-            font-family: 'Klee One', sans-serif;
-            display: block;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: 0.4s ease;
+            font-size: 20px; font-weight: 600; color: var(--text-color);
+            font-family: 'Klee One', sans-serif; display: block;
+            transform: translateY(20px); opacity: 0; transition: 0.4s ease;
         }
-
-        /* メニューが開いた時の文字のアニメーション（時間差） */
-        .mobile-nav-overlay.active .mobile-nav-content a {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        /* nth-childで遅延をつける */
+        .mobile-nav-overlay.active .mobile-nav-content a { transform: translateY(0); opacity: 1; }
         .mobile-nav-overlay.active li:nth-child(1) a { transition-delay: 0.1s; }
         .mobile-nav-overlay.active li:nth-child(2) a { transition-delay: 0.15s; }
         .mobile-nav-overlay.active li:nth-child(3) a { transition-delay: 0.2s; }
@@ -270,825 +224,304 @@
         .mobile-nav-overlay.active li:nth-child(5) a { transition-delay: 0.3s; }
         .mobile-nav-overlay.active li:nth-child(6) a { transition-delay: 0.35s; }
 
-        /* ハンバーガーのアクティブ状態（×印への変形） */
-        .hamburger.active span:nth-child(1) {
-            top: 22px;
-            transform: translateX(-50%) rotate(45deg);
-        }
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(20px); /* 横にスライドして消える */
-        }
-        .hamburger.active span:nth-child(3) {
-            top: 22px;
-            transform: translateX(-50%) rotate(-45deg);
-        }
-
-
-        /* --- メインビジュアル (Hero) --- */
-        .hero {
-            background: linear-gradient(120deg, #E1F5FE 0%, #fff 100%);
-            height: 70vh; /* 少し高さを増やす */
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            font-size: clamp(26px, 5.5vw, 52px);
-            margin-bottom: 24px;
+        /* --- 共通コンポーネント --- */
+        .section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; }
+        .section-title {
+            text-align: center; /* タイトルを中央揃えにする */
+            font-size: 32px; 
             color: var(--primary-dark);
-            line-height: 1.6;
-            letter-spacing: 0.05em;
+            margin-bottom: 70px; 
+            font-weight: bold; 
+            letter-spacing: 0.1em;
+            font-family: 'Klee One', cursive; 
             position: relative;
-            z-index: 10;
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif;
+            /* 修正点: left/transformを削除し、display: blockで中央配置を確実にする */
+            display: block; 
         }
-        
-        .hero h1 .highlight {
-            color: var(--accent-color);
-            font-weight: 600;
-            position: relative;
-            display: inline-block;
+        .section-title::before {
+            content: ''; position: absolute; top: -15px; left: 50%;
+            transform: translateX(-50%); width: 40px; height: 3px;
+            background-color: var(--accent-color); border-radius: 3px;
         }
-        /* マーカー風の下線 */
-        .hero h1 .highlight::after {
-            content: '';
-            position: absolute;
-            bottom: 5px;
-            left: 0;
-            width: 100%;
-            height: 12px;
-            background-color: rgba(255, 213, 79, 0.3);
-            z-index: -1;
-            transform: skewX(-15deg);
-        }
-
-        .hero p {
-            font-size: clamp(14px, 3.5vw, 18px);
-            color: var(--text-color);
-            margin-bottom: 40px;
-            font-weight: 500;
-            position: relative;
-            z-index: 10;
+        .section-title span {
+            display: block; font-size: 14px; color: #90A4AE;
+            margin-top: 10px; font-weight: normal; letter-spacing: 0.2em;
+            font-family: "Zen Maru Gothic", sans-serif;
         }
 
         .btn {
             display: inline-block;
             background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-            color: white;
-            padding: 16px 50px;
-            border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 10px 25px rgba(79, 195, 247, 0.4);
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            letter-spacing: 0.05em;
-            position: relative;
-            z-index: 10;
-            scroll-behavior: smooth; 
+            color: white; padding: 16px 50px; border-radius: 50px;
+            font-weight: bold; box-shadow: 0 10px 25px rgba(79, 195, 247, 0.4);
+            font-size: 16px; border: none; cursor: pointer;
+            letter-spacing: 0.05em; position: relative; z-index: 10;
             transition: all 0.3s ease;
         }
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4);
-        }
-        .btn i { margin-left: 8px; transition: transform 0.3s; }
-        .btn:hover i { transform: translateX(5px); }
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4); }
 
-        /* --- セクション共通 --- */
-        .section {
-            padding: 100px 5%;
-            max-width: 1100px;
-            margin: 0 auto;
+        /* --- HOME PAGE CONTENTS --- */
+        .hero {
+            background: linear-gradient(120deg, #E1F5FE 0%, #fff 100%);
+            height: 70vh; min-height: 500px;
+            display: flex; flex-direction: column; justify-content: center;
+            align-items: center; text-align: center; padding: 20px;
+            position: relative; overflow: hidden;
         }
-        
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            color: var(--primary-dark);
-            margin-bottom: 70px;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
-            position: relative;
+        .hero h1 {
+            font-size: clamp(26px, 5.5vw, 52px); margin-bottom: 24px;
+            color: var(--primary-dark); line-height: 1.6; letter-spacing: 0.05em;
+            position: relative; z-index: 10; font-family: 'Klee One', cursive;
+        }
+        .hero h1 .highlight {
+            color: var(--accent-color); font-weight: 600; position: relative;
             display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
-        /* タイトル装飾 */
-        .section-title::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 3px;
-            background-color: var(--accent-color);
-            border-radius: 3px;
+        .hero h1 .highlight::after {
+            content: ''; position: absolute; bottom: 5px; left: 0;
+            width: 100%; height: 12px; background-color: rgba(255, 213, 79, 0.3);
+            z-index: -1; transform: skewX(-15deg);
+        }
+        .hero p {
+            font-size: clamp(14px, 3.5vw, 18px); color: var(--text-color);
+            margin-bottom: 40px; font-weight: 500; position: relative; z-index: 10;
         }
 
-        .section-title span {
-            display: block;
-            font-size: 14px;
-            color: #90A4AE;
-            margin-top: 10px;
-            font-weight: normal;
-            letter-spacing: 0.2em;
-            font-family: "Zen Maru Gothic", sans-serif;
-        }
-
-        /* --- 理念 (Philosophy) --- */
-        .philosophy-box {
-            background-color: #fff;
-            border: 1px solid #E1F5FE;
-            border-radius: 24px;
-            padding: 60px 40px;
-            text-align: center;
-            box-shadow: 0 20px 50px rgba(3, 155, 229, 0.05);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .philosophy-content { position: relative; z-index: 1; }
-
-        .philosophy-box h3 {
-            font-size: 26px;
-            margin-bottom: 30px;
-            color: var(--primary-dark);
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
-        }
-        
-        .philosophy-box p {
-            font-size: 16px;
-            color: var(--text-color);
-            max-width: 700px;
-            margin: 0 auto 30px;
-            line-height: 2;
-        }
-
-        /* --- サービス (Service) --- */
+        /* サービスカード */
         .services { background-color: #FAFDFF; }
-        
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .card {
-            background: #fff;
-            border-radius: 20px;
-            overflow: hidden;
+            background: #fff; border-radius: 20px; overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-            border: 1px solid rgba(241, 248, 233, 0.5);
+            transition: 0.4s; border: 1px solid rgba(241, 248, 233, 0.5);
         }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(79, 195, 247, 0.2);
-        }
-
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(79, 195, 247, 0.2); }
         .card-img {
-            height: 220px;
-            background-color: var(--bg-soft);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary-color);
-            font-size: 60px;
-            position: relative;
+            height: 220px; background-color: var(--bg-soft);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary-color); font-size: 60px; position: relative;
         }
-        
-        /* サービスカード内の装飾円 */
         .card-img::after {
-            content: '';
-            position: absolute;
-            width: 120px;
-            height: 120px;
-            background-color: #fff;
-            border-radius: 50%;
-            opacity: 0.3;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            content: ''; position: absolute; width: 120px; height: 120px;
+            background-color: #fff; border-radius: 50%; opacity: 0.3;
         }
-
-        /* アイコンの調整: カードの色に合わせて調整 */
         .card:nth-child(1) .card-img { color: #81C784; background-color: #F1F8E9; } 
         .card:nth-child(2) .card-img { color: #FF8A65; background-color: #FBE9E7; } 
-        .card:nth-child(3) .card-img { color: #64B5F6; background-color: #E3F2FD; } 
-
-
+        .card:nth-child(3) .card-img { color: #64B5F6; background-color: #E3F2FD; }
         .card-body { padding: 30px; }
-        
         .card-title {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--primary-dark);
-            font-weight: bold;
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
+            font-size: 20px; margin-bottom: 15px; color: var(--primary-dark);
+            font-weight: bold; font-family: 'Klee One', cursive;
         }
+        .card-text { font-size: 15px; color: #666; margin-bottom: 20px; }
         
-        .card-text {
-            font-size: 15px;
-            color: #666;
-            margin-bottom: 20px;
+        /* 理念 */
+        .philosophy-box {
+            background-color: #fff; border: 1px solid #E1F5FE;
+            border-radius: 24px; padding: 60px 40px; text-align: center;
+            box-shadow: 0 20px 50px rgba(3, 155, 229, 0.05);
+            position: relative; overflow: hidden;
+        }
+        .philosophy-box h3 {
+            font-size: 26px; margin-bottom: 30px; color: var(--primary-dark);
+            font-family: 'Klee One', cursive;
         }
 
-        .card-link {
-            color: var(--primary-color);
-            font-weight: bold;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        /* --- 利用開始までの安心ステップ (Flow) --- */
-        .steps {
-            background-color: var(--step-bg); 
-        }
-
+        /* Flow (PC) */
+        .steps { background-color: var(--step-bg); }
         .step-container {
-            position: relative;
-            /* 中央配置にするため、padding-leftをリセットし、最大幅をセンターに寄せる */
-            padding-left: 0; 
-            max-width: 800px; 
-            margin: 0 auto;
+            position: relative; padding-left: 0; max-width: 800px; margin: 0 auto;
         }
-        
-        /* 縦の線: 中央に配置、デザインを洗練 */
         .step-container::before {
-            content: '';
-            position: absolute;
-            left: 50%; 
-            transform: translateX(-50%);
-            top: 20px; 
-            width: 4px; /* 線を少し太く */
-            background-color: #E1F5FE; 
-            z-index: 0;
-            border-radius: 4px;
-            height: calc(100% - var(--line-offset, 20px)); 
+            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
+            top: 20px; width: 4px; background-color: #E1F5FE; z-index: 0;
+            border-radius: 4px; height: calc(100% - 40px);
         }
-        
-        /* 最後の要素の後の線が表示されないように調整 */
-        .step-item:last-child {
-            --line-offset: 40px; 
-        }
-
-        .step-container:has(.step-item:last-child) > .step-container::before {
-            height: calc(100% - var(--line-offset));
-        }
-        
-        .step-item {
-            display: flex;
-            align-items: center; 
-            margin-bottom: 70px; /* 間隔を広げる */
-            position: relative;
-            z-index: 1; 
-        }
-        
-        .step-item:last-child {
-            margin-bottom: 0; 
-        }
-        
-        /* ステップ番号とアイコンのコンテナ */
+        .step-item { display: flex; align-items: center; margin-bottom: 70px; position: relative; z-index: 1; }
+        .step-item:last-child { margin-bottom: 0; }
         .step-icon-container {
-            width: 50px; /* 少し大きく */
-            height: 50px;
-            flex-shrink: 0; 
-            margin: 0; 
-            position: absolute; 
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 2; 
+            width: 50px; height: 50px; flex-shrink: 0; margin: 0;
+            position: absolute; left: 50%; transform: translateX(-50%); z-index: 2;
         }
-
-        /* PC/タブレット向けのステップ番号の丸デザイン (Neumorphism風を維持) */
         .step-number {
-            width: 50px;
-            height: 50px;
-            background-color: var(--step-bg); 
-            color: var(--primary-dark); 
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 20px;
-            font-family: 'Klee One', sans-serif;
-            
-            /* Neumorphism風の影 */
-            box-shadow: 
-                5px 5px 10px rgba(163, 177, 198, 0.3), 
-                -5px -5px 10px #FFFFFF; 
-            border: 2px solid #fff; 
-            
-            transition: transform 0.3s, box-shadow 0.3s;
+            width: 50px; height: 50px; background-color: var(--step-bg);
+            color: var(--primary-dark); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 20px; font-family: 'Klee One', sans-serif;
+            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.3), -5px -5px 10px #FFFFFF;
+            border: 2px solid #fff; transition: 0.3s;
         }
-
-        .step-item:hover .step-number {
-            transform: scale(1.15);
-            color: var(--accent-color);
-        }
-
-        .step-icon {
-            display: none; 
-        }
-        
-        /* ステップのコンテンツ（カードデザイン） */
+        .step-item:hover .step-number { transform: scale(1.15); color: var(--accent-color); }
+        .step-icon { display: none; }
         .step-content {
-            text-align: left;
-            background-color: #fff;
-            padding: 25px 30px;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--accent-color); 
-            width: calc(50% - 40px); /* 50%幅 - マージン */
-            position: relative;
-            /* 修正: 中央の線から右側に配置 */
-            margin-left: calc(50% + 40px); /* 中央から右へオフセット */
-            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: left; background-color: #fff; padding: 25px 30px;
+            border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--accent-color); width: calc(50% - 40px);
+            position: relative; margin-left: calc(50% + 40px); transition: 0.3s;
         }
-        
-        /* 偶数番目のカードは左側に配置 */
         .step-item:nth-child(even) .step-content {
-            /* 修正: 中央の線から左側に配置 */
-            margin-left: 0;
-            margin-right: calc(50% + 40px); /* 右にオフセット */
-            border-left: none; 
-            border-right: 5px solid var(--accent-color); 
+            margin-left: 0; margin-right: calc(50% + 40px);
+            border-left: none; border-right: 5px solid var(--accent-color);
         }
-
-
-        .step-item:hover .step-content {
-            box-shadow: 0 15px 40px rgba(79, 195, 247, 0.15);
-            transform: translateY(-3px);
-        }
-
-        /* 吹き出しの矢印 */
         .step-content::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            width: 0;
-            height: 0;
-            border-style: solid;
+            content: ''; position: absolute; top: 15px; width: 0; height: 0; border-style: solid;
         }
-
-        /* 右側のカードの矢印（左向き） */
         .step-item:nth-child(odd) .step-content::before {
-            left: -10px;
-            border-width: 10px 10px 10px 0;
-            border-color: transparent #fff transparent transparent;
+            left: -10px; border-width: 10px 10px 10px 0; border-color: transparent #fff transparent transparent;
         }
-
-        /* 左側のカードの矢印（右向き） */
         .step-item:nth-child(even) .step-content::before {
-            right: -10px;
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent #fff;
+            right: -10px; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent #fff;
         }
-
         .step-content h3 {
-            font-size: 19px; 
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            font-weight: bold;
-            display: flex; 
-            align-items: center;
-            gap: 10px;
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
+            font-size: 19px; color: var(--primary-dark); margin-bottom: 10px;
+            font-weight: bold; display: flex; align-items: center; gap: 10px;
+            font-family: 'Klee One', cursive;
         }
 
-        .step-content p {
-            font-size: 15px;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        /* --- 採用情報 (Recruit) --- */
-        .recruit-section {
-            background-color: var(--bg-soft);
-        }
-
-        .recruit-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .recruit-card {
-            background: #fff;
-            border-radius: 16px;
-            padding: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 5px solid var(--primary-color);
-        }
-
-        .recruit-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(3, 155, 229, 0.1);
-        }
-
-        .recruit-card h3 {
-            font-size: 22px;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
-        }
-        
-        .recruit-card ul {
-            padding-left: 20px;
-            list-style-type: disc;
-            color: var(--text-color);
-            font-size: 15px;
-        }
-        .recruit-card li {
-            margin-bottom: 8px;
-        }
-        
-        .recruit-cta {
-            text-align: center;
-            margin-top: 50px;
-            padding: 40px;
+        /* Recruit (Simple) */
+        .recruit-section { background-color: var(--bg-soft); text-align: center; }
+        .recruit-simple-box {
             background-color: #fff;
+            padding: 50px 30px;
             border-radius: 20px;
-            border: 2px dashed #B3E5FC;
+            box-shadow: 0 10px 30px rgba(3, 155, 229, 0.05);
+            border: 1px solid #E1F5FE;
         }
-        
-        .recruit-cta p {
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--primary-dark);
-            margin-bottom: 25px;
+        .recruit-simple-box h3 {
+            font-size: 24px; color: var(--primary-dark); margin-bottom: 20px;
+            font-family: 'Klee One', cursive;
         }
-
-
-        /* --- アクセス & お問い合わせ --- */
-        .access-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+        .recruit-simple-box p {
+            font-size: 16px; color: #555; margin-bottom: 30px; line-height: 2;
         }
 
-        .info-item { margin-bottom: 30px; }
-        .info-item h3 {
-            font-size: 18px;
-            color: var(--primary-dark);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Klee One', cursive, "Zen Maru Gothic", sans-serif; 
-        }
-        .info-item p { font-size: 15px; color: #555; }
-
+        /* Contact */
         .contact-area {
-            background-color: var(--bg-soft);
-            padding: 40px;
-            border-radius: 24px;
-            text-align: center;
-            box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
+            background-color: var(--bg-soft); padding: 40px; border-radius: 24px;
+            text-align: center; box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
         }
-        .tel {
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--primary-dark);
-            display: block;
-            margin: 15px 0 20px; 
-            font-family: "Zen Maru Gothic", sans-serif;
-            line-height: 1.2; 
-        }
-        .contact-note { font-size: 13px; color: #78909C; margin-bottom: 20px; }
+        .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
 
-        /* --- フッター (強化版) --- */
-        footer {
-            background-color: var(--footer-bg); 
-            color: var(--footer-text);
-            padding: 60px 5% 20px; 
-            position: relative;
-            overflow: hidden;
+        /* --- SUB PAGE STYLES (詳細 & ポリシー) --- */
+        .sub-page-header {
+            background: linear-gradient(120deg, var(--bg-soft) 0%, #fff 100%);
+            padding: 80px 5% 60px; text-align: center;
         }
-        
-        /* フッター背景の飾り */
-        footer::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%;
-        }
-
-        .footer-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr; 
-            gap: 40px;
-            padding-bottom: 40px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-
-        /* フッターロゴエリア */
-        .footer-logo-area {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .footer-logo {
-            font-size: 36px; 
-            font-weight: 700;
-            color: var(--footer-text);
-            letter-spacing: 0.05em;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 10px;
-            font-family: 'Caveat', cursive, "Zen Maru Gothic", sans-serif;
-        }
-        
-        .footer-logo .sun-icon {
-            width: 40px;
-            height: 40px;
-            color: var(--accent-color);
-        }
-
-        .footer-title {
-            font-size: 16px;
-            font-weight: 500;
+        .sub-page-header h2 {
+            font-family: 'Klee One', cursive; font-size: 36px; color: var(--primary-dark);
             margin-bottom: 20px;
-            opacity: 0.8;
         }
-
-        .footer-info p {
-            font-size: 14px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
+        .sub-page-content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+        
+        /* 詳細ページのコンテンツ */
+        .feature-box {
+            background: #fff; border-radius: 20px; padding: 40px; margin-bottom: 40px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
+        }
+        .feature-title {
+            font-size: 22px; color: var(--primary-dark); border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; font-family: 'Klee One', cursive;
+        }
+        .feature-list li {
+            margin-bottom: 15px; padding-left: 20px; position: relative; font-size: 16px;
+        }
+        .feature-list li::before {
+            content: '●'; color: var(--primary-color); position: absolute; left: 0; top: 0;
         }
         
-        .footer-info i {
-            color: var(--accent-color);
-            margin-top: 5px;
-            flex-shrink: 0;
-        }
-        
-        .footer-info .tel-link {
-            font-size: 20px;
-            font-weight: bold;
-            color: var(--footer-link);
-            margin-top: 10px;
-        }
+        .qa-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 25px; }
+        .qa-q { font-weight: bold; color: var(--primary-dark); margin-bottom: 10px; display: flex; align-items: center; }
+        .qa-q::before { content: 'Q.'; font-size: 20px; color: var(--accent-color); margin-right: 10px; font-family: 'Caveat'; }
+        .qa-a { padding-left: 30px; font-size: 15px; color: #666; }
 
+        /* ポリシーページ */
+        .policy-content h3 { font-size: 18px; margin: 30px 0 15px; color: #333; border-left: 4px solid var(--primary-color); padding-left: 10px; }
+        .policy-content p { margin-bottom: 15px; font-size: 14px; line-height: 1.8; color: #555; }
 
-        /* サイトマップ */
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--footer-bg); color: var(--footer-text);
+            padding: 60px 5% 20px; position: relative; overflow: hidden; margin-top: auto;
+        }
+        .footer-container {
+            max-width: 1100px; margin: 0 auto; display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+            padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .footer-logo {
+            font-size: 36px; font-weight: 700; color: var(--footer-text);
+            display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+            font-family: 'Caveat', cursive;
+        }
         .footer-links h4 {
-            font-size: 16px;
-            color: var(--footer-link);
-            font-weight: bold;
+            font-size: 16px; color: var(--footer-link); font-weight: bold;
             margin-bottom: 15px;
-            padding-bottom: 5px;
         }
+        .footer-links a { font-size: 14px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+        .footer-links a:hover { opacity: 1; color: var(--accent-color); }
+        .footer-copy-area { text-align: center; padding-top: 20px; }
+        .footer-copy { font-size: 12px; opacity: 0.5; }
 
-        .footer-links li { margin-bottom: 10px; }
-        .footer-links a {
-            font-size: 14px;
-            opacity: 0.7;
-            transition: opacity 0.3s, color 0.3s, transform 0.3s;
-            display: inline-block;
-        }
-        .footer-links a:hover {
-            opacity: 1;
-            color: var(--accent-color);
-            transform: translateX(5px);
-        }
-
-        /* コピーライトエリア */
-        .footer-copy-area {
-            text-align: center;
-            padding-top: 20px;
-            position: relative;
-            z-index: 1;
-        }
-        .footer-copy { 
-            font-size: 12px; 
-            opacity: 0.5; 
-        }
-
-
-        /* --- モバイル対応 (768px以下) --- */
+        /* --- モバイル対応 --- */
         @media (max-width: 768px) {
-            
             header { padding: 12px 5%; }
             .brand-name { font-size: 28px; }
             .brand-sub { font-size: 10px; }
             .sun-icon { width: 32px; height: 32px; }
-
-            /* PCナビは非表示 */
             nav.desktop-nav { display: none; }
-            
-            /* ハンバーガーを表示 */
             .hamburger { display: block; }
-            
-            /* Hero調整 */
             .hero { height: auto; padding: 120px 20px 60px; }
-            .hero h1 { font-size: 28px; }
-            
             .section { padding: 60px 5%; }
-            .section-title { font-size: 26px; margin-bottom: 40px; }
-            .section-title span { font-size: 12px; }
-
-            /* Flowセクションのモバイル最適化 */
-            .step-container {
-                /* モバイルでは左寄せのタイムラインに戻す */
-                padding-left: 0; /* 左余白を削除し、Flexボックスで制御 */
-                max-width: 100%;
-            }
             
+            /* Flow モバイル修正 (V2.06) */
+            .step-container { padding-left: 0; max-width: 100%; }
             .step-container::before {
-                /* 縦線を番号の真ん中を通るように配置 */
-                left: 20px; /* 番号(40px)の中心 */
-                top: 0; 
-                height: calc(100% - var(--line-offset-mobile, 0)); 
-                transform: none; /* 中央寄せ解除 */
-                width: 4px;
-                z-index: 0; /* 番号の下に線を配置 */
+                left: 20px; top: 0; height: calc(100% - 40px); transform: none; width: 4px;
             }
-
-            /* 最後の要素の後の線が表示されないように調整 (モバイル) */
-            .step-item:last-child {
-                --line-offset-mobile: 40px; 
-                margin-bottom: 30px; 
-                /* PC向けの変数をリセット */
-                --line-offset: 20px; 
-            }
+            .step-item { flex-direction: row; margin-bottom: 40px; align-items: flex-start; }
             
-            .step-item {
-                flex-direction: row; /* ★横並びに変更（番号 -> カード） */
-                margin-bottom: 40px;
-                align-items: flex-start; /* 上揃え */
-            }
-
-            /* ★変更: スマホでも番号コンテナを表示する */
+            /* 番号部分 */
             .step-icon-container {
-                display: flex; 
-                position: relative;
-                left: auto;
-                top: auto;
-                transform: none;
-                width: 40px;
-                height: 40px;
-                margin-right: 15px; /* 番号とカードの間隔 */
+                display: flex; position: relative; left: auto; top: auto; transform: none;
+                width: 40px; height: 40px; margin-right: 15px;
+                flex-shrink: 0; 
             }
+            .step-number { width: 40px; height: 40px; font-size: 16px; background: #fff; border: 2px solid var(--primary-color); z-index: 2; }
             
-            /* スマホ用の番号スタイル調整 */
-            .step-number {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-                background-color: #fff; /* 背景を白に */
-                border: 2px solid var(--primary-color); /* 枠線を強調 */
-                z-index: 2; /* 線より手前に */
-            }
-            
+            /* コンテンツ部分 */
             .step-content {
-                /* モバイルではフレックスで幅を自動調整 */
-                flex: 1;
-                margin-left: 0; 
-                margin-right: 0;
+                flex: 1; 
+                min-width: 0; 
                 width: auto; 
-                
-                /* 左のボーダーを削除（線は別にあるため） */
-                border-left: none; 
-                border-right: none;
-                
-                /* モバイル用に少しコンパクトに */
-                padding: 20px; 
-                margin-top: -5px; /* 番号との位置合わせ微調整 */
+                margin: 0 !important; 
+                border: none; padding: 20px; margin-top: -5px;
             }
-            
-            /* 吹き出しの矢印（モバイルは全て左） */
             .step-content::before {
-                left: -10px !important;
-                right: auto !important;
-                border-width: 10px 10px 10px 0 !important;
+                left: -10px !important; top: 15px; border-width: 10px 10px 10px 0 !important;
                 border-color: transparent #fff transparent transparent !important;
-                top: 15px;
+                right: auto !important;
             }
-            
-            /* 偶数番目のカードもスタイル統一 */
+            /* 偶数番目の強力リセット */
             .step-item:nth-child(even) .step-content {
-                margin-left: 0;
-                margin-right: 0;
-                border-left: none;
-                border-right: none;
+                margin: 0 !important;
+                border: none;
             }
             
-            /* カード内のFlex設定 */
-            .step-content h3 {
-                flex-direction: row;
-                justify-content: flex-start;
-                font-size: 18px;
-            }
+            .step-content h3 { flex-direction: row; font-size: 18px; }
+            .step-icon { display: inline-block; color: var(--accent-color); font-size: 20px; }
             
-            .step-icon {
-                display: inline-block; 
-                color: var(--accent-color);
-                font-size: 20px;
-            }
-            
-            /* ★削除: カード内の自動番号は不要になったので消す */
-            .step-content h3::before {
-                display: none;
-            }
-
-            /* --- 採用情報 (Recruit) のモバイル修正 --- */
-            .recruit-grid {
-                grid-template-columns: 1fr;
-            }
-            .recruit-card {
-                padding: 25px;
-            }
-            .recruit-cta {
-                padding: 30px 20px;
-            }
-            .recruit-cta .btn {
-                width: 100%;
-            }
-            
-            /* --- アクセス & お問い合わせのモバイル修正 --- */
-            .access-section { 
-                grid-template-columns: 1fr; /* 1列にする */
-                gap: 40px;
-            }
-            
-            .contact-area {
-                padding: 30px 20px;
-            }
-
-            /* 電話番号のサイズ調整 */
-            .tel {
-                font-size: 26px; 
-            }
-            
-            /* ボタンが必ず幅いっぱいになるようにする */
-            .contact-area .btn {
-                width: 100%;
-                padding: 14px 0; 
-            }
-
-            /* --- フッターのモバイル対応 --- */
-            .footer-container {
-                /* 1列に変更 */
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .footer-logo-area {
-                align-items: center; /* 中央寄せ */
-                text-align: center;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                padding-bottom: 30px;
-            }
-            
-            .footer-links {
-                text-align: center;
-            }
-            .footer-links h4 {
-                 /* モバイルではボーダーを削除してシンプルに */
-                border-bottom: none; 
-            }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-logo-area { align-items: center; }
+            .access-section { grid-template-columns: 1fr; }
+            .contact-area .btn { width: 100%; }
         }
-
     </style>
 </head>
 <body>
 
     <!-- ヘッダー -->
     <header>
-        <a href="#" class="logo">
-            <!-- SVGアイコン -->
+        <div class="logo" onclick="showPage('page-home')">
             <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
                 <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
@@ -1097,12 +530,11 @@
                 <span class="brand-name">Sun Plus</span>
                 <span class="brand-sub">訪問看護ステーション</span>
             </div>
-        </a>
+        </div>
         
-        <!-- PC用ナビゲーション -->
         <nav class="desktop-nav">
             <ul>
-                <li><a href="#">HOME</a></li>
+                <li><a href="#home">HOME</a></li>
                 <li><a href="#philosophy">理念</a></li>
                 <li><a href="#service">サービス</a></li>
                 <li><a href="#flow">ご利用の流れ</a></li> 
@@ -1111,20 +543,15 @@
             </ul>
         </nav>
 
-        <!-- モバイル用ハンバーガーボタン (3本線から×へ) -->
         <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
     </header>
 
-    <!-- モバイル用ナビゲーションオーバーレイ (グラスモーフィズム) -->
     <div class="mobile-nav-overlay" id="mobile-nav">
         <nav class="mobile-nav-content">
-            <!-- onclickを削除し、JS側で一括制御 -->
             <ul>
-                <li><a href="#">HOME</a></li>
+                <li><a href="#home">HOME</a></li>
                 <li><a href="#philosophy">理念</a></li>
                 <li><a href="#service">サービス</a></li>
                 <li><a href="#flow">ご利用の流れ</a></li> 
@@ -1134,213 +561,208 @@
         </nav>
     </div>
 
-    <!-- メインビジュアル -->
-    <section class="hero">
-        <!-- シャボン玉背景 -->
-        <div class="bubble" style="width: 140px; height: 140px; top: 10%; left: 5%; animation-delay: 0s;"></div>
-        <div class="bubble" style="width: 90px; height: 90px; top: 45%; left: 15%; animation-delay: 2s;"></div>
-        <div class="bubble" style="width: 160px; height: 160px; top: 55%; right: 8%; animation-delay: 1s;"></div>
-        <div class="bubble" style="width: 70px; height: 70px; top: 20%; right: 25%; animation-delay: 3.5s;"></div>
-        <div class="bubble" style="width: 110px; height: 110px; bottom: 15%; left: 35%; animation-delay: 0.5s;"></div>
+    <!-- ================= ページコンテンツ ================= -->
 
-        <!-- キャッチコピー -->
-        <h1 class="fade-in-up">心ほどける<span class="highlight">安心</span>を、<br>日々の暮らしに<span class="highlight">プラス</span>する。</h1>
-        <p class="fade-in-up delay-1">私たちは利用者様の「その人らしい生活」に<br>そっと寄り添うパートナーです。</p>
-        
-        <!-- ボタンは#contactへ遷移 -->
-        <a href="#contact" class="btn fade-in-up delay-2">詳しく見る <i class="fas fa-arrow-right"></i></a>
-    </section>
-
-    <!-- 理念 (Philosophy) -->
-    <section id="philosophy" class="section fade-in-up">
-        <div class="section-title">
-            Philosophy
-            <span>私たちの想い</span>
-        </div>
-        <div class="philosophy-box">
-            <!-- 背景のシャボン玉 -->
-            <div class="bubble" style="width: 200px; height: 200px; top: -50px; left: -30px; animation-delay: 1.5s;"></div>
-            <div class="bubble" style="width: 120px; height: 120px; bottom: 10px; right: 20px; animation-delay: 0.8s;"></div>
-
-            <div class="philosophy-content">
-                <h3 class="fade-in-up">病気ではなく、その人を看る。</h3>
-                <p class="fade-in-up delay-1">
-                    サンプラス訪問看護ステーションは、医療処置を行うだけの場所ではありません。<br>
-                    利用者様の人生に、心ほどける「安心」と「安らぎ」をプラス（Plus）し続けること。<br>
-                    住み慣れた地域やご家庭で、その人らしく暮らしていくために、ご本人様やご家族様と共に考え、心に寄り添う看護を提供します。<br>
-                    それが私たちの使命です。
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- サービス紹介 (Service) -->
-    <section id="service" class="section services fade-in-up">
-        <div class="section-title">
-            Service
-            <span>訪問看護でできること</span>
-        </div>
-        <div class="service-grid">
-            <!-- カード1: 日常生活へのサポート -->
-            <div class="card fade-in-up delay-1">
-                <div class="card-img"><i class="fas fa-home"></i></div>
-                <div class="card-body">
-                    <h3 class="card-title">日常生活へのサポート</h3>
-                    <p class="card-text">
-                        規則正しい生活リズムの確立、食事・睡眠・清潔の援助、金銭管理の助言など、自宅での安定した生活基盤作りを支援します。
-                    </p>
-                    <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <!-- カード2: 病状の観察と服薬支援 -->
-            <div class="card fade-in-up delay-2">
-                <div class="card-img"><i class="fas fa-capsules"></i></div>
-                <div class="card-body">
-                    <h3 class="card-title">病状の観察と服薬支援</h3>
-                    <p class="card-text">
-                        専門的な視点から症状の変化を早期に察知し、医療機関と連携。服薬方法の確認や副作用のチェックを行い、確実な治療継続を支えます。
-                    </p>
-                    <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-            <!-- カード3: 心理的なカウンセリング -->
-            <div class="card fade-in-up delay-3">
-                <div class="card-img"><i class="fas fa-comment-alt"></i></div>
-                <div class="card-body">
-                    <h3 class="card-title">心理的なカウンセリング</h3>
-                    <p class="card-text">
-                        不安や孤独感、ストレスなど、心の内を自由に話せる安心な場を提供します。利用者様の気持ちに寄り添い、共に回復への道を歩みます。
-                    </p>
-                    <a href="#" class="card-link">もっと詳しく <i class="fas fa-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ご利用開始までの安心ステップ (Flow) -->
-    <section id="flow" class="section steps fade-in-up">
-        <div class="section-title">
-            Flow
-            <span>ご利用開始までの安心ステップ</span>
-        </div>
-        <div class="step-container">
-            <!-- ステップ 1: ご相談 (右側) -->
-            <div class="step-item fade-in-up delay-1">
-                <div class="step-icon-container">
-                    <div class="step-number">1</div>
-                </div>
-                <div class="step-content">
-                    <h3><i class="fas fa-comments step-icon"></i>ご相談・お問い合わせ</h3>
-                    <p>まずはお電話またはお問い合わせフォームからお気軽にご連絡ください。現在の状況やサービスに対するご希望をお伺いします。</p>
-                </div>
-            </div>
-            <!-- ステップ 2: 指示書 (左側) -->
-            <div class="step-item fade-in-up delay-2">
-                <div class="step-icon-container">
-                    <div class="step-number">2</div>
-                </div>
-                <div class="step-content">
-                    <h3><i class="fas fa-file-medical step-icon"></i>主治医からの指示書</h3>
-                    <p>訪問看護のご利用には、主治医の先生からの「訪問看護指示書」が必要です。当ステーションから主治医の先生へ指示書を依頼します。</p>
-                </div>
-            </div>
-             <!-- ステップ 3: ご契約 (右側) -->
-             <div class="step-item fade-in-up delay-3">
-                <div class="step-icon-container">
-                    <div class="step-number">3</div>
-                </div>
-                <div class="step-content">
-                    <h3><i class="fas fa-file-signature step-icon"></i>ご説明・ご契約</h3>
-                    <p>サービス内容、料金、緊急時の対応などについて詳しくご説明いたします。ご同意いただけましたら契約の手続きを行います。</p>
-                </div>
-            </div>
-            <!-- ステップ 4: 利用開始 (左側) -->
-            <div class="step-item fade-in-up delay-4">
-                <div class="step-icon-container">
-                    <div class="step-number">4</div>
-                </div>
-                <div class="step-content">
-                    <h3><i class="fas fa-heart step-icon"></i>訪問看護スタート</h3>
-                    <p>ケアプランに基づき、看護師がご自宅へ訪問します。利用者様、ご家族様との信頼関係を大切にしながらサポートします。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 採用情報 (Recruit) -->
-    <section id="recruit" class="section recruit-section fade-in-up">
-        <div class="section-title">
-            Recruit
-            <span>一緒に働く仲間を募集中</span>
-        </div>
-        <div class="recruit-grid">
-            <div class="recruit-card fade-in-up delay-1">
-                <h3><i class="fas fa-user-nurse"></i>看護師（正社員）</h3>
-                <ul>
-                    <li>月給: 30万円〜（経験考慮）</li>
-                    <li>勤務時間: 9:00〜18:00</li>
-                    <li>休日: 土日祝（年間休日120日以上）</li>
-                </ul>
-                <div style="margin-top: 15px; color: var(--primary-dark); font-weight: bold;">
-                    <i class="fas fa-check"></i> 精神科未経験でも安心の研修制度
-                </div>
-            </div>
-            <div class="recruit-card fade-in-up delay-2">
-                <h3><i class="fas fa-user-clock"></i>看護師（パート）</h3>
-                <ul>
-                    <li>時給: 1,800円〜</li>
-                    <li>週1日、1日3時間〜OK</li>
-                    <li>直行直帰可</li>
-                </ul>
-                <div style="margin-top: 15px; color: var(--primary-dark); font-weight: bold;">
-                    <i class="fas fa-check"></i> 子育て中の方も働きやすい環境
-                </div>
-            </div>
-        </div>
-        <div class="recruit-cta fade-in-up delay-3">
-            <p>私たちと一緒に、「心ほどける安心」を届けませんか？</p>
-            <a href="#" class="btn">採用情報を見る <i class="fas fa-angle-right"></i></a>
-        </div>
-    </section>
-
-    <!-- アクセス & お問い合わせ (Contact) -->
-    <section id="contact" class="section">
-        <div class="section-title">
-            Contact
-            <span>お問い合わせ・アクセス</span>
-        </div>
-        <div class="access-section">
-            <div class="info-item fade-in-up delay-1">
-                <h3><i class="fas fa-map-marker-alt"></i> Access</h3>
-                <p>〒000-0000<br>〇〇県〇〇市〇〇町 1-2-3 サンプラスビル 2F</p>
-                <div style="width: 100%; height: 200px; background-color: #eee; margin-top: 20px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #999;">
-                    Google Map (埋め込み予定地)
-                </div>
-            </div>
+    <!-- 1. ホーム (LP) -->
+    <main id="page-home">
+        <section class="hero">
+            <div class="bubble" style="width: 140px; height: 140px; top: 10%; left: 5%;"></div>
+            <div class="bubble" style="width: 90px; height: 90px; top: 45%; left: 15%;"></div>
+            <div class="bubble" style="width: 160px; height: 160px; top: 55%; right: 8%;"></div>
             
-            <div class="contact-area fade-in-up delay-2">
-                <h3>お問い合わせ・ご相談</h3>
-                <p>お気軽にご連絡ください</p>
-                
-                <a href="tel:00-0000-0000" class="tel"><i class="fas fa-phone-alt" style="font-size: 0.8em; margin-right: 10px;"></i>00-0000-0000</a>
-                <p class="contact-note">受付時間: 平日 9:00〜18:00</p>
-                
-                <a href="#" class="btn" style="background: #fff; color: var(--primary-color); border: 2px solid var(--primary-color);">
-                    お問い合わせフォーム <i class="fas fa-envelope"></i>
-                </a>
+            <h1 class="fade-in-up">心ほどける<span class="highlight">安心</span>を、<br>日々の暮らしに<span class="highlight">プラス</span>する。</h1>
+            <p class="fade-in-up delay-1">私たちは利用者様の「その人らしい生活」に<br>そっと寄り添うパートナーです。</p>
+            
+            <!-- 詳しく見るボタン (詳細ページへ遷移) -->
+            <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">詳しく見る <i class="fas fa-arrow-right"></i></button>
+        </section>
+
+        <section id="philosophy" class="section fade-in-up">
+            <div class="section-title">Philosophy<span>私たちの想い</span></div>
+            <div class="philosophy-box">
+                <div class="philosophy-content">
+                    <h3>病気ではなく、その人を看る。</h3>
+                    <p>サンプラス訪問看護ステーションは、医療処置を行うだけの場所ではありません。<br>利用者様の人生に、心ほどける「安心」と「安らぎ」をプラスし続けること。<br>それが私たちの使命です。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="service" class="section services fade-in-up">
+            <div class="section-title">Service<span>訪問看護でできること</span></div>
+            <div class="service-grid">
+                <div class="card fade-in-up delay-1">
+                    <div class="card-img"><i class="fas fa-home"></i></div>
+                    <div class="card-body"><h3 class="card-title">日常生活へのサポート</h3><p class="card-text">規則正しい生活リズムの確立、食事・睡眠・清潔の援助など、生活基盤作りを支援します。</p></div>
+                </div>
+                <div class="card fade-in-up delay-2">
+                    <div class="card-img"><i class="fas fa-capsules"></i></div>
+                    <div class="card-body"><h3 class="card-title">病状の観察と服薬支援</h3><p class="card-text">症状の変化を早期に察知し、医療機関と連携。服薬管理を行い、確実な治療継続を支えます。</p></div>
+                </div>
+                <div class="card fade-in-up delay-3">
+                    <div class="card-img"><i class="fas fa-comment-alt"></i></div>
+                    <div class="card-body"><h3 class="card-title">心理的なカウンセリング</h3><p class="card-text">不安や孤独感など、心の内を自由に話せる安心な場を提供し、共に回復への道を歩みます。</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="flow" class="section steps fade-in-up">
+            <div class="section-title">Flow<span>ご利用開始までの安心ステップ</span></div>
+            <div class="step-container">
+                <div class="step-item fade-in-up delay-1">
+                    <div class="step-icon-container"><div class="step-number">1</div></div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-comments step-icon"></i>ご相談・お問い合わせ</h3>
+                        <p>お電話またはフォームからお気軽にご連絡ください。現在の状況やご希望をお伺いします。</p>
+                    </div>
+                </div>
+                <div class="step-item fade-in-up delay-2">
+                    <div class="step-icon-container"><div class="step-number">2</div></div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-file-medical step-icon"></i>主治医からの指示書</h3>
+                        <p>ご利用には「訪問看護指示書」が必要です。当ステーションから主治医へ依頼も可能です。</p>
+                    </div>
+                </div>
+                <div class="step-item fade-in-up delay-3">
+                    <div class="step-icon-container"><div class="step-number">3</div></div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-file-signature step-icon"></i>ご説明・ご契約</h3>
+                        <p>サービス内容や料金について詳しくご説明いたします。ご同意後に契約手続きを行います。</p>
+                    </div>
+                </div>
+                <div class="step-item fade-in-up delay-4">
+                    <div class="step-icon-container"><div class="step-number">4</div></div>
+                    <div class="step-content">
+                        <h3><i class="fas fa-heart step-icon"></i>訪問看護スタート</h3>
+                        <p>ケアプランに基づき看護師が訪問します。信頼関係を大切にしながらサポートします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="recruit" class="section recruit-section fade-in-up">
+            <div class="section-title">Recruit<span>一緒に働く仲間を募集中</span></div>
+            <!-- シンプル版求人 -->
+            <div class="recruit-simple-box">
+                <h3 class="fade-in-up">看護師（正社員・パート）募集中</h3>
+                <p class="fade-in-up delay-1">
+                    私たちと一緒に、利用者様の「その人らしい生活」を支えませんか？<br>
+                    精神科未経験の方や、子育て中の方も歓迎しております。<br>
+                    勤務時間や条件など、まずはお気軽にご相談ください。
+                </p>
+                <a href="#contact" class="btn fade-in-up delay-2">採用について問い合わせる <i class="fas fa-envelope"></i></a>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
+            <div class="access-section">
+                <div class="info-item fade-in-up delay-1">
+                    <h3><i class="fas fa-map-marker-alt"></i> Access</h3>
+                    <p>〒000-0000 〇〇県〇〇市〇〇町 1-2-3 サンプラスビル 2F</p>
+                    <div style="width: 100%; height: 200px; background-color: #eee; margin-top: 20px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #999;">Google Map</div>
+                </div>
+                <div class="contact-area fade-in-up delay-2">
+                    <h3>お問い合わせ・ご相談</h3>
+                    <p>お気軽にご連絡ください</p>
+                    <a href="tel:00-0000-0000" class="tel"><i class="fas fa-phone-alt" style="font-size: 0.8em; margin-right: 10px;"></i>00-0000-0000</a>
+                    <p class="contact-note">受付時間: 平日 9:00〜18:00</p>
+                    <a href="#" class="btn" style="background: #fff; color: var(--primary-color); border: 2px solid var(--primary-color);">フォームからのお問い合わせ</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 2. 詳細ページ (詳しく見る) -->
+    <div id="page-detail" style="display: none;">
+        <div class="sub-page-header">
+            <h2>About Sun Plus</h2>
+            <p>私たちについて、もっと詳しく</p>
+        </div>
+        <div class="sub-page-content fade-in-up">
+            
+            <div class="feature-box">
+                <h3 class="feature-title">私たちが大切にしている3つのこと</h3>
+                <div style="margin-bottom: 30px;">
+                    <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">1. 「対話」を中心としたケア</h4>
+                    <p style="font-size: 15px; color: #555; line-height: 1.8;">
+                        精神科訪問看護において最も重要なのは、利用者様との信頼関係です。私たちは医療的な処置だけでなく、日々の会話や何気ない相談時間を大切にし、心の機微に寄り添います。
+                    </p>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">2. 地域との連携ネットワーク</h4>
+                    <p style="font-size: 15px; color: #555; line-height: 1.8;">
+                        主治医、行政、相談支援専門員など、関係機関と密に連携を取り合います。利用者様が地域で孤立することなく、包括的な支援を受けられる体制づくりに尽力しています。
+                    </p>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">3. スタッフの多様性と専門性</h4>
+                    <p style="font-size: 15px; color: #555; line-height: 1.8;">
+                        精神科病院経験者だけでなく、多様なバックグラウンドを持つスタッフが在籍。多角的な視点から、その人らしさを引き出すアプローチを提案します。
+                    </p>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <h3 class="feature-title">よくあるご質問 (Q&A)</h3>
+                <div class="qa-item">
+                    <p class="qa-q">訪問回数はどのくらいですか？</p>
+                    <p class="qa-a">主治医の指示書に基づき決定しますが、週1回〜3回程度が一般的です。病状に応じて柔軟に対応いたします。</p>
+                </div>
+                <div class="qa-item">
+                    <p class="qa-q">費用はどのくらいかかりますか？</p>
+                    <p class="qa-a">各種健康保険や自立支援医療制度が利用可能です。自立支援医療（精神通院）をご利用の場合、自己負担額は原則1割となります（所得に応じた上限あり）。</p>
+                </div>
+                <div class="qa-item">
+                    <p class="qa-q">家族への相談も可能ですか？</p>
+                    <p class="qa-a">もちろんです。ご本人様だけでなく、支えるご家族様の不安や悩みの相談にも応じ、レスパイト（休息）を含めた支援を行います。</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <p style="margin-bottom: 20px; font-weight: bold;">まずは一度、ご相談ください。</p>
+                <button onclick="showPage('page-home'); setTimeout(() => document.getElementById('contact').scrollIntoView(), 100)" class="btn">お問い合わせへ進む</button>
             </div>
         </div>
-    </section>
+    </div>
+
+    <!-- 3. プライバシーポリシー -->
+    <div id="page-privacy" style="display: none;">
+        <div class="sub-page-header">
+            <h2>Privacy Policy</h2>
+            <p>個人情報保護方針</p>
+        </div>
+        <div class="sub-page-content policy-content fade-in-up">
+            <p>Sun Plus 訪問看護ステーション（以下、「当ステーション」）は、利用者様の個人情報を適切に取り扱うことが重要な社会的責務であると認識し、以下の通りプライバシーポリシーを定めます。</p>
+
+            <h3>1. 個人情報の取得について</h3>
+            <p>当ステーションは、業務上必要な範囲内で、かつ適法で公正な手段により個人情報を取得します。</p>
+
+            <h3>2. 個人情報の利用目的</h3>
+            <p>取得した個人情報は、訪問看護サービスの提供、医療保険事務、関係機関との連携、その他業務遂行に必要な範囲でのみ利用いたします。</p>
+
+            <h3>3. 個人情報の第三者提供</h3>
+            <p>法令に基づく場合や、人の生命・身体の保護のために必要がある場合を除き、事前にご本人の同意を得ることなく第三者に提供することはありません。</p>
+
+            <h3>4. 個人情報の管理</h3>
+            <p>個人情報の漏洩、滅失、毀損などを防止するため、適切な安全管理措置を講じます。また、職員に対する教育・啓発活動を実施し、個人情報の保護に努めます。</p>
+
+            <h3>5. お問い合わせ窓口</h3>
+            <p>個人情報の取り扱いに関するお問い合わせは、下記窓口までご連絡ください。<br>
+            <strong>Sun Plus 訪問看護ステーション 管理者</strong><br>
+            電話：00-0000-0000</p>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <button onclick="showPage('page-home')" class="btn" style="background: #ccc; box-shadow: none;">ホームへ戻る</button>
+            </div>
+        </div>
+    </div>
 
     <!-- フッター -->
     <footer>
         <div class="footer-container">
             <div class="footer-logo-area">
                 <div class="footer-logo">
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
-                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
-                    </svg>
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5" fill="var(--accent-color)"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/></svg>
                     Sun Plus
                 </div>
                 <p class="footer-title">訪問看護ステーション</p>
@@ -1349,101 +771,125 @@
                     <a href="tel:00-0000-0000" class="tel-link">00-0000-0000</a>
                 </div>
             </div>
-            
             <div class="footer-links">
                 <h4>Menu</h4>
                 <ul>
-                    <li><a href="#">ホーム</a></li>
-                    <li><a href="#philosophy">理念</a></li>
+                    <li><a onclick="showPage('page-home')">ホーム</a></li>
+                    <li><a onclick="showPage('page-detail')">Sun Plusについて</a></li>
                     <li><a href="#service">サービス</a></li>
                 </ul>
             </div>
-            
             <div class="footer-links">
                 <h4>Info</h4>
                 <ul>
                     <li><a href="#flow">ご利用の流れ</a></li>
                     <li><a href="#recruit">採用情報</a></li>
                     <li><a href="#contact">お問い合わせ</a></li>
+                    <!-- プライバシーポリシーリンクを追加 -->
+                    <li><a onclick="showPage('page-privacy')">プライバシーポリシー</a></li>
                 </ul>
             </div>
-            
             <div class="footer-links">
                 <h4>Social</h4>
                 <ul>
                     <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-                    <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
                     <li><a href="#"><i class="fab fa-line"></i> LINE公式</a></li>
                 </ul>
             </div>
         </div>
-        
         <div class="footer-copy-area">
             <p class="footer-copy">&copy; 2025 Sun Plus Visiting Nursing Station. All Rights Reserved.</p>
         </div>
     </footer>
 
     <script>
-        // --- ハンバーガーメニューの制御 ---
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobile-nav');
         
-        // メニューの開閉切り替え関数
         function toggleMenu() {
             hamburger.classList.toggle('active');
             mobileNav.classList.toggle('active');
         }
-
         hamburger.addEventListener('click', toggleMenu);
 
-        // --- モバイルメニュー内のリンククリック制御 (修正版) ---
-        // リンクをクリックしたら、メニューを閉じてから該当箇所へスムーズにスクロールする
-        document.querySelectorAll('.mobile-nav-content a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault(); // デフォルトのジャンプ動作をキャンセル
-                toggleMenu(); // メニューを閉じる
+        // --- ページ切り替え機能 (SPA風) ---
+        function showPage(pageId) {
+            // 全ページを非表示
+            document.getElementById('page-home').style.display = 'none';
+            document.getElementById('page-detail').style.display = 'none';
+            document.getElementById('page-privacy').style.display = 'none';
 
-                const targetId = this.getAttribute('href');
+            // 指定ページを表示
+            const target = document.getElementById(pageId);
+            if(target) {
+                target.style.display = 'block';
+                // ページトップへ戻す
+                window.scrollTo({ top: 0, behavior: 'instant' });
                 
-                if (targetId === '#') {
-                    // HOMEの場合は一番上へ
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } else {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // 固定ヘッダーの高さ分、少し下にずらしてスクロール位置を調整
-                        const headerHeight = document.querySelector('header').offsetHeight;
-                        const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
-                        
-                        window.scrollTo({
-                            top: targetPosition,
-                            behavior: 'smooth'
-                        });
+                // フェードインアニメーションを再トリガーするためにクラスを操作
+                if(pageId !== 'page-home') {
+                    const content = target.querySelector('.fade-in-up');
+                    if(content) {
+                        content.classList.remove('visible');
+                        setTimeout(() => content.classList.add('visible'), 50);
                     }
+                }
+            }
+        }
+
+        // リンク制御 (ナビゲーション)
+        document.querySelectorAll('a[href^="#"], .mobile-nav-content a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(!href) return; // onclick属性がある場合はそちらに任せる
+
+                e.preventDefault();
+                if(hamburger.classList.contains('active')) toggleMenu();
+
+                const targetId = href;
+                
+                if (targetId === '#home') {
+                    showPage('page-home');
+                } else {
+                    // 通常のアンカーリンク (#service など)
+                    // まずホームを表示してからスクロール
+                    document.getElementById('page-home').style.display = 'block';
+                    document.getElementById('page-detail').style.display = 'none';
+                    document.getElementById('page-privacy').style.display = 'none';
+                    
+                    setTimeout(() => {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            const headerHeight = document.querySelector('header').offsetHeight;
+                            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+                            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                        }
+                    }, 10);
                 }
             });
         });
 
-        // --- スクロールアニメーション (Intersection Observer) ---
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.15 
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        // Intersection Observer (スクロールアニメーション)
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    // 一度表示されたら監視を解除（パフォーマンス向上）
-                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            observer.observe(el);
+        // MutationObserverを使って、DOM変更（ページ切り替え）時も監視対象を更新
+        function observeElements() {
+            document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+        }
+        observeElements();
+        
+        // ページ読み込み時
+        window.addEventListener('load', () => {
+             // 詳しく見るページ用の要素なども監視開始
+             observeElements();
         });
+
     </script>
 </body>
 </html>
