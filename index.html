@@ -515,6 +515,86 @@
             .access-section { grid-template-columns: 1fr; }
             .contact-area .btn { width: 100%; }
         }
+        /* --- Philosophy セクション専用（差し替え） --- */
+        .philosophy-box {
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .philosophy-content h3 {
+            font-size: clamp(22px, 3vw, 28px);
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            font-family: 'Klee One', cursive;
+            line-height: 1.6;
+        }
+        .philosophy-lead {
+            font-size: 1.15rem;
+            color: var(--text-color);
+            margin-bottom: 60px;
+            line-height: 2;
+        }
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .philosophy-item {
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 50px 35px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            border: 1px solid #f0f7fb;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .philosophy-item:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary-color);
+            background: linear-gradient(to bottom, #fff, #f5fcff);
+        }
+        .philosophy-item::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            font-size: 32px;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
+        }
+        .philosophy-item:nth-child(1)::before {
+            content: "\f004";
+            color: #FF7043;
+            background: #FFF3F0;
+        }
+        .philosophy-item:nth-child(2)::before {
+            content: "\f4d8";
+            color: var(--primary-color);
+            background: #E1F5FE;
+        }
+        .philosophy-item:nth-child(3)::before {
+            content: "\f185";
+            color: var(--accent-color);
+            background: #FFF8E1;
+        }
+        .philosophy-item h4 {
+            font-size: 1.35rem;
+            color: var(--primary-dark);
+            margin-bottom: 18px;
+            font-family: 'Klee One', cursive;
+        }
+        .philosophy-item p {
+            font-size: 1rem;
+            color: #607D8B;
+            text-align: left;
+            line-height: 1.8;
+        }
     </style>
 </head>
 <body>
@@ -584,36 +664,43 @@
             <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">詳しく見る <i class="fas fa-arrow-right"></i></button>
         </section>
 
-        <section id="philosophy" class="section fade-in-up">
-            <div class="section-title">Philosophy<span>私たちの想い</span></div>
-            
-            <div class="philosophy-box">
-                <div class="philosophy-content">
-                    <h3>三つの「良し」で、この街にぬくもりの輪を</h3>
-                    <p class="philosophy-lead">
-                        Sun＋訪問看護ステーションは、<br>
-                        関わるすべての人が笑顔になれる場所でありたいと考えています。
+        !-- ================= Philosophy セクション（HTML差し替え） ================= -->
+<section id="philosophy" class="section fade-in-up">
+    <div class="section-title">Philosophy<span>私たちの想い</span></div>
+
+    <div class="philosophy-box">
+        <div class="philosophy-content">
+            <h3>三つの「良し」で、この街にぬくもりの輪を</h3>
+            <p class="philosophy-lead">
+                Sun＋訪問看護ステーションは、<br>
+                関わるすべての人が笑顔になれる場所でありたいと考えています。
+            </p>
+
+            <div class="philosophy-grid">
+                <div class="philosophy-item">
+                    <h4>利用者様とそのご家族へ</h4>
+                    <p>
+                        「あなたに会えて良かった」と言っていただけるような、心に寄り添う看護を。ご家族の不安も包み込み、日々の暮らしに彩りと安心を添えます。
                     </p>
-        
-                    <div class="philosophy-grid">
-                        <div class="philosophy-item">
-                            <h4>利用者様とそのご家族へ</h4>
-                            <p>「あなたに会えて良かった」と言っていただけるような、心に寄り添う看護を。ご家族の不安も包み込み、日々の暮らしに彩りと安心を添えます。</p>
-                        </div>
-        
-                        <div class="philosophy-item">
-                            <h4>共に働く仲間へ</h4>
-                            <p>支える側の私たちが、一番輝ける場所へ。一人ひとりのライフスタイルを大切にし、チーム一丸となって成長できる喜びを分かち合います。</p>
-                        </div>
-        
-                        <div class="philosophy-item">
-                            <h4>私たちが暮らす地域へ</h4>
-                            <p>この街を照らす「太陽」のような明るく、頼れる存在を目指します。地域のネットワークを強め、次世代まで続く安心な暮らしの基盤を共に築いていきます。</p>
-                        </div>
-                    </div>
+                </div>
+
+                <div class="philosophy-item">
+                    <h4>共に働く仲間へ</h4>
+                    <p>
+                        支える側の私たちが、一番輝ける場所へ。一人ひとりのライフスタイルを大切にし、チーム一丸となって成長できる喜びを分かち合います。
+                    </p>
+                </div>
+
+                <div class="philosophy-item">
+                    <h4>私たちが暮らす地域へ</h4>
+                    <p>
+                        この街を照らす「太陽」のような明るく、頼れる存在を目指します。地域のネットワークを強め、次世代まで続く安心な暮らしの基盤を共に築いていきます。
+                    </p>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>
 
         <section id="service" class="section services fade-in-up">
             <div class="section-title">Service<span>訪問看護でできること</span></div>
