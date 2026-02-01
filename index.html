@@ -699,18 +699,28 @@
     <!-- 1. ホーム (LP) -->
     <main id="page-home">
         <section class="hero">
-            <!-- ✅ ③ ヒーロー画像を挿入 -->
-            <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ">
+    <!-- ✅ ③ ヒーロー画像を挿入 -->
+    <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ">
 
-            <!-- ✅ ④ bubble要素は削除（ここがポイント） -->
+    <!-- ✅ ④ bubble要素は削除（ここがポイント） -->
 
-            <h1 class="fade-in-up">心ほどける<span class="highlight">安心</span>を、<br>日々の暮らしに<span class="highlight">プラス</span>する。</h1>
-            <p class="fade-in-up delay-1">私たちは利用者様の「その人らしい生活」に<br>そっと寄り添うパートナーです。</p>
+    <div class="hero-inner">
+        <h1 class="fade-in-up">
+            心ほどける<span class="highlight">安心</span>を、<br>
+            日々の暮らしに<span class="highlight">プラス</span>する。
+        </h1>
 
-            <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">
-                詳しく見る <i class="fas fa-arrow-right"></i>
-            </button>
-        </section>
+        <p class="fade-in-up delay-1">
+            私たちは利用者様の「その人らしい生活」に<br>
+            そっと寄り添うパートナーです。
+        </p>
+
+        <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">
+            詳しく見る <i class="fas fa-arrow-right"></i>
+        </button>
+    </div>
+</section>
+
 
         <section id="philosophy" class="section fade-in-up">
             <div class="section-title">Philosophy<span>私たちの想い</span></div>
