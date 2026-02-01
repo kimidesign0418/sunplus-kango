@@ -288,6 +288,16 @@
             font-size: clamp(14px, 3.5vw, 18px); color: var(--text-color);
             margin-bottom: 40px; font-weight: 500; position: relative; z-index: 10;
         }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;   /* 写真の主張を抑えて清潔感 */
+            z-index: 0;
+        }
+
 
         /* サービスカード */
         .services { background-color: #FAFDFF; }
@@ -663,6 +673,8 @@
     <!-- 1. ホーム (LP) -->
     <main id="page-home">
         <section class="hero">
+            <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ">
+
             <div class="bubble" style="width: 140px; height: 140px; top: 10%; left: 5%;"></div>
             <div class="bubble" style="width: 90px; height: 90px; top: 45%; left: 15%;"></div>
             <div class="bubble" style="width: 160px; height: 160px; top: 55%; right: 8%;"></div>
