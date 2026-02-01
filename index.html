@@ -266,6 +266,43 @@
   .hero-inner{
     transform: none;
   }
+    /* ===============================
+   スマホ用フッター最終調整
+   =============================== */
+
+/* ✅ フッター全体を1カラムにする */
+.footer-container{
+  grid-template-columns: 1fr;   /* 4列 → 1列 */
+  gap: 24px;
+  text-align: center;
+}
+
+/* ✅ ロゴ・住所エリアを中央寄せ */
+.footer-logo-area{
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-logo{
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+
+/* ✅ メニューリンクを中央寄せ */
+.footer-links{
+  text-align: center;
+}
+
+.footer-links ul{
+  padding: 0;
+}
+
+.footer-links li{
+  margin: 10px 0;
+}
+
 }
 
         /* ✅ ③ ヒーローに画像を挿入（背景用） */
