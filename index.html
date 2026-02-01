@@ -311,6 +311,22 @@
             font-weight: bold; font-family: 'Klee One', cursive;
         }
         .card-text { font-size: 15px; color: #666; margin-bottom: 20px; }
+        /* Service画像用：アイコンの代わりに写真を表示 */
+.card-img {
+  height: 220px;
+  background-color: var(--bg-soft);
+  overflow: hidden;            /* 写真のはみ出しを隠す */
+  display: block;              /* アイコン用flexを解除 */
+  position: relative;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;           /* 引き伸ばさず、カードに合わせてトリミング */
+  display: block;
+}
+
 
         /* 理念（もとの枠スタイル） */
         .philosophy-box {
@@ -723,31 +739,41 @@
         </section>
 
         <section id="service" class="section services fade-in-up">
-            <div class="section-title">Service<span>訪問看護でできること</span></div>
-            <div class="service-grid">
-                <div class="card fade-in-up delay-1">
-                    <div class="card-img"><i class="fas fa-home"></i></div>
-                    <div class="card-body">
-                        <h3 class="card-title">日常生活へのサポート</h3>
-                        <p class="card-text">規則正しい生活リズムの確立、食事・睡眠・清潔の援助など、生活基盤作りを支援します。</p>
-                    </div>
-                </div>
-                <div class="card fade-in-up delay-2">
-                    <div class="card-img"><i class="fas fa-capsules"></i></div>
-                    <div class="card-body">
-                        <h3 class="card-title">病状の観察と服薬支援</h3>
-                        <p class="card-text">症状の変化を早期に察知し、医療機関と連携。服薬管理を行い、確実な治療継続を支えます。</p>
-                    </div>
-                </div>
-                <div class="card fade-in-up delay-3">
-                    <div class="card-img"><i class="fas fa-comment-alt"></i></div>
-                    <div class="card-body">
-                        <h3 class="card-title">心理的なカウンセリング</h3>
-                        <p class="card-text">不安や孤独感など、心の内を自由に話せる安心な場を提供し、共に回復への道を歩みます。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <div class="section-title">Service<span>訪問看護でできること</span></div>
+
+  <div class="service-grid">
+    <div class="card fade-in-up delay-1">
+      <div class="card-img">
+        <img src="service-daily.jpg" alt="窓辺でコーヒーを持つ手元の写真">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">日常生活へのサポート</h3>
+        <p class="card-text">規則正しい生活リズムの確立、食事・睡眠・清潔の援助など、生活基盤作りを支援します。</p>
+      </div>
+    </div>
+
+    <div class="card fade-in-up delay-2">
+      <div class="card-img">
+        <img src="service-medical.jpg" alt="配薬カレンダーの写真">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">病状の観察と服薬支援</h3>
+        <p class="card-text">症状の変化を早期に察知し、医療機関と連携。服薬管理を行い、確実な治療継続を支えます。</p>
+      </div>
+    </div>
+
+    <div class="card fade-in-up delay-3">
+      <div class="card-img">
+        <img src="service-mental.jpg" alt="お茶を飲みながら寄り添うカウンセリングの写真">
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">心理的なカウンセリング</h3>
+        <p class="card-text">不安や孤独感など、心の内を自由に話せる安心な場を提供し、共に回復への道を歩みます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
         <section id="flow" class="section steps fade-in-up">
             <div class="section-title">Flow<span>ご利用開始までの安心ステップ</span></div>
