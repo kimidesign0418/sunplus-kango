@@ -17,243 +17,267 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- 基本設定 --- */
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+/* --- 基本設定 --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-        body {
-            font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", Meiryo, sans-serif;
-            color: #444;
-            line-height: 1.8;
-            background-color: #fdfdfd;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+body {
+  font-family: "Zen Maru Gothic", "Hiragino Maru Gothic ProN", Meiryo, sans-serif;
+  color: #444;
+  line-height: 1.8;
+  background-color: #fdfdfd;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
 
-        /* --- カラーパレット --- */
-        :root {
-            --primary-color: #4FC3F7;
-            --primary-dark: #039BE5;
-            --accent-color: #FF9800;
-            --bg-soft: #E1F5FE;
-            --text-color: #546E7A;
-            --step-bg: #F7FAFF;
-            --footer-bg: #0D47A1;
-            --footer-text: #E3F2FD;
-            --footer-link: #90CAF9;
-        }
+/* --- カラーパレット --- */
+:root {
+  --primary-color: #4FC3F7;
+  --primary-dark: #039BE5;
+  --accent-color: #FF9800;
+  --bg-soft: #E1F5FE;
+  --text-color: #546E7A;
+  --step-bg: #F7FAFF;
+  --footer-bg: #0D47A1;
+  --footer-text: #E3F2FD;
+  --footer-link: #90CAF9;
+}
 
-        /* --- アニメーション --- */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
-        .delay-1 { transition-delay: 0.1s; }
-        .delay-2 { transition-delay: 0.2s; }
-        .delay-3 { transition-delay: 0.3s; }
+/* --- アニメーション --- */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-up.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
 
-        @keyframes spin-slow {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-        /* ✅ ④ ヒーローのシャボン玉を消す：bubble関連CSS削除済み */
+/* --- ヘッダー --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 4%;
+  background-color: rgba(255, 255, 255, 0.85);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
 
-        /* --- ヘッダー --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 4%;
-            background-color: rgba(255, 255, 255, 0.85);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 1001;
+  cursor: pointer;
+}
 
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1001;
-            cursor: pointer;
-        }
+.sun-icon {
+  width: 38px;
+  height: 38px;
+  color: var(--accent-color);
+  flex-shrink: 0;
+  animation: spin-slow 20s linear infinite;
+}
 
-        .sun-icon {
-            width: 38px;
-            height: 38px;
-            color: var(--accent-color);
-            flex-shrink: 0;
-            animation: spin-slow 20s linear infinite;
-        }
+.logo-text-group {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  line-height: 1;
+}
 
-        .logo-text-group {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            line-height: 1;
-        }
+.brand-name {
+  font-family: 'Caveat', cursive;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  letter-spacing: 0.02em;
+}
 
-        .brand-name {
-            font-family: 'Caveat', cursive;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary-dark);
-            letter-spacing: 0.02em;
-        }
+.brand-sub {
+  font-family: "Zen Maru Gothic", sans-serif;
+  font-size: 11px;
+  color: #90A4AE;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  margin-top: -2px;
+  margin-left: 2px;
+}
 
-        .brand-sub {
-            font-family: "Zen Maru Gothic", sans-serif;
-            font-size: 11px;
-            color: #90A4AE;
-            font-weight: 500;
-            letter-spacing: 0.15em;
-            margin-top: -2px;
-            margin-left: 2px;
-        }
+/* PCナビ */
+nav.desktop-nav ul { display: flex; gap: 30px; }
+nav.desktop-nav a {
+  font-size: 15px;
+  font-weight: bold;
+  color: #78909C;
+  position: relative;
+  font-family: 'Klee One', sans-serif;
+  cursor: pointer;
+}
+nav.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+nav.desktop-nav a:hover { color: var(--primary-dark); }
+nav.desktop-nav a:hover::after { width: 100%; }
 
-        nav.desktop-nav ul { display: flex; gap: 30px; }
-        nav.desktop-nav a {
-            font-size: 15px;
-            font-weight: bold;
-            color: #78909C;
-            position: relative;
-            font-family: 'Klee One', sans-serif;
-            cursor: pointer;
-        }
-        nav.desktop-nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-        nav.desktop-nav a:hover { color: var(--primary-dark); }
-        nav.desktop-nav a:hover::after { width: 100%; }
+/* ハンバーガー */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  z-index: 2000;
+  width: 44px;
+  height: 44px;
+  position: relative;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  transition: 0.3s;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--primary-dark);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  border-radius: 2px;
+}
+.hamburger span:nth-child(1) { top: 16px; }
+.hamburger span:nth-child(2) { top: 22px; }
+.hamburger span:nth-child(3) { top: 28px; }
 
-        /* ハンバーガー */
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            z-index: 2000;
-            width: 44px;
-            height: 44px;
-            position: relative;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 50%;
-            backdrop-filter: blur(4px);
-            transition: 0.3s;
-        }
-        .hamburger span {
-            display: block;
-            width: 22px;
-            height: 2px;
-            background-color: var(--primary-dark);
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            border-radius: 2px;
-        }
-        .hamburger span:nth-child(1) { top: 16px; }
-        .hamburger span:nth-child(2) { top: 22px; }
-        .hamburger span:nth-child(3) { top: 28px; }
+.hamburger.active span:nth-child(1) { top: 22px; transform: translateX(-50%) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
+.hamburger.active span:nth-child(3) { top: 22px; transform: translateX(-50%) rotate(-45deg); }
 
-        .hamburger.active span:nth-child(1) { top: 22px; transform: translateX(-50%) rotate(45deg); }
-        .hamburger.active span:nth-child(2) { opacity: 0; transform: translateX(20px); }
-        .hamburger.active span:nth-child(3) { top: 22px; transform: translateX(-50%) rotate(-45deg); }
+/* モバイルナビ */
+.mobile-nav-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 1500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; visibility: hidden;
+  transition: all 0.5s ease;
+  clip-path: circle(0% at 90% 5%);
+}
+.mobile-nav-overlay.active { opacity: 1; visibility: visible; clip-path: circle(150% at 90% 5%); }
+.mobile-nav-content ul { text-align: center; display: flex; flex-direction: column; gap: 30px; }
+.mobile-nav-content a {
+  font-size: 20px; font-weight: 600; color: var(--text-color);
+  font-family: 'Klee One', sans-serif; display: block;
+  transform: translateY(20px); opacity: 0; transition: 0.4s ease;
+}
+.mobile-nav-overlay.active .mobile-nav-content a { transform: translateY(0); opacity: 1; }
+.mobile-nav-overlay.active li:nth-child(1) a { transition-delay: 0.1s; }
+.mobile-nav-overlay.active li:nth-child(2) a { transition-delay: 0.15s; }
+.mobile-nav-overlay.active li:nth-child(3) a { transition-delay: 0.2s; }
+.mobile-nav-overlay.active li:nth-child(4) a { transition-delay: 0.25s; }
+.mobile-nav-overlay.active li:nth-child(5) a { transition-delay: 0.3s; }
+.mobile-nav-overlay.active li:nth-child(6) a { transition-delay: 0.35s; }
 
-        /* モバイルナビ */
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100vh;
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1500;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            opacity: 0; visibility: hidden;
-            transition: all 0.5s ease;
-            clip-path: circle(0% at 90% 5%);
-        }
-        .mobile-nav-overlay.active { opacity: 1; visibility: visible; clip-path: circle(150% at 90% 5%); }
-        .mobile-nav-content ul { text-align: center; display: flex; flex-direction: column; gap: 30px; }
-        .mobile-nav-content a {
-            font-size: 20px; font-weight: 600; color: var(--text-color);
-            font-family: 'Klee One', sans-serif; display: block;
-            transform: translateY(20px); opacity: 0; transition: 0.4s ease;
-        }
-        .mobile-nav-overlay.active .mobile-nav-content a { transform: translateY(0); opacity: 1; }
-        .mobile-nav-overlay.active li:nth-child(1) a { transition-delay: 0.1s; }
-        .mobile-nav-overlay.active li:nth-child(2) a { transition-delay: 0.15s; }
-        .mobile-nav-overlay.active li:nth-child(3) a { transition-delay: 0.2s; }
-        .mobile-nav-overlay.active li:nth-child(4) a { transition-delay: 0.25s; }
-        .mobile-nav-overlay.active li:nth-child(5) a { transition-delay: 0.3s; }
-        .mobile-nav-overlay.active li:nth-child(6) a { transition-delay: 0.35s; }
+/* --- 共通コンポーネント --- */
+.section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; }
 
-        /* --- 共通コンポーネント --- */
-        .section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; }
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            color: var(--primary-dark);
-            margin-bottom: 70px;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            font-family: 'Klee One', cursive;
-            position: relative;
-            display: block;
-        }
-        .section-title::before {
-            content: ''; position: absolute; top: -15px; left: 50%;
-            transform: translateX(-50%); width: 40px; height: 3px;
-            background-color: var(--accent-color); border-radius: 3px;
-        }
-        .section-title span {
-            display: block; font-size: 14px; color: #90A4AE;
-            margin-top: 10px; font-weight: normal; letter-spacing: 0.2em;
-            font-family: "Zen Maru Gothic", sans-serif;
-        }
+.section-title {
+  text-align: center;
+  font-size: 32px;
+  color: var(--primary-dark);
+  margin-bottom: 70px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  font-family: 'Klee One', cursive;
+  position: relative;
+  display: block;
+}
+.section-title::before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 3px;
+  background-color: var(--accent-color);
+  border-radius: 3px;
+}
+.section-title span {
+  display: block;
+  font-size: 14px;
+  color: #90A4AE;
+  margin-top: 10px;
+  font-weight: normal;
+  letter-spacing: 0.2em;
+  font-family: "Zen Maru Gothic", sans-serif;
+}
 
-        .btn {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-            color: white; padding: 16px 50px; border-radius: 50px;
-            font-weight: bold; box-shadow: 0 10px 25px rgba(79, 195, 247, 0.4);
-            font-size: 16px; border: none; cursor: pointer;
-            letter-spacing: 0.05em; position: relative; z-index: 10;
-            transition: all 0.3s ease;
-        }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4); }
+.btn {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 16px 50px;
+  border-radius: 50px;
+  font-weight: bold;
+  box-shadow: 0 10px 25px rgba(79, 195, 247, 0.4);
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+.btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4); }
 
-        /* --- HOME PAGE CONTENTS --- */
-        .hero {
-            background: linear-gradient(120deg, #E1F5FE 0%, #fff 100%);
-            height: 70vh; min-height: 500px;
-            display: flex; flex-direction: column; justify-content: center;
-            align-items: center; text-align: center; padding: 20px;
-            position: relative; overflow: hidden;
-        }
-        /* ✅ ヒーロー文字ブロックを少し左へ（PCのみ） */
+/* --- HOME / HERO --- */
+.hero {
+  background: linear-gradient(120deg, #E1F5FE 0%, #fff 100%);
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ヒーロー文字ブロック（PCは少し左） */
 .hero-inner{
   position: relative;
   z-index: 10;
@@ -261,92 +285,62 @@
   transform: translateX(-6%);
 }
 
-/* ✅ スマホでは中央に戻す */
-@media (max-width: 768px){
-  .hero-inner{
-    transform: none;
-  }
-    /* ===============================
-   スマホ用フッター最終調整
-   =============================== */
-
-/* ✅ フッター全体を1カラムにする */
-.footer-container{
-  grid-template-columns: 1fr;   /* 4列 → 1列 */
-  gap: 24px;
-  text-align: center;
+/* ヒーロー背景画像 */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.35;
+  z-index: 0;
 }
 
-/* ✅ ロゴ・住所エリアを中央寄せ */
-.footer-logo-area{
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.hero h1 {
+  font-size: clamp(26px, 5.5vw, 52px);
+  margin-bottom: 24px;
+  color: var(--primary-dark);
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 10;
+  font-family: 'Klee One', cursive;
+}
+.hero h1 .highlight {
+  color: var(--accent-color);
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+.hero h1 .highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  width: 100%;
+  height: 12px;
+  background-color: rgba(255, 213, 79, 0.3);
+  z-index: -1;
+  transform: skewX(-15deg);
+}
+.hero p {
+  font-size: clamp(14px, 3.5vw, 18px);
+  color: var(--text-color);
+  margin-bottom: 40px;
+  font-weight: 500;
+  position: relative;
+  z-index: 10;
 }
 
-.footer-logo{
-  justify-content: center;
-  margin: 0 auto 10px;
-}
-
-/* ✅ メニューリンクを中央寄せ */
-.footer-links{
-  text-align: center;
-}
-
-.footer-links ul{
-  padding: 0;
-}
-
-.footer-links li{
-  margin: 10px 0;
-}
-
-}
-
-        /* ✅ ③ ヒーローに画像を挿入（背景用） */
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.35; /* 写真の主張を抑えて清潔感 */
-            z-index: 0;
-        }
-
-        .hero h1 {
-            font-size: clamp(26px, 5.5vw, 52px); margin-bottom: 24px;
-            color: var(--primary-dark); line-height: 1.6; letter-spacing: 0.05em;
-            position: relative; z-index: 10; font-family: 'Klee One', cursive;
-        }
-        .hero h1 .highlight {
-            color: var(--accent-color); font-weight: 600; position: relative;
-            display: inline-block;
-        }
-        .hero h1 .highlight::after {
-            content: ''; position: absolute; bottom: 5px; left: 0;
-            width: 100%; height: 12px; background-color: rgba(255, 213, 79, 0.3);
-            z-index: -1; transform: skewX(-15deg);
-        }
-        .hero p {
-            font-size: clamp(14px, 3.5vw, 18px); color: var(--text-color);
-            margin-bottom: 40px; font-weight: 500; position: relative; z-index: 10;
-        }
-
-        /* サービスカード */
+/* --- サービスカード --- */
 .services { background-color: #FAFDFF; }
 
-/* ✅ 高さが揃うようにする */
 .service-grid{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
-  align-items: stretch;   /* ←追加 */
+  align-items: stretch;
 }
-
-/* ✅ カードを“縦レイアウト”にして高さを揃える */
 .card{
   background: #fff;
   border-radius: 22px;
@@ -355,26 +349,21 @@
   box-shadow: 0 12px 30px rgba(0,0,0,0.06);
   transition: 0.4s;
 
-  display: flex;          /* ←追加 */
-  flex-direction: column; /* ←追加 */
-  height: 100%;           /* ←追加 */
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
-
 .card:hover{
   transform: translateY(-8px);
   box-shadow: 0 20px 45px rgba(79, 195, 247, 0.18);
 }
-
-/* ✅ 画像：固定220pxやめて比率固定に（見た目が一気に整う） */
 .card-img{
-  aspect-ratio: 4 / 3;    /* ←追加（これが効く） */
-  height: auto;           /* ←220pxを無効化 */
+  aspect-ratio: 4 / 3;
+  height: auto;
   overflow: hidden;
   position: relative;
   background: var(--bg-soft);
 }
-
-/* 今のグラデはそのままOK */
 .card-img::after{
   content:'';
   position:absolute;
@@ -382,7 +371,6 @@
   background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(0,0,0,0.12));
   pointer-events:none;
 }
-
 .card-img img{
   width:100%;
   height:100%;
@@ -391,218 +379,306 @@
   transform: scale(1.02);
   transition: transform 0.4s ease;
 }
+.card:hover .card-img img{ transform: scale(1.06); }
 
-.card:hover .card-img img{
-  transform: scale(1.06);
-}
-
-/* ✅ テキストの余白と読みやすさ（ここが“品”を作る） */
 .card-body{
-  padding: 18px 20px 22px;  /* ←追加 */
-  flex: 1;                  /* ←追加（高さ揃えの要） */
-  display: flex;            /* ←追加 */
-  flex-direction: column;   /* ←追加 */
-  gap: 10px;                /* ←追加 */
+  padding: 18px 20px 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-
 .card-title{
   margin: 0;
   font-size: 18px;
   line-height: 1.35;
   letter-spacing: 0.02em;
 }
-
 .card-text{
   margin: 0;
   font-size: 14px;
   line-height: 1.9;
   color: #607D8B;
 
-  /* ✅ 文章量が違っても見た目を揃える（不要なら削除OK） */
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
 }
-
-/* 3枚のトーン（あなたの指定は維持） */
 .card:nth-child(1) .card-img{ background:#F1F8E9; }
 .card:nth-child(2) .card-img{ background:#FBE9E7; }
 .card:nth-child(3) .card-img{ background:#E3F2FD; }
 
-        /* 理念（もとの枠スタイル） */
-        .philosophy-box {
-            background-color: #fff; border: 1px solid #E1F5FE;
-            border-radius: 24px; padding: 60px 40px; text-align: center;
-            box-shadow: 0 20px 50px rgba(3, 155, 229, 0.05);
-            position: relative; overflow: hidden;
-        }
-        .philosophy-box h3 {
-            font-size: 26px; margin-bottom: 30px; color: var(--primary-dark);
-            font-family: 'Klee One', cursive;
-        }
+/* --- Flow (PC) --- */
+.steps { background-color: var(--step-bg); }
 
-        /* Flow (PC) */
-        .steps { background-color: var(--step-bg); }
-        .step-container {
-            position: relative; padding-left: 0; max-width: 800px; margin: 0 auto;
-        }
-        .step-container::before {
-            content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-            top: 20px; width: 4px; background-color: #E1F5FE; z-index: 0;
-            border-radius: 4px; height: calc(100% - 40px);
-        }
-        .step-item { display: flex; align-items: center; margin-bottom: 70px; position: relative; z-index: 1; }
-        .step-item:last-child { margin-bottom: 0; }
-        .step-icon-container {
-            width: 50px; height: 50px; flex-shrink: 0; margin: 0;
-            position: absolute; left: 50%; transform: translateX(-50%); z-index: 2;
-        }
-        .step-number {
-            width: 50px; height: 50px; background-color: var(--step-bg);
-            color: var(--primary-dark); border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-weight: bold; font-size: 20px; font-family: 'Klee One', sans-serif;
-            box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.3), -5px -5px 10px #FFFFFF;
-            border: 2px solid #fff; transition: 0.3s;
-        }
-        .step-item:hover .step-number { transform: scale(1.15); color: var(--accent-color); }
-        .step-icon { display: none; }
-        .step-content {
-            text-align: left; background-color: #fff; padding: 25px 30px;
-            border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            border-left: 5px solid var(--accent-color); width: calc(50% - 40px);
-            position: relative; margin-left: calc(50% + 40px); transition: 0.3s;
-        }
-        .step-item:nth-child(even) .step-content {
-            margin-left: 0; margin-right: calc(50% + 40px);
-            border-left: none; border-right: 5px solid var(--accent-color);
-        }
-        .step-content::before {
-            content: ''; position: absolute; top: 15px; width: 0; height: 0; border-style: solid;
-        }
-        .step-item:nth-child(odd) .step-content::before {
-            left: -10px; border-width: 10px 10px 10px 0; border-color: transparent #fff transparent transparent;
-        }
-        .step-item:nth-child(even) .step-content::before {
-            right: -10px; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent #fff;
-        }
-        .step-content h3 {
-            font-size: 19px; color: var(--primary-dark); margin-bottom: 10px;
-            font-weight: bold; display: flex; align-items: center; gap: 10px;
-            font-family: 'Klee One', cursive;
-        }
+.step-container {
+  position: relative;
+  padding-left: 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.step-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 20px;
+  width: 4px;
+  background-color: #E1F5FE;
+  z-index: 0;
+  border-radius: 4px;
+  height: calc(100% - 40px);
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 1;
+}
+.step-item:last-child { margin-bottom: 0; }
 
-        /* Recruit (Simple) */
-        .recruit-section { background-color: var(--bg-soft); text-align: center; }
-        .recruit-simple-box {
-            background-color: #fff;
-            padding: 50px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(3, 155, 229, 0.05);
-            border: 1px solid #E1F5FE;
-        }
-        .recruit-simple-box h3 {
-            font-size: 24px; color: var(--primary-dark); margin-bottom: 20px;
-            font-family: 'Klee One', cursive;
-        }
-        .recruit-simple-box p {
-            font-size: 16px; color: #555; margin-bottom: 30px; line-height: 2;
-        }
+.step-icon-container {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  margin: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+.step-number {
+  width: 50px;
+  height: 50px;
+  background-color: var(--step-bg);
+  color: var(--primary-dark);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Klee One', sans-serif;
+  box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.3), -5px -5px 10px #FFFFFF;
+  border: 2px solid #fff;
+  transition: 0.3s;
+}
+.step-item:hover .step-number { transform: scale(1.15); color: var(--accent-color); }
 
-        /* Contact */
-        .contact-area {
-            background-color: var(--bg-soft); padding: 40px; border-radius: 24px;
-            text-align: center; box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
-        }
-        .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+.step-icon { display: none; }
 
-        /* --- SUB PAGE STYLES (詳細 & ポリシー) --- */
-        .sub-page-header {
-            background: linear-gradient(120deg, var(--bg-soft) 0%, #fff 100%);
-            padding: 80px 5% 60px; text-align: center;
-        }
-        .sub-page-header h2 {
-            font-family: 'Klee One', cursive; font-size: 36px; color: var(--primary-dark);
-            margin-bottom: 20px;
-        }
-        .sub-page-content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+.step-content {
+  text-align: left;
+  background-color: #fff;
+  padding: 25px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border-left: 5px solid var(--accent-color);
+  width: calc(50% - 40px);
+  position: relative;
+  margin-left: calc(50% + 40px);
+  transition: 0.3s;
+}
+.step-item:nth-child(even) .step-content {
+  margin-left: 0;
+  margin-right: calc(50% + 40px);
+  border-left: none;
+  border-right: 5px solid var(--accent-color);
+}
+.step-content::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+.step-item:nth-child(odd) .step-content::before {
+  left: -10px;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #fff transparent transparent;
+}
+.step-item:nth-child(even) .step-content::before {
+  right: -10px;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent #fff;
+}
+.step-content h3 {
+  font-size: 19px;
+  color: var(--primary-dark);
+  margin-bottom: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Klee One', cursive;
+}
 
-        /* 詳細ページのコンテンツ */
-        .feature-box {
-            background: #fff; border-radius: 20px; padding: 40px; margin-bottom: 40px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
-        }
-        .feature-title {
-            font-size: 22px; color: var(--primary-dark); border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; font-family: 'Klee One', cursive;
-        }
-        .feature-list li {
-            margin-bottom: 15px; padding-left: 20px; position: relative; font-size: 16px;
-        }
-        .feature-list li::before {
-            content: '●'; color: var(--primary-color); position: absolute; left: 0; top: 0;
-        }
+/* --- Recruit --- */
+.recruit-section { background-color: var(--bg-soft); text-align: center; }
+.recruit-simple-box {
+  background-color: #fff;
+  padding: 50px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(3, 155, 229, 0.05);
+  border: 1px solid #E1F5FE;
+}
+.recruit-simple-box h3 {
+  font-size: 24px;
+  color: var(--primary-dark);
+  margin-bottom: 20px;
+  font-family: 'Klee One', cursive;
+}
+.recruit-simple-box p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 2;
+}
 
-        .qa-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 25px; }
-        .qa-q { font-weight: bold; color: var(--primary-dark); margin-bottom: 10px; display: flex; align-items: center; }
-        .qa-q::before { content: 'Q.'; font-size: 20px; color: var(--accent-color); margin-right: 10px; font-family: 'Caveat'; }
-        .qa-a { padding-left: 30px; font-size: 15px; color: #666; }
+/* --- Contact --- */
+.contact-area {
+  background-color: var(--bg-soft);
+  padding: 40px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
+}
+.access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
 
-        /* ポリシーページ */
-        .policy-content h3 { font-size: 18px; margin: 30px 0 15px; color: #333; border-left: 4px solid var(--primary-color); padding-left: 10px; }
-        .policy-content p { margin-bottom: 15px; font-size: 14px; line-height: 1.8; color: #555; }
+/* --- SUB PAGE --- */
+.sub-page-header {
+  background: linear-gradient(120deg, var(--bg-soft) 0%, #fff 100%);
+  padding: 80px 5% 60px;
+  text-align: center;
+}
+.sub-page-header h2 {
+  font-family: 'Klee One', cursive;
+  font-size: 36px;
+  color: var(--primary-dark);
+  margin-bottom: 20px;
+}
+.sub-page-content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
 
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--footer-bg); color: var(--footer-text);
-            padding: 60px 5% 20px; position: relative; overflow: hidden; margin-top: auto;
-        }
-        .footer-container {
-            max-width: 1100px; margin: 0 auto; display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
-            padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .footer-logo {
-            font-size: 36px; font-weight: 700; color: var(--footer-text);
-            display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
-            font-family: 'Caveat', cursive;
-        }
-        .footer-links h4 {
-            font-size: 16px; color: var(--footer-link); font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .footer-links a { font-size: 14px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
-        .footer-links a:hover { opacity: 1; color: var(--accent-color); }
-        .footer-copy-area { text-align: center; padding-top: 20px; }
-        .footer-copy { font-size: 12px; opacity: 0.5; }
-        .footer-brand{
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-        }
-        .footer-brand .plus-hand{
-            width: 0.85em;
-            height: 0.85em;
-            transform: translateY(1px);
-         }     
+.feature-box {
+  background: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  margin-bottom: 40px;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+  border: 1px solid #f0f0f0;
+}
+.feature-title {
+  font-size: 22px;
+  color: var(--primary-dark);
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: 'Klee One', cursive;
+}
+.feature-list li {
+  margin-bottom: 15px;
+  padding-left: 20px;
+  position: relative;
+  font-size: 16px;
+}
+.feature-list li::before {
+  content: '●';
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.qa-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 25px; }
+.qa-q { font-weight: bold; color: var(--primary-dark); margin-bottom: 10px; display: flex; align-items: center; }
+.qa-q::before { content: 'Q.'; font-size: 20px; color: var(--accent-color); margin-right: 10px; font-family: 'Caveat'; }
+.qa-a { padding-left: 30px; font-size: 15px; color: #666; }
 
+.policy-content h3 {
+  font-size: 18px;
+  margin: 30px 0 15px;
+  color: #333;
+  border-left: 4px solid var(--primary-color);
+  padding-left: 10px;
+}
+.policy-content p { margin-bottom: 15px; font-size: 14px; line-height: 1.8; color: #555; }
 
-        /* --- モバイル対応 --- */
-       @media (max-width: 768px) {
+/* --- FOOTER --- */
+footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  padding: 60px 5% 20px;
+  position: relative;
+  overflow: hidden;
+  margin-top: auto;
+}
+.footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.footer-logo {
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--footer-text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-family: 'Caveat', cursive;
+}
+.footer-links h4 {
+  font-size: 16px;
+  color: var(--footer-link);
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+.footer-links a { font-size: 14px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+.footer-links a:hover { opacity: 1; color: var(--accent-color); }
+.footer-copy-area { text-align: center; padding-top: 20px; }
+.footer-copy { font-size: 12px; opacity: 0.5; }
+
+.footer-brand{
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.footer-brand .plus-hand{
+  width: 0.85em;
+  height: 0.85em;
+  transform: translateY(1px);
+}
+
+/* =========================================
+   ✅ モバイル最終調整（ここに全部まとめる）
+   ========================================= */
+@media (max-width: 768px) {
+
   header { padding: 12px 5%; }
   .brand-name { font-size: 28px; }
   .brand-sub { font-size: 10px; }
   .sun-icon { width: 32px; height: 32px; }
   nav.desktop-nav { display: none; }
   .hamburger { display: block; }
+
   .hero { height: auto; padding: 120px 20px 60px; }
   .section { padding: 60px 5%; }
 
-  /* ✅ フッター中央寄せ（ここがポイント） */
-  .footer-logo{
-    justify-content: center;
-    margin: 0 auto 10px;
+  /* ヒーロー文字中央へ */
+  .hero-inner{ transform: none; }
+
+  /* ✅ フッターを1カラムにする */
+  .footer-container{
+    grid-template-columns: 1fr;
+    gap: 24px;
+    text-align: center;
   }
 
   .footer-logo-area{
@@ -612,131 +688,143 @@
     align-items: center;
   }
 
-            /* Flow モバイル修正 */
-            .step-container { padding-left: 0; max-width: 100%; }
-            .step-container::before {
-                left: 20px; top: 0; height: calc(100% - 40px); transform: none; width: 4px;
-            }
-            .step-item { flex-direction: row; margin-bottom: 40px; align-items: flex-start; }
+  .footer-logo{
+    justify-content: center;
+    margin: 0 auto 10px;
+  }
 
-            /* 番号部分 */
-            .step-icon-container {
-                display: flex; position: relative; left: auto; top: auto; transform: none;
-                width: 40px; height: 40px; margin-right: 15px;
-                flex-shrink: 0;
-            }
-            .step-number { width: 40px; height: 40px; font-size: 16px; background: #fff; border: 2px solid var(--primary-color); z-index: 2; }
+  .footer-links{ text-align: center; }
+  .footer-links ul{ padding: 0; }
+  .footer-links li{ margin: 10px 0; }
 
-            /* コンテンツ部分 */
-            .step-content {
-                flex: 1;
-                min-width: 0;
-                width: auto;
-                margin: 0 !important;
-                border: none; padding: 20px; margin-top: -5px;
-            }
-            .step-content::before {
-                left: -10px !important; top: 15px; border-width: 10px 10px 10px 0 !important;
-                border-color: transparent #fff transparent transparent !important;
-                right: auto !important;
-            }
-            .step-item:nth-child(even) .step-content {
-                margin: 0 !important;
-                border: none;
-            }
+  /* Flow モバイル修正 */
+  .step-container { padding-left: 0; max-width: 100%; }
+  .step-container::before {
+    left: 20px; top: 0; height: calc(100% - 40px); transform: none; width: 4px;
+  }
+  .step-item { flex-direction: row; margin-bottom: 40px; align-items: flex-start; }
 
-            .step-content h3 { flex-direction: row; font-size: 18px; }
-            .step-icon { display: inline-block; color: var(--accent-color); font-size: 20px; }
-            .access-section { grid-template-columns: 1fr; }
-            .contact-area .btn { width: 100%; }
-        }
+  .step-icon-container {
+    display: flex; position: relative; left: auto; top: auto; transform: none;
+    width: 40px; height: 40px; margin-right: 15px;
+    flex-shrink: 0;
+  }
+  .step-number { width: 40px; height: 40px; font-size: 16px; background: #fff; border: 2px solid var(--primary-color); z-index: 2; }
 
-        /* --- Philosophy セクション専用（修正版：あなたのコード維持） --- */
-        .philosophy-box {
-            text-align: center;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0;
-            background: none;
-            border: none;
-            box-shadow: none;
-        }
-        .philosophy-content h3 {
-            font-size: clamp(22px, 3vw, 28px);
-            color: var(--primary-dark);
-            margin-bottom: 25px;
-            font-family: 'Klee One', cursive;
-            line-height: 1.6;
-        }
-        .philosophy-lead {
-            font-size: 1.15rem;
-            color: var(--text-color);
-            margin-bottom: 60px;
-            line-height: 2;
-        }
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        .philosophy-item {
-            background: #ffffff;
-            border-radius: 40px;
-            padding: 50px 35px;
-            text-align: center;
-            border: 1px solid #f0f7fb;
-            transition: all 0.4s ease;
-            position: relative;
-        }
-        .philosophy-item:hover {
-            transform: translateY(-12px);
-            border-color: var(--primary-color);
-            background: linear-gradient(to bottom, #fff, #f5fcff);
-        }
-        .philosophy-item::before {
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-            font-size: 32px;
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
-        }
-        .philosophy-item:nth-child(1)::before {
-            content: "\f004";
-            color: #FF7043;
-            background: #FFF3F0;
-        }
-        .philosophy-item:nth-child(2)::before {
-            content: "\f4d8";
-            color: var(--primary-color);
-            background: #E1F5FE;
-        }
-        .philosophy-item:nth-child(3)::before {
-            content: "\f185";
-            color: var(--accent-color);
-            background: #FFF8E1;
-        }
-        .philosophy-item h4 {
-            font-size: 1.35rem;
-            color: var(--primary-dark);
-            margin-bottom: 18px;
-            font-family: 'Klee One', cursive;
-        }
-        .philosophy-item p {
-            font-size: 1rem;
-            color: #607D8B;
-            text-align: left;
-            line-height: 1.8;
-        }
-        @media (max-width: 768px) {
-            .philosophy-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+  .step-content {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    margin: 0 !important;
+    border: none;
+    padding: 20px;
+    margin-top: -5px;
+  }
+  .step-content::before {
+    left: -10px !important; top: 15px;
+    border-width: 10px 10px 10px 0 !important;
+    border-color: transparent #fff transparent transparent !important;
+    right: auto !important;
+  }
+  .step-item:nth-child(even) .step-content {
+    margin: 0 !important;
+    border: none;
+  }
+
+  .step-content h3 { flex-direction: row; font-size: 18px; }
+  .step-icon { display: inline-block; color: var(--accent-color); font-size: 20px; }
+
+  .access-section { grid-template-columns: 1fr; }
+  .contact-area .btn { width: 100%; }
+}
+
+/* --- Philosophy セクション専用（あなたの維持版） --- */
+.philosophy-box {
+  text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.philosophy-content h3 {
+  font-size: clamp(22px, 3vw, 28px);
+  color: var(--primary-dark);
+  margin-bottom: 25px;
+  font-family: 'Klee One', cursive;
+  line-height: 1.6;
+}
+.philosophy-lead {
+  font-size: 1.15rem;
+  color: var(--text-color);
+  margin-bottom: 60px;
+  line-height: 2;
+}
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.philosophy-item {
+  background: #ffffff;
+  border-radius: 40px;
+  padding: 50px 35px;
+  text-align: center;
+  border: 1px solid #f0f7fb;
+  transition: all 0.4s ease;
+  position: relative;
+}
+.philosophy-item:hover {
+  transform: translateY(-12px);
+  border-color: var(--primary-color);
+  background: linear-gradient(to bottom, #fff, #f5fcff);
+}
+.philosophy-item::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  font-size: 32px;
+  width: 70px;
+  height: 70px;
+  border-radius: 20px;
+}
+.philosophy-item:nth-child(1)::before {
+  content: "\f004";
+  color: #FF7043;
+  background: #FFF3F0;
+}
+.philosophy-item:nth-child(2)::before {
+  content: "\f4d8";
+  color: var(--primary-color);
+  background: #E1F5FE;
+}
+.philosophy-item:nth-child(3)::before {
+  content: "\f185";
+  color: var(--accent-color);
+  background: #FFF8E1;
+}
+.philosophy-item h4 {
+  font-size: 1.35rem;
+  color: var(--primary-dark);
+  margin-bottom: 18px;
+  font-family: 'Klee One', cursive;
+}
+.philosophy-item p {
+  font-size: 1rem;
+  color: #607D8B;
+  text-align: left;
+  line-height: 1.8;
+}
+@media (max-width: 768px) {
+  .philosophy-grid { grid-template-columns: 1fr; }
+}
+</style>
+
 </head>
 
 <body>
