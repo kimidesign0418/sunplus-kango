@@ -690,7 +690,7 @@
 
     <!-- 1. ホーム (LP) -->
     <main id="page-home">
-        <section class="hero">
+        <section id="home" class="hero">
     <!-- ✅ ③ ヒーロー画像を挿入 -->
     <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ">
 
@@ -1065,7 +1065,7 @@
             const target = document.getElementById(pageId);
             if (target) {
                 target.style.display = 'block';
-                window.scrollTo({ top: 0, behavior: 'instant' });
+                window.scrollTo({ top: 0, behavior: 'auto' });
 
                 if (pageId !== 'page-home') {
                     const content = target.querySelector('.fade-in-up');
