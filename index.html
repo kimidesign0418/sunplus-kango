@@ -253,6 +253,20 @@
             align-items: center; text-align: center; padding: 20px;
             position: relative; overflow: hidden;
         }
+        /* ✅ ヒーロー文字ブロックを少し左へ（PCのみ） */
+.hero-inner{
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  transform: translateX(-6%);
+}
+
+/* ✅ スマホでは中央に戻す */
+@media (max-width: 768px){
+  .hero-inner{
+    transform: none;
+  }
+}
 
         /* ✅ ③ ヒーローに画像を挿入（背景用） */
         .hero-bg {
