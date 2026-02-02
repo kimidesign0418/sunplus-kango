@@ -1,58 +1,21 @@
+2月2日②
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- ====== CONFIG（ここだけ触ればOK）====== -->
-  <script>
-    const CONFIG = {
-      title: "精神科特化 訪問看護ステーション SunPlus｜神戸市・明石市",
-      description:
-        "訪問看護ステーションSunPlus（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護サービスを提供しています。うつ病・統合失調症など、心の不調を抱える方の在宅療養を支援します。",
-
-      area: "神戸市・明石市",
-      address: "〒651-2132 兵庫県神戸市西区森友1-12",
-
-      tel: "078-962-8017",
-      telLabel: "078-962-8017",
-      businessHours: "受付時間: 平日 9:00〜18:00",
-
-      // ★クライアントのメールに差し替えてください
-      contactEmail: "info@example.com",
-
-      // 画像（人物なしのイメージ画像推奨）
-      // ※この1ファイル版では「背景画像」として使います。画像URLまたは相対パスでOK
-      // 例: "./images/hero.jpg"（同階層に images/hero.jpg を置く）
-      images: {
-        hero: "", // 例: "./images/hero.jpg"
-        service1: "", // 例: "./images/service1.jpg"
-        service2: "",
-        service3: "",
-      },
-
-      // Google Map iframe src（あなたの現行コードを保持）
-      googleMapEmbedSrc:
-        "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.10428035937804!2d134.97903350740674!3d34.66307430159096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3554d4e9ac783adb%3A0x6d67da59fcd2f8c5!2z44CSNjUxLTIxMzIg5YW15bqr55yM56We5oi45biC6KW_5Yy65qOu5Y-L77yR5LiB55uu77yR77ySIOOCqOODhuODq-ODjeODqw!5e0!3m2!1sja!2sjp!4v1765719474517!5m2!1sja!2sjp",
-
-      instagramUrl: "#",
-      lineUrl: "#",
-
-      copyright: "© 2025 Sun ＋ Visiting Nursing Station. All Rights Reserved.",
-    };
-  </script>
-  <!-- ===================================== -->
-
-  <title>精神科特化 訪問看護ステーション SunPlus｜神戸市・明石市</title>
-  <meta name="description" content="訪問看護ステーションSunPlus（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護サービスを提供しています。うつ病・統合失調症など、心の不調を抱える方の在宅療養を支援します。">
+  <title>精神科特化 訪問看護ステーション Sun＋｜神戸市・明石市</title>
+  <meta name="description" content="訪問看護ステーションSun＋（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護サービスを提供しています。うつ病・統合失調症など、心の不調を抱える方の在宅療養を支援します。" />
 
   <!-- アイコン -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
   <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
     /* --- 基本設定 --- */
@@ -100,23 +63,9 @@
     .delay-3 { transition-delay: 0.3s; }
     .delay-4 { transition-delay: 0.4s; }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0) translateX(0); }
-      50% { transform: translateY(-20px) translateX(10px); }
-    }
     @keyframes spin-slow {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
-    }
-
-    .bubble {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(79, 195, 247, 0.2) 60%, rgba(79, 195, 247, 0.5) 100%);
-      box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.6), 0 0 10px rgba(79, 195, 247, 0.1);
-      animation: float 6s ease-in-out infinite;
-      pointer-events: none;
-      z-index: 0;
     }
 
     /* --- ヘッダー --- */
@@ -176,6 +125,7 @@
       margin-left: 2px;
     }
 
+    /* PCナビ */
     nav.desktop-nav ul { display: flex; gap: 30px; }
     nav.desktop-nav a {
       font-size: 15px;
@@ -211,7 +161,6 @@
       border-radius: 50%;
       backdrop-filter: blur(4px);
       transition: 0.3s;
-      border: none;
     }
     .hamburger span {
       display: block;
@@ -262,8 +211,9 @@
     .mobile-nav-overlay.active li:nth-child(5) a { transition-delay: 0.3s; }
     .mobile-nav-overlay.active li:nth-child(6) a { transition-delay: 0.35s; }
 
-    /* --- 共通 --- */
+    /* --- 共通コンポーネント --- */
     .section { padding: 100px 5%; max-width: 1100px; margin: 0 auto; }
+
     .section-title {
       text-align: center;
       font-size: 32px;
@@ -276,23 +226,40 @@
       display: block;
     }
     .section-title::before {
-      content: ''; position: absolute; top: -15px; left: 50%;
-      transform: translateX(-50%); width: 40px; height: 3px;
-      background-color: var(--accent-color); border-radius: 3px;
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent-color);
+      border-radius: 3px;
     }
     .section-title span {
-      display: block; font-size: 14px; color: #90A4AE;
-      margin-top: 10px; font-weight: normal; letter-spacing: 0.2em;
+      display: block;
+      font-size: 14px;
+      color: #90A4AE;
+      margin-top: 10px;
+      font-weight: normal;
+      letter-spacing: 0.2em;
       font-family: "Zen Maru Gothic", sans-serif;
     }
 
     .btn {
       display: inline-block;
       background: linear-gradient(45deg, var(--primary-color), var(--primary-dark));
-      color: white; padding: 16px 50px; border-radius: 50px;
-      font-weight: bold; box-shadow: 0 10px 25px rgba(79, 195, 247, 0.4);
-      font-size: 16px; border: none; cursor: pointer;
-      letter-spacing: 0.05em; position: relative; z-index: 10;
+      color: white;
+      padding: 16px 50px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 10px 25px rgba(79, 195, 247, 0.4);
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      position: relative;
+      z-index: 10;
       transition: all 0.3s ease;
     }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4); }
@@ -300,194 +267,149 @@
     /* --- HERO --- */
     .hero {
       background: linear-gradient(120deg, #E1F5FE 0%, #fff 100%);
-      height: 70vh; min-height: 500px;
-      display: flex; flex-direction: column; justify-content: center;
-      align-items: center; text-align: center; padding: 20px;
-      position: relative; overflow: hidden;
+      height: 70vh;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
     }
-    .hero.hero-has-img::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background-position:center;
-      background-size:cover;
-      opacity:0.16;
-      z-index:0;
-      filter:saturate(0.95);
+
+    /* ヒーロー文字（PCは少し左） */
+    .hero-inner{
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      transform: translateX(-6%);
     }
+
+    /* 背景画像 */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      z-index: 0;
+    }
+
     .hero h1 {
-      font-size: clamp(26px, 5.5vw, 52px); margin-bottom: 24px;
-      color: var(--primary-dark); line-height: 1.6; letter-spacing: 0.05em;
-      position: relative; z-index: 10; font-family: 'Klee One', cursive;
+      font-size: clamp(26px, 5.5vw, 52px);
+      margin-bottom: 24px;
+      color: var(--primary-dark);
+      line-height: 1.6;
+      letter-spacing: 0.05em;
+      position: relative;
+      z-index: 10;
+      font-family: 'Klee One', cursive;
     }
     .hero h1 .highlight {
-      color: var(--accent-color); font-weight: 600; position: relative;
+      color: var(--accent-color);
+      font-weight: 600;
+      position: relative;
       display: inline-block;
     }
     .hero h1 .highlight::after {
-      content: ''; position: absolute; bottom: 5px; left: 0;
-      width: 100%; height: 12px; background-color: rgba(255, 213, 79, 0.3);
-      z-index: -1; transform: skewX(-15deg);
+      content: '';
+      position: absolute;
+      bottom: 5px;
+      left: 0;
+      width: 100%;
+      height: 12px;
+      background-color: rgba(255, 213, 79, 0.3);
+      z-index: -1;
+      transform: skewX(-15deg);
     }
     .hero p {
-      font-size: clamp(14px, 3.5vw, 18px); color: var(--text-color);
-      margin-bottom: 40px; font-weight: 500; position: relative; z-index: 10;
+      font-size: clamp(14px, 3.5vw, 18px);
+      color: var(--text-color);
+      margin-bottom: 40px;
+      font-weight: 500;
+      position: relative;
+      z-index: 10;
     }
 
-    /* --- サービス --- */
+    /* --- Service --- */
     .services { background-color: #FAFDFF; }
-    .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-    .card {
-      background: #fff; border-radius: 20px; overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-      transition: 0.4s; border: 1px solid rgba(241, 248, 233, 0.5);
-    }
-    .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(79, 195, 247, 0.2); }
-    .card-img {
-      height: 220px; background-color: var(--bg-soft);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--primary-color); font-size: 60px; position: relative;
-    }
-    .card-img.has-img{ background-size:cover; background-position:center; color:rgba(255,255,255,0.95); }
-    .card-img::after {
-      content: ''; position: absolute; width: 120px; height: 120px;
-      background-color: #fff; border-radius: 50%; opacity: 0.3;
-    }
-    .card:nth-child(1) .card-img { color: #81C784; background-color: #F1F8E9; }
-    .card:nth-child(2) .card-img { color: #FF8A65; background-color: #FBE9E7; }
-    .card:nth-child(3) .card-img { color: #64B5F6; background-color: #E3F2FD; }
-    .card-body { padding: 30px; }
-    .card-title {
-      font-size: 20px; margin-bottom: 15px; color: var(--primary-dark);
-      font-weight: bold; font-family: 'Klee One', cursive;
-    }
-    .card-text { font-size: 15px; color: #666; margin-bottom: 20px; }
 
-    /* --- Flow --- */
-    .steps { background-color: var(--step-bg); }
-    .step-container { position: relative; padding-left: 0; max-width: 800px; margin: 0 auto; }
-    .step-container::before {
-      content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-      top: 20px; width: 4px; background-color: #E1F5FE; z-index: 0;
-      border-radius: 4px; height: calc(100% - 40px);
+    .service-grid{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      align-items: stretch;
     }
-    .step-item { display: flex; align-items: center; margin-bottom: 70px; position: relative; z-index: 1; }
-    .step-item:last-child { margin-bottom: 0; }
-    .step-icon-container {
-      width: 50px; height: 50px; flex-shrink: 0; margin: 0;
-      position: absolute; left: 50%; transform: translateX(-50%); z-index: 2;
+    .card{
+      background: #fff;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      transition: 0.4s;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
-    .step-number {
-      width: 50px; height: 50px; background-color: var(--step-bg);
-      color: var(--primary-dark); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: bold; font-size: 20px; font-family: 'Klee One', sans-serif;
-      box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.3), -5px -5px 10px #FFFFFF;
-      border: 2px solid #fff; transition: 0.3s;
+    .card:hover{
+      transform: translateY(-8px);
+      box-shadow: 0 20px 45px rgba(79, 195, 247, 0.18);
     }
-    .step-item:hover .step-number { transform: scale(1.15); color: var(--accent-color); }
-    .step-icon { display: none; }
-    .step-content {
-      text-align: left; background-color: #fff; padding: 25px 30px;
-      border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border-left: 5px solid var(--accent-color); width: calc(50% - 40px);
-      position: relative; margin-left: calc(50% + 40px); transition: 0.3s;
+    .card-img{
+      aspect-ratio: 4 / 3;
+      height: auto;
+      overflow: hidden;
+      position: relative;
+      background: var(--bg-soft);
     }
-    .step-item:nth-child(even) .step-content {
-      margin-left: 0; margin-right: calc(50% + 40px);
-      border-left: none; border-right: 5px solid var(--accent-color);
+    .card-img::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.05), rgba(0,0,0,0.12));
+      pointer-events:none;
     }
-    .step-content::before { content: ''; position: absolute; top: 15px; width: 0; height: 0; border-style: solid; }
-    .step-item:nth-child(odd) .step-content::before {
-      left: -10px; border-width: 10px 10px 10px 0; border-color: transparent #fff transparent transparent;
+    .card-img img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      transition: transform 0.4s ease;
     }
-    .step-item:nth-child(even) .step-content::before {
-      right: -10px; border-width: 10px 0 10px 10px; border-color: transparent transparent transparent #fff;
-    }
-    .step-content h3 {
-      font-size: 19px; color: var(--primary-dark); margin-bottom: 10px;
-      font-weight: bold; display: flex; align-items: center; gap: 10px;
-      font-family: 'Klee One', cursive;
-    }
+    .card:hover .card-img img{ transform: scale(1.06); }
 
-    /* Recruit */
-    .recruit-section { background-color: var(--bg-soft); text-align: center; }
-    .recruit-simple-box {
-      background-color: #fff;
-      padding: 50px 30px;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(3, 155, 229, 0.05);
-      border: 1px solid #E1F5FE;
+    .card-body{
+      padding: 18px 20px 22px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
-    .recruit-simple-box h3 {
-      font-size: 24px; color: var(--primary-dark); margin-bottom: 20px;
-      font-family: 'Klee One', cursive;
+    .card-title{
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.35;
+      letter-spacing: 0.02em;
     }
-    .recruit-simple-box p {
-      font-size: 16px; color: #555; margin-bottom: 30px; line-height: 2;
+    .card-text{
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.9;
+      color: #607D8B;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
     }
+    .card:nth-child(1) .card-img{ background:#F1F8E9; }
+    .card:nth-child(2) .card-img{ background:#FBE9E7; }
+    .card:nth-child(3) .card-img{ background:#E3F2FD; }
 
-    /* Contact */
-    .contact-area {
-      background-color: var(--bg-soft); padding: 40px; border-radius: 24px;
-      text-align: center; box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
-    }
-    .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-    .contact-note { margin-top: 10px; font-size: 14px; color: #607D8B; }
-    .tel { display: inline-block; margin-top: 12px; font-weight: 700; color: var(--primary-dark); }
-
-    /* --- SUB PAGE --- */
-    .sub-page-header {
-      background: linear-gradient(120deg, var(--bg-soft) 0%, #fff 100%);
-      padding: 80px 5% 60px; text-align: center;
-    }
-    .sub-page-header h2 {
-      font-family: 'Klee One', cursive; font-size: 36px; color: var(--primary-dark);
-      margin-bottom: 20px;
-    }
-    .sub-page-content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
-
-    .feature-box {
-      background: #fff; border-radius: 20px; padding: 40px; margin-bottom: 40px;
-      box-shadow: 0 5px 25px rgba(0,0,0,0.05); border: 1px solid #f0f0f0;
-    }
-    .feature-title {
-      font-size: 22px; color: var(--primary-dark); border-bottom: 2px solid var(--accent-color);
-      padding-bottom: 10px; margin-bottom: 20px; font-weight: bold; font-family: 'Klee One', cursive;
-    }
-    .qa-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 25px; }
-    .qa-q { font-weight: bold; color: var(--primary-dark); margin-bottom: 10px; display: flex; align-items: center; }
-    .qa-q::before { content: 'Q.'; font-size: 20px; color: var(--accent-color); margin-right: 10px; font-family: 'Caveat'; }
-    .qa-a { padding-left: 30px; font-size: 15px; color: #666; }
-
-    .policy-content h3 { font-size: 18px; margin: 30px 0 15px; color: #333; border-left: 4px solid var(--primary-color); padding-left: 10px; }
-    .policy-content p { margin-bottom: 15px; font-size: 14px; line-height: 1.8; color: #555; }
-
-    /* --- FOOTER --- */
-    footer {
-      background-color: var(--footer-bg); color: var(--footer-text);
-      padding: 60px 5% 20px; position: relative; overflow: hidden; margin-top: auto;
-    }
-    .footer-container {
-      max-width: 1100px; margin: 0 auto; display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
-      padding-bottom: 40px; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .footer-logo {
-      font-size: 36px; font-weight: 700; color: var(--footer-text);
-      display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
-      font-family: 'Caveat', cursive;
-    }
-    .footer-links h4 {
-      font-size: 16px; color: var(--footer-link); font-weight: bold;
-      margin-bottom: 15px;
-    }
-    .footer-links a { font-size: 14px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
-    .footer-links a:hover { opacity: 1; color: var(--accent-color); }
-    .footer-copy-area { text-align: center; padding-top: 20px; }
-    .footer-copy { font-size: 12px; opacity: 0.5; }
-
-    /* --- Philosophy（あなたの修正版） --- */
+    /* --- Philosophy（あなたの維持版） --- */
     .philosophy-box {
       text-align: center;
       max-width: 1100px;
@@ -570,7 +492,297 @@
       line-height: 1.8;
     }
 
-    /* --- モバイル --- */
+    /* --- Flow (PC) --- */
+    .steps { background-color: var(--step-bg); }
+
+    .step-container {
+      position: relative;
+      padding-left: 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .step-container::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 20px;
+      width: 4px;
+      background-color: #E1F5FE;
+      z-index: 0;
+      border-radius: 4px;
+      height: calc(100% - 40px);
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 70px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-item:last-child { margin-bottom: 0; }
+
+    .step-icon-container {
+      width: 50px;
+      height: 50px;
+      flex-shrink: 0;
+      margin: 0;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background-color: var(--step-bg);
+      color: var(--primary-dark);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 20px;
+      font-family: 'Klee One', sans-serif;
+      box-shadow: 5px 5px 10px rgba(163, 177, 198, 0.3), -5px -5px 10px #FFFFFF;
+      border: 2px solid #fff;
+      transition: 0.3s;
+    }
+    .step-item:hover .step-number { transform: scale(1.15); color: var(--accent-color); }
+
+    .step-icon { display: none; }
+
+    .step-content {
+      text-align: left;
+      background-color: #fff;
+      padding: 25px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border-left: 5px solid var(--accent-color);
+      width: calc(50% - 40px);
+      position: relative;
+      margin-left: calc(50% + 40px);
+      transition: 0.3s;
+    }
+    .step-item:nth-child(even) .step-content {
+      margin-left: 0;
+      margin-right: calc(50% + 40px);
+      border-left: none;
+      border-right: 5px solid var(--accent-color);
+    }
+    .step-content::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+    .step-item:nth-child(odd) .step-content::before {
+      left: -10px;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent #fff transparent transparent;
+    }
+    .step-item:nth-child(even) .step-content::before {
+      right: -10px;
+      border-width: 10px 0 10px 10px;
+      border-color: transparent transparent transparent #fff;
+    }
+    .step-content h3 {
+      font-size: 19px;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Klee One', cursive;
+    }
+
+    /* --- Recruit (Simple) --- */
+    .recruit-section { background-color: var(--bg-soft); text-align: center; }
+    .recruit-simple-box {
+      background-color: #fff;
+      padding: 50px 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(3, 155, 229, 0.05);
+      border: 1px solid #E1F5FE;
+    }
+    .recruit-simple-box h3 {
+      font-size: 24px;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+      font-family: 'Klee One', cursive;
+    }
+    .recruit-simple-box p {
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 30px;
+      line-height: 2;
+    }
+
+    /* --- Contact --- */
+    .contact-area {
+      background-color: var(--bg-soft);
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
+    }
+    .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .contact-note { margin-top: 6px; color: #556; font-size: 13px; }
+
+    /* ===============================
+       ✅ 追加：フォーム（ボタン押下で表示）
+       =============================== */
+    .contact-form-wrapper {
+      display: none;
+      margin-top: 26px;
+      animation: fadeInContact 0.4s ease forwards;
+      text-align: left;
+    }
+    @keyframes fadeInContact {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.18);
+      background: #fff;
+      font-family: inherit;
+      font-size: 14px;
+      outline: none;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(3,155,229,0.7);
+      box-shadow: 0 0 0 4px rgba(79,195,247,0.18);
+    }
+    .contact-form textarea { resize: vertical; }
+    .form-note {
+      font-size: 12px;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* --- SUB PAGE --- */
+    .sub-page-header {
+      background: linear-gradient(120deg, var(--bg-soft) 0%, #fff 100%);
+      padding: 80px 5% 60px;
+      text-align: center;
+    }
+    .sub-page-header h2 {
+      font-family: 'Klee One', cursive;
+      font-size: 36px;
+      color: var(--primary-dark);
+      margin-bottom: 20px;
+    }
+    .sub-page-content { padding: 60px 5%; max-width: 900px; margin: 0 auto; }
+
+    .feature-box {
+      background: #fff;
+      border-radius: 20px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+      border: 1px solid #f0f0f0;
+    }
+    .feature-title {
+      font-size: 22px;
+      color: var(--primary-dark);
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-weight: bold;
+      font-family: 'Klee One', cursive;
+    }
+    .feature-list li {
+      margin-bottom: 15px;
+      padding-left: 20px;
+      position: relative;
+      font-size: 16px;
+    }
+    .feature-list li::before {
+      content: '●';
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .qa-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 25px; }
+    .qa-q { font-weight: bold; color: var(--primary-dark); margin-bottom: 10px; display: flex; align-items: center; }
+    .qa-q::before { content: 'Q.'; font-size: 20px; color: var(--accent-color); margin-right: 10px; font-family: 'Caveat'; }
+    .qa-a { padding-left: 30px; font-size: 15px; color: #666; }
+
+    /* ポリシー */
+    .policy-content h3 {
+      font-size: 18px;
+      margin: 30px 0 15px;
+      color: #333;
+      border-left: 4px solid var(--primary-color);
+      padding-left: 10px;
+    }
+    .policy-content p { margin-bottom: 15px; font-size: 14px; line-height: 1.8; color: #555; }
+
+    /* --- FOOTER --- */
+    footer {
+      background-color: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 60px 5% 20px;
+      position: relative;
+      overflow: hidden;
+      margin-top: auto;
+    }
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .footer-logo {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--footer-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+      font-family: 'Caveat', cursive;
+    }
+    .footer-links h4 {
+      font-size: 16px;
+      color: var(--footer-link);
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    .footer-links a { font-size: 14px; opacity: 0.7; transition: 0.3s; cursor: pointer; }
+    .footer-links a:hover { opacity: 1; color: var(--accent-color); }
+    .footer-copy-area { text-align: center; padding-top: 20px; }
+    .footer-copy { font-size: 12px; opacity: 0.5; }
+
+    .footer-brand{
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .footer-brand .plus-hand{
+      width: 0.85em;
+      height: 0.85em;
+      transform: translateY(1px);
+    }
+
+    /* =========================================
+       ✅ モバイル最終調整（まとめ）
+       ========================================= */
     @media (max-width: 768px) {
       header { padding: 12px 5%; }
       .brand-name { font-size: 28px; }
@@ -578,57 +790,96 @@
       .sun-icon { width: 32px; height: 32px; }
       nav.desktop-nav { display: none; }
       .hamburger { display: block; }
+
       .hero { height: auto; padding: 120px 20px 60px; }
       .section { padding: 60px 5%; }
 
-      /* Flow モバイル修正 */
+      /* ヒーロー文字中央へ */
+      .hero-inner{ transform: none; }
+
+      /* ✅ フッターを1カラムに */
+      .footer-container{
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+      .footer-logo-area{
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .footer-logo{
+        justify-content: center;
+        margin: 0 auto 10px;
+      }
+      .footer-links{ text-align: center; }
+      .footer-links ul{ padding: 0; }
+      .footer-links li{ margin: 10px 0; }
+
+      /* Flow モバイル */
       .step-container { padding-left: 0; max-width: 100%; }
-      .step-container::before { left: 20px; top: 0; height: calc(100% - 40px); transform: none; width: 4px; }
+      .step-container::before {
+        left: 20px; top: 0; height: calc(100% - 40px); transform: none; width: 4px;
+      }
       .step-item { flex-direction: row; margin-bottom: 40px; align-items: flex-start; }
 
       .step-icon-container {
         display: flex; position: relative; left: auto; top: auto; transform: none;
-        width: 40px; height: 40px; margin-right: 15px; flex-shrink: 0;
+        width: 40px; height: 40px; margin-right: 15px;
+        flex-shrink: 0;
       }
       .step-number { width: 40px; height: 40px; font-size: 16px; background: #fff; border: 2px solid var(--primary-color); z-index: 2; }
 
       .step-content {
-        flex: 1; min-width: 0; width: auto; margin: 0 !important;
-        border: none; padding: 20px; margin-top: -5px;
+        flex: 1;
+        min-width: 0;
+        width: auto;
+        margin: 0 !important;
+        border: none;
+        padding: 20px;
+        margin-top: -5px;
       }
       .step-content::before {
-        left: -10px !important; top: 15px; border-width: 10px 10px 10px 0 !important;
+        left: -10px !important; top: 15px;
+        border-width: 10px 10px 10px 0 !important;
         border-color: transparent #fff transparent transparent !important;
         right: auto !important;
       }
-      .step-item:nth-child(even) .step-content { margin: 0 !important; border: none; }
+      .step-item:nth-child(even) .step-content {
+        margin: 0 !important;
+        border: none;
+      }
 
       .step-content h3 { flex-direction: row; font-size: 18px; }
       .step-icon { display: inline-block; color: var(--accent-color); font-size: 20px; }
 
-      .footer-container { grid-template-columns: 1fr; text-align: center; }
       .access-section { grid-template-columns: 1fr; }
       .contact-area .btn { width: 100%; }
 
+      /* Philosophy グリッド */
       .philosophy-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 
 <body>
-
   <!-- ヘッダー -->
   <header>
     <div class="logo" onclick="showPage('page-home')">
       <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
-        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+              stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
       </svg>
+
       <div class="logo-text-group">
-        <span class="brand-name" style="display: flex; align-items: center; gap: 4px;">
+        <span class="brand-name" style="display:flex; align-items:center; gap:4px;">
           Sun
-          <svg width="0.85em" height="0.85em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="transform: translateY(1px);">
-            <path d="M12 4.5 C 13 8, 11 16, 12 19.5 M4.5 12 C 8 13, 16 11, 19.5 12" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg width="0.85em" height="0.85em" viewBox="0 0 24 24" fill="none"
+               xmlns="http://www.w3.org/2000/svg" style="transform: translateY(1px);">
+            <path d="M12 4.5 C 13 8, 11 16, 12 19.5 M4.5 12 C 8 13, 16 11, 19.5 12"
+                  stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
         <span class="brand-sub">訪問看護ステーション</span>
@@ -646,9 +897,9 @@
       </ul>
     </nav>
 
-    <button class="hamburger" id="hamburger" type="button" aria-label="メニュー">
+    <div class="hamburger" id="hamburger">
       <span></span><span></span><span></span>
-    </button>
+    </div>
   </header>
 
   <div class="mobile-nav-overlay" id="mobile-nav">
@@ -668,21 +919,28 @@
 
   <!-- 1. ホーム (LP) -->
   <main id="page-home">
-    <div id="home"></div>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ" />
 
-    <section class="hero" id="hero">
-      <div class="bubble" style="width: 140px; height: 140px; top: 10%; left: 5%;"></div>
-      <div class="bubble" style="width: 90px; height: 90px; top: 45%; left: 15%;"></div>
-      <div class="bubble" style="width: 160px; height: 160px; top: 55%; right: 8%;"></div>
+      <div class="hero-inner">
+        <h1 class="fade-in-up">
+          心ほどける<span class="highlight">安心</span>を、<br />
+          日々の暮らしに<span class="highlight">プラス</span>する。
+        </h1>
 
-      <h1 class="fade-in-up">心ほどける<span class="highlight">安心</span>を、<br>日々の暮らしに<span class="highlight">プラス</span>する。</h1>
-      <p class="fade-in-up delay-1">私たちは利用者様の「その人らしい生活」に<br>そっと寄り添うパートナーです。</p>
+        <p class="fade-in-up delay-1">
+          私たちは利用者様の「その人らしい生活」に<br />
+          そっと寄り添うパートナーです。
+        </p>
 
-      <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">
-        詳しく見る <i class="fas fa-arrow-right"></i>
-      </button>
+        <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">
+          詳しく見る <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
     </section>
 
+    <!-- Philosophy -->
     <section id="philosophy" class="section fade-in-up">
       <div class="section-title">Philosophy<span>私たちの想い</span></div>
 
@@ -690,7 +948,7 @@
         <div class="philosophy-content">
           <h3>三つの「良し」で、この街にぬくもりの輪を</h3>
           <p class="philosophy-lead">
-            SunPlus訪問看護ステーションは、<br>
+            Sun＋訪問看護ステーションは、<br />
             関わるすべての人が笑顔になれる場所でありたいと考えています。
           </p>
 
@@ -698,34 +956,41 @@
             <div class="philosophy-item">
               <h4>ご利用者様とご家族へ</h4>
               <p>
-                「あなたに会えて良かった」と言っていただけるような、心に寄り添う看護を。ご家族の不安も包み込み、日々の暮らしに彩りと安心を添えます。
+                「あなたに会えて良かった」と言っていただけるような、心に寄り添う看護を。
+                ご家族の不安も包み込み、日々の暮らしに彩りと安心を添えます。
               </p>
             </div>
 
             <div class="philosophy-item">
               <h4>共に働く仲間へ</h4>
               <p>
-                支える側の私たちが、一番輝ける場所へ。一人ひとりのライフスタイルを大切にし、チーム一丸となって成長できる喜びを分かち合います。
+                支える側の私たちが、一番輝ける場所へ。
+                一人ひとりのライフスタイルを大切にし、チーム一丸となって成長できる喜びを分かち合います。
               </p>
             </div>
 
             <div class="philosophy-item">
               <h4>私たちが暮らす地域へ</h4>
               <p>
-                この街を照らす「太陽」のような明るく、頼れる存在を目指します。地域のネットワークを強め、次世代まで続く安心な暮らしの基盤を共に築いていきます。
+                この街を照らす「太陽」のような明るく、頼れる存在を目指します。
+                地域のネットワークを強め、次世代まで続く安心な暮らしの基盤を共に築いていきます。
               </p>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
+    <!-- Service -->
     <section id="service" class="section services fade-in-up">
       <div class="section-title">Service<span>訪問看護でできること</span></div>
 
       <div class="service-grid">
         <div class="card fade-in-up delay-1">
-          <div class="card-img" id="serviceImg1"><i class="fas fa-home"></i></div>
+          <div class="card-img">
+            <img src="service-daily.jpg" loading="lazy" alt="窓辺でコーヒーを持つ手元の写真" />
+          </div>
           <div class="card-body">
             <h3 class="card-title">日常生活へのサポート</h3>
             <p class="card-text">規則正しい生活リズムの確立、食事・睡眠・清潔の援助など、生活基盤作りを支援します。</p>
@@ -733,7 +998,9 @@
         </div>
 
         <div class="card fade-in-up delay-2">
-          <div class="card-img" id="serviceImg2"><i class="fas fa-capsules"></i></div>
+          <div class="card-img">
+            <img src="service-medical.jpg" loading="lazy" alt="配薬カレンダーの写真" />
+          </div>
           <div class="card-body">
             <h3 class="card-title">病状の観察と服薬支援</h3>
             <p class="card-text">症状の変化を早期に察知し、医療機関と連携。服薬管理を行い、確実な治療継続を支えます。</p>
@@ -741,7 +1008,9 @@
         </div>
 
         <div class="card fade-in-up delay-3">
-          <div class="card-img" id="serviceImg3"><i class="fas fa-comment-alt"></i></div>
+          <div class="card-img">
+            <img src="service-mental.jpg" loading="lazy" alt="カウンセリングの写真" />
+          </div>
           <div class="card-body">
             <h3 class="card-title">心理的なカウンセリング</h3>
             <p class="card-text">不安や孤独感など、心の内を自由に話せる安心な場を提供し、共に回復への道を歩みます。</p>
@@ -750,6 +1019,7 @@
       </div>
     </section>
 
+    <!-- Flow -->
     <section id="flow" class="section steps fade-in-up">
       <div class="section-title">Flow<span>ご利用開始までの安心ステップ</span></div>
 
@@ -788,36 +1058,35 @@
       </div>
     </section>
 
+    <!-- Recruit -->
     <section id="recruit" class="section recruit-section fade-in-up">
       <div class="section-title">Recruit<span>一緒に働く仲間を募集中</span></div>
 
       <div class="recruit-simple-box">
         <h3 class="fade-in-up">看護師（正社員・パート）募集中</h3>
         <p class="fade-in-up delay-1">
-          私たちと一緒に、利用者様の「その人らしい生活」を支えませんか？<br>
-          精神科未経験の方や、子育て中の方も歓迎しております。<br>
+          私たちと一緒に、利用者様の「その人らしい生活」を支えませんか？<br />
+          精神科未経験の方や、子育て中の方も歓迎しております。<br />
           勤務時間や条件など、まずはお気軽にご相談ください。
         </p>
         <a href="#contact" class="btn fade-in-up delay-2">採用について問い合わせる <i class="fas fa-envelope"></i></a>
       </div>
     </section>
 
+    <!-- Contact（✅ボタンでフォームを開く版） -->
     <section id="contact" class="section">
       <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
 
       <div class="access-section">
         <div class="info-item fade-in-up delay-1">
           <h3><i class="fas fa-map-marker-alt"></i> Access</h3>
-          <p id="addressText">（住所）</p>
+          <p>〒651-2132 兵庫県神戸市西区森友1-12</p>
 
           <div style="width: 100%; height: 200px; margin-top: 20px; border-radius: 12px; overflow: hidden;">
-            <iframe id="mapFrame"
-              src=""
-              width="100%"
-              height="100%"
-              style="border:0;"
-              allowfullscreen=""
-              loading="lazy"
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.10428035937804!2d134.97903350740674!3d34.66307430159096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1"
+              width="100%" height="100%" style="border:0;"
+              allowfullscreen="" loading="lazy"
               referrerpolicy="no-referrer-when-downgrade">
             </iframe>
           </div>
@@ -827,20 +1096,41 @@
           <h3>お問い合わせ・ご相談</h3>
           <p>お気軽にご連絡ください</p>
 
-          <a href="#" id="telLink" class="tel">
-            <i class="fas fa-phone-alt" style="font-size: 0.8em; margin-right: 10px;"></i>
-            <span id="telText">000-0000-0000</span>
-          </a>
-
-          <p class="contact-note" id="bizHours">受付時間</p>
-
-          <!-- 「フォーム」ボタン：いまはメール起動（あとでフォーム実装へ差し替え可能） -->
-          <a href="#" id="mailBtn" class="btn" style="background: #fff; color: var(--primary-color); border: 2px solid var(--primary-color);">
-            フォームからのお問い合わせ
-          </a>
-          <p class="contact-note" style="margin-top:10px; opacity:0.8;">
-            ※クリックするとメール作成画面が開きます（迷惑メール対策のため）
+          <p style="font-size: 18px; margin: 10px 0;">
+            <i class="fas fa-phone-alt" style="font-size:0.9em; margin-right: 8px;"></i>
+            <a href="tel:078-962-8017">078-962-8017</a>
           </p>
+
+          <p class="contact-note">受付時間: 平日 9:00〜18:00</p>
+
+          <!-- ✅ ここが「フォームを開くボタン」 -->
+          <button class="btn" type="button" onclick="openContactForm()">
+            フォームからのお問い合わせ
+          </button>
+
+          <!-- ✅ フォーム（最初は閉じている） -->
+          <div id="contact-form-wrapper" class="contact-form-wrapper">
+            <form
+              class="contact-form"
+              action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+              method="POST"
+            >
+              <input type="text" name="name" placeholder="お名前（例：山田 太郎）" required />
+              <input type="email" name="email" placeholder="メールアドレス" required />
+              <textarea name="message" rows="5" placeholder="ご相談内容をご自由にお書きください" required></textarea>
+
+              <!-- 迷惑送信対策（触らない） -->
+              <input type="text" name="_gotcha" style="display:none" />
+
+              <!-- 件名（任意） -->
+              <input type="hidden" name="_subject" value="【Sun＋HP】お問い合わせが届きました" />
+
+              <button type="submit" class="btn" style="width:100%;">送信する</button>
+
+              <p class="form-note">※送信後、入力内容はクライアント様のメールへ届きます。</p>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>
@@ -849,32 +1139,58 @@
   <!-- 2. 詳細ページ -->
   <div id="page-detail" style="display: none;">
     <div class="sub-page-header">
-      <h2>About Sun Plus</h2>
+      <h2>About Sun＋</h2>
       <p>私たちについて、もっと詳しく</p>
     </div>
 
     <div class="sub-page-content fade-in-up">
       <div class="feature-box">
+        <h3 class="feature-title">Sun＋について</h3>
+        <p style="max-width: 760px; margin: 0 auto; color: #607D8B; line-height: 2;">
+          Sun＋は、精神科に特化した訪問看護ステーションです。<br>
+          うつ・統合失調症・不安・依存など、心の不調を抱える方が、住み慣れたご自宅で<br>
+          「その人らしい暮らし」を続けられるよう、医療と生活の両面から支えます。<br><br>
+
+          私たちが大切にしているのは、“症状を治す”だけではなく、<br>
+          <strong>「今日を安心して終えられる」</strong>時間を、少しずつ増やしていくこと。<br>
+          体調、気分、睡眠、服薬、家族関係、孤独感――心の状態は生活と深くつながっています。<br>
+          だからこそSun＋は、対話を中心に、日常の整えを丁寧に伴走します。<br><br>
+
+          そして軸にあるのが、三つの「良し」。<br>
+          <strong>ご利用者様とご家族に良し</strong>、<strong>共に働く仲間に良し</strong>、<strong>地域に良し</strong>。<br>
+          この想いを、日々のケアの中で“具体的な行動”として積み重ねています。
+        </p>
+      </div>
+
+      <div class="feature-box">
         <h3 class="feature-title">私たちが大切にしている3つのこと</h3>
 
         <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">1. 「対話」を中心としたケア</h4>
-          <p style="font-size: 15px; color: #555; line-height: 1.8;">
-            精神科訪問看護において最も重要なのは、利用者様との信頼関係です。私たちは医療的な処置だけでなく、日々の会話や何気ない相談時間を大切にし、心の機微に寄り添います。
+          <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">1. 心の声に、そっと耳を傾ける（対話中心のケア）</h4>
+          <p style="font-size: 15px; color: #555; line-height: 1.9;">
+            精神科訪問看護で何より大切なのは、安心できる関係性です。<br>
+            その日の体調や気分、不安や迷い。言葉にならない気持ちも、急がず一緒に受け止めます。<br><br>
+            対話を軸にしながら、服薬状況や睡眠・食事などの日常も確認し、<br>
+            「今日はここまでできた」と感じられる小さな達成を積み重ねます。<br>
+            ご家族の不安や負担のご相談にも、丁寧に寄り添います。
           </p>
         </div>
 
         <div style="margin-bottom: 30px;">
-          <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">2. 地域との連携ネットワーク</h4>
-          <p style="font-size: 15px; color: #555; line-height: 1.8;">
-            主治医、行政、相談支援専門員など、関係機関と密に連携を取り合います。利用者様が地域で孤立することなく、包括的な支援を受けられる体制づくりに尽力しています。
+          <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">2. ひとりにしない支援（地域との連携）</h4>
+          <p style="font-size: 15px; color: #555; line-height: 1.9;">
+            主治医や行政、相談支援専門員など、関係機関と連携しながら支援を行います。<br>
+            状態の変化を早めに共有し、必要な支援が途切れないよう調整します。<br><br>
+            利用者様が地域の中で孤立することなく、安心して暮らし続けられる環境づくりを大切にしています。
           </p>
         </div>
 
         <div>
-          <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">3. スタッフの多様性と専門性</h4>
-          <p style="font-size: 15px; color: #555; line-height: 1.8;">
-            精神科病院経験者だけでなく、多様なバックグラウンドを持つスタッフが在籍。多角的な視点から、その人らしさを引き出すアプローチを提案します。
+          <h4 style="color: var(--primary-dark); font-weight: bold; margin-bottom: 10px;">3. 支える人が、安心して働ける場所</h4>
+          <p style="font-size: 15px; color: #555; line-height: 1.9;">
+            良い看護は、安心して働ける環境から生まれると考えています。<br>
+            スタッフ同士が相談しやすく、学び合えるチームづくりを大切にしています。<br><br>
+            精神科が初めての方も無理なく成長できるよう、同行訪問やケース共有を通じて丁寧にサポートします。
           </p>
         </div>
       </div>
@@ -915,7 +1231,7 @@
     </div>
 
     <div class="sub-page-content policy-content fade-in-up">
-      <p>Sun Plus 訪問看護ステーション（以下、「当ステーション」）は、利用者様の個人情報を適切に取り扱うことが重要な社会的責務であると認識し、以下の通りプライバシーポリシーを定めます。</p>
+      <p>Sun＋訪問看護ステーション（以下、「当ステーション」）は、利用者様の個人情報を適切に取り扱うことが重要な社会的責務であると認識し、以下の通りプライバシーポリシーを定めます。</p>
 
       <h3>1. 個人情報の取得について</h3>
       <p>当ステーションは、業務上必要な範囲内で、かつ適法で公正な手段により個人情報を取得します。</p>
@@ -930,10 +1246,9 @@
       <p>個人情報の漏洩、滅失、毀損などを防止するため、適切な安全管理措置を講じます。また、職員に対する教育・啓発活動を実施し、個人情報の保護に努めます。</p>
 
       <h3>5. お問い合わせ窓口</h3>
-      <p>
-        個人情報の取り扱いに関するお問い合わせは、下記窓口までご連絡ください。<br>
-        <strong>Sun＋ 訪問看護ステーション 管理者</strong><br>
-        電話：<span id="privacyTel"></span>
+      <p>個人情報の取り扱いに関するお問い合わせは、下記窓口までご連絡ください。<br />
+        <strong>Sun＋ 訪問看護ステーション 管理者</strong><br />
+        電話：078-962-8017
       </p>
 
       <div style="text-align: center; margin-top: 50px;">
@@ -949,14 +1264,23 @@
         <div class="footer-logo">
           <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                  stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
           </svg>
-          Sun＋
+
+          <span class="footer-brand">
+            Sun
+            <svg class="plus-hand" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M12 4.5 C 13 8, 11 16, 12 19.5 M4.5 12 C 8 13, 16 11, 19.5 12"
+                    stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </div>
+
         <p class="footer-title">訪問看護ステーション</p>
         <div class="footer-info">
-          <p id="footerAddress"></p>
-          <a href="#" id="footerTel" class="tel-link"></a>
+          <p>〒651-2132 兵庫県神戸市西区森友1-12</p>
+          <a href="tel:078-962-8017" class="tel-link">078-962-8017</a>
         </div>
       </div>
 
@@ -964,7 +1288,7 @@
         <h4>Menu</h4>
         <ul>
           <li><a onclick="showPage('page-home')">ホーム</a></li>
-          <li><a onclick="showPage('page-detail')">SunPlusについて</a></li>
+          <li><a onclick="showPage('page-detail')">Sun＋について</a></li>
           <li><a href="#service">サービス</a></li>
         </ul>
       </div>
@@ -982,85 +1306,18 @@
       <div class="footer-links">
         <h4>Social</h4>
         <ul>
-          <li><a id="igLink" href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a id="lineLink" href="#"><i class="fab fa-line"></i> LINE公式</a></li>
+          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+          <li><a href="#"><i class="fab fa-line"></i> LINE公式</a></li>
         </ul>
       </div>
     </div>
 
     <div class="footer-copy-area">
-      <p class="footer-copy" id="copyrightText"></p>
+      <p class="footer-copy">&copy; 2025 Sun＋ Visiting Nursing Station. All Rights Reserved.</p>
     </div>
   </footer>
 
   <script>
-    // ===== CONFIG反映（meta / contact / map / images）=====
-    (function applyConfig(){
-      document.title = CONFIG.title;
-
-      // meta description更新（既存のmetaを置換）
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if(metaDesc) metaDesc.setAttribute('content', CONFIG.description);
-
-      // Contact反映
-      document.getElementById('addressText').textContent = CONFIG.address;
-      document.getElementById('footerAddress').textContent = CONFIG.address;
-
-      const telLink = document.getElementById('telLink');
-      const footerTel = document.getElementById('footerTel');
-      document.getElementById('telText').textContent = CONFIG.telLabel;
-      document.getElementById('privacyTel').textContent = CONFIG.telLabel;
-      document.getElementById('bizHours').textContent = CONFIG.businessHours;
-
-      telLink.href = 'tel:' + CONFIG.tel;
-      footerTel.href = 'tel:' + CONFIG.tel;
-      footerTel.textContent = CONFIG.telLabel;
-
-      // Map
-      const map = document.getElementById('mapFrame');
-      map.src = CONFIG.googleMapEmbedSrc;
-
-      // Mail button
-      const mailBtn = document.getElementById('mailBtn');
-      const subject = encodeURIComponent("【お問い合わせ】SunPlus 訪問看護ステーション");
-      mailBtn.href = `mailto:${CONFIG.contactEmail}?subject=${subject}`;
-
-      // Social
-      document.getElementById('igLink').href = CONFIG.instagramUrl;
-      document.getElementById('lineLink').href = CONFIG.lineUrl;
-
-      // Copyright
-      document.getElementById('copyrightText').textContent = CONFIG.copyright;
-
-      // Hero image（任意）
-      if(CONFIG.images.hero){
-        const hero = document.getElementById('hero');
-        hero.classList.add('hero-has-img');
-        hero.style.setProperty('--hero-img', `url("${CONFIG.images.hero}")`);
-        hero.style.position = "relative";
-        hero.classList.add('hero-has-img');
-        hero.style.setProperty('background', hero.style.background); // keep existing
-        hero.style.setProperty('--hero-img', `url("${CONFIG.images.hero}")`);
-        hero.style.setProperty('overflow', 'hidden');
-        hero.style.setProperty('isolation', 'isolate');
-        hero.style.setProperty('zIndex', '0');
-        // inject background via ::before
-        const css = document.createElement('style');
-        css.textContent = `.hero.hero-has-img::before{background-image: var(--hero-img);}`;
-        document.head.appendChild(css);
-      }
-
-      // Service images（任意）
-      const s1 = document.getElementById('serviceImg1');
-      const s2 = document.getElementById('serviceImg2');
-      const s3 = document.getElementById('serviceImg3');
-
-      if(CONFIG.images.service1){ s1.classList.add('has-img'); s1.style.backgroundImage = `url("${CONFIG.images.service1}")`; }
-      if(CONFIG.images.service2){ s2.classList.add('has-img'); s2.style.backgroundImage = `url("${CONFIG.images.service2}")`; }
-      if(CONFIG.images.service3){ s3.classList.add('has-img'); s3.style.backgroundImage = `url("${CONFIG.images.service3}")`; }
-    })();
-
-    // ===== ハンバーガー =====
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobile-nav');
 
@@ -1070,7 +1327,15 @@
     }
     hamburger.addEventListener('click', toggleMenu);
 
-    // ===== ページ切り替え（あなたのまま）=====
+    // ✅ 追加：フォームを開く
+    function openContactForm() {
+      const form = document.getElementById('contact-form-wrapper');
+      if (!form) return;
+      form.style.display = 'block';
+      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // --- ページ切り替え機能 (SPA風) ---
     function showPage(pageId) {
       document.getElementById('page-home').style.display = 'none';
       document.getElementById('page-detail').style.display = 'none';
@@ -1079,7 +1344,7 @@
       const target = document.getElementById(pageId);
       if (target) {
         target.style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'instant' });
+        window.scrollTo({ top: 0, behavior: 'auto' });
 
         if (pageId !== 'page-home') {
           const content = target.querySelector('.fade-in-up');
@@ -1091,9 +1356,9 @@
       }
     }
 
-    // ===== アンカーリンク制御 =====
+    // リンク制御（ヘッダー & モバイル）
     document.querySelectorAll('a[href^="#"], .mobile-nav-content a').forEach(link => {
-      link.addEventListener('click', function (e) {
+      link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (!href) return;
 
@@ -1104,26 +1369,24 @@
 
         if (targetId === '#home') {
           showPage('page-home');
-          return;
+        } else {
+          document.getElementById('page-home').style.display = 'block';
+          document.getElementById('page-detail').style.display = 'none';
+          document.getElementById('page-privacy').style.display = 'none';
+
+          setTimeout(() => {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const headerHeight = document.querySelector('header').offsetHeight;
+              const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+              window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+          }, 10);
         }
-
-        // まずホームを表示してからスクロール
-        document.getElementById('page-home').style.display = 'block';
-        document.getElementById('page-detail').style.display = 'none';
-        document.getElementById('page-privacy').style.display = 'none';
-
-        setTimeout(() => {
-          const targetElement = document.querySelector(targetId);
-          if (targetElement) {
-            const headerHeight = document.querySelector('header').offsetHeight;
-            const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
-            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
-          }
-        }, 10);
       });
     });
 
-    // ===== Intersection Observer =====
+    // Intersection Observer（スクロールアニメ）
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -1135,7 +1398,9 @@
     }
     observeElements();
 
-    window.addEventListener('load', () => observeElements());
+    window.addEventListener('load', () => {
+      observeElements();
+    });
   </script>
 </body>
 </html>
