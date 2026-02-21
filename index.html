@@ -285,6 +285,29 @@
       transform: translateX(-6%);
     }
 
+    /* ✅ 追加：ヒーローのバッジ（精神科特化を静かに明示） */
+    .hero-badge{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(3,155,229,0.12);
+      color: #607D8B;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-badge i{
+      color: var(--accent-color);
+      font-size: 0.95em;
+    }
+
     /* 背景画像 */
     .hero-bg {
       position: absolute;
@@ -630,6 +653,33 @@
     .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
     .contact-note { margin-top: 6px; color: #556; font-size: 13px; }
 
+    /* ✅ 追加：Access側もカード化（地図を消してもスカスカに見えない） */
+    .info-item{
+      background: #fff;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(3,155,229,0.05);
+      border: 1px solid #E1F5FE;
+    }
+    .info-item h3{
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+      font-family: 'Klee One', cursive;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .access-note{
+      margin-top: 14px;
+      font-size: 13px;
+      color: #607D8B;
+      line-height: 1.9;
+      background: #F7FAFF;
+      border: 1px solid rgba(79,195,247,0.2);
+      padding: 12px 14px;
+      border-radius: 14px;
+    }
+
     /* ===============================
        ✅ 追加：フォーム（ボタン押下で表示）
        =============================== */
@@ -922,17 +972,24 @@
       <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ" />
 
       <div class="hero-inner">
-        <h1 class="fade-in-up">
-          心ほどける<span class="highlight">安心</span>を、<br />
-          日々の暮らしに<span class="highlight">プラス</span>する。
+        <!-- ✅ 修正：精神科特化を“静かに”明示 -->
+        <div class="hero-badge fade-in-up">
+          <i class="fas fa-sun" aria-hidden="true"></i>
+          精神科に特化した訪問看護
+        </div>
+
+        <!-- ✅ 修正：デザイン重視 × Sun＋（光） -->
+        <h1 class="fade-in-up delay-1">
+          こころに、<br />
+          あたたかな<span class="highlight">光</span>を。
         </h1>
 
-        <p class="fade-in-up delay-1">
-          私たちは利用者様の「その人らしい生活」に<br />
-          そっと寄り添うパートナーです。
+        <p class="fade-in-up delay-2">
+          不安に寄り添い、日々の暮らしをそっと照らします。<br />
+          神戸市・明石市を中心に在宅で支援します。
         </p>
 
-        <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">
+        <button onclick="showPage('page-detail')" class="btn fade-in-up delay-3">
           詳しく見る <i class="fas fa-arrow-right"></i>
         </button>
       </div>
@@ -1076,17 +1133,14 @@
       <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
 
       <div class="access-section">
+        <!-- ✅ 修正：Google地図を削除し、自然な情報カードに -->
         <div class="info-item fade-in-up delay-1">
           <h3><i class="fas fa-map-marker-alt"></i> Access</h3>
           <p>〒651-2132 兵庫県神戸市西区森友1-12</p>
 
-          <div style="width: 100%; height: 200px; margin-top: 20px; border-radius: 12px; overflow: hidden;">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d205.10428035937804!2d134.97903350740674!3d34.66307430159096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1"
-              width="100%" height="100%" style="border:0;"
-              allowfullscreen="" loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+          <div class="access-note">
+            ※クライアント様のご意向により、当サイトではGoogle地図の掲載をしておりません。<br />
+            ご来所が必要な場合は、お問い合わせ時に詳しいご案内をいたします。
           </div>
         </div>
 
