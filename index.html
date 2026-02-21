@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>精神科特化 訪問看護ステーション Sun＋｜神戸市・明石市</title>
-  <meta name="description" content="訪問看護ステーションSun＋（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護サービスを提供しています。うつ病・統合失調症など、心の不調を抱える方の在宅療養を支援します。" />
+  <meta name="description" content="訪問看護ステーションSun＋（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護を提供しています。こころの不安に寄り添い、ご自宅での暮らしをそっと支えます。" />
 
   <!-- アイコン -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
@@ -653,7 +653,7 @@
     .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
     .contact-note { margin-top: 6px; color: #556; font-size: 13px; }
 
-    /* ✅ 追加：Access側もカード化（地図を消してもスカスカに見えない） */
+    /* ✅ 追加：Access側もカード化（住所非公開でも整う） */
     .info-item{
       background: #fff;
       padding: 40px;
@@ -681,7 +681,7 @@
     }
 
     /* ===============================
-       ✅ 追加：フォーム（ボタン押下で表示）
+       ✅ フォーム（ボタン押下で表示）
        =============================== */
     .contact-form-wrapper {
       display: none;
@@ -972,13 +972,11 @@
       <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ" />
 
       <div class="hero-inner">
-        <!-- ✅ 修正：精神科特化を“静かに”明示 -->
         <div class="hero-badge fade-in-up">
           <i class="fas fa-sun" aria-hidden="true"></i>
           精神科に特化した訪問看護
         </div>
 
-        <!-- ✅ 修正：デザイン重視 × Sun＋（光） -->
         <h1 class="fade-in-up delay-1">
           こころに、<br />
           あたたかな<span class="highlight">光</span>を。
@@ -1133,14 +1131,23 @@
       <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
 
       <div class="access-section">
-        <!-- ✅ 修正：Google地図を削除し、自然な情報カードに -->
+        <!-- ✅ 住所非公開プロ仕様：対応エリア＋拠点（市区まで） -->
         <div class="info-item fade-in-up delay-1">
           <h3><i class="fas fa-map-marker-alt"></i> Access</h3>
-          <p>〒651-2132 兵庫県神戸市西区森友1-12</p>
+
+          <p style="margin-bottom:10px;">
+            <strong>拠点（目安）</strong>：兵庫県神戸市西区<br>
+            <span style="font-size:13px; color:#607D8B;">※所在地の詳細は、お問い合わせ後に個別にご案内します。</span>
+          </p>
+
+          <p style="margin:14px 0 10px;">
+            <strong>対応エリア</strong>：神戸市・明石市 ほか<br>
+            <span style="font-size:13px; color:#607D8B;">※近隣地域もお気軽にご相談ください。</span>
+          </p>
 
           <div class="access-note">
-            ※クライアント様のご意向により、当サイトではGoogle地図の掲載をしておりません。<br />
-            ご来所が必要な場合は、お問い合わせ時に詳しいご案内をいたします。
+            個人情報保護の観点から、当サイトでは所在地の詳細・地図の掲載をしておりません。<br>
+            まずはお電話またはフォームよりご相談ください。
           </div>
         </div>
 
@@ -1155,12 +1162,10 @@
 
           <p class="contact-note">受付時間: 平日 9:00〜18:00</p>
 
-          <!-- ✅ ここが「フォームを開くボタン」 -->
           <button class="btn" type="button" onclick="openContactForm()">
             フォームからのお問い合わせ
           </button>
 
-          <!-- ✅ フォーム（最初は閉じている） -->
           <div id="contact-form-wrapper" class="contact-form-wrapper">
             <form
               class="contact-form"
@@ -1171,10 +1176,7 @@
               <input type="email" name="email" placeholder="メールアドレス" required />
               <textarea name="message" rows="5" placeholder="ご相談内容をご自由にお書きください" required></textarea>
 
-              <!-- 迷惑送信対策（触らない） -->
               <input type="text" name="_gotcha" style="display:none" />
-
-              <!-- 件名（任意） -->
               <input type="hidden" name="_subject" value="【Sun＋HP】お問い合わせが届きました" />
 
               <button type="submit" class="btn" style="width:100%;">送信する</button>
@@ -1331,7 +1333,8 @@
 
         <p class="footer-title">訪問看護ステーション</p>
         <div class="footer-info">
-          <p>〒651-2132 兵庫県神戸市西区森友1-12</p>
+          <p>拠点：兵庫県神戸市西区（詳細は個別にご案内）</p>
+          <p style="opacity:.85;">対応：神戸市・明石市 ほか</p>
           <a href="tel:078-962-8017" class="tel-link">078-962-8017</a>
         </div>
       </div>
