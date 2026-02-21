@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>精神科特化 訪問看護ステーション Sun＋｜神戸市・明石市</title>
-  <meta name="description" content="訪問看護ステーションSun＋（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護サービスを提供しています。うつ病・統合失調症など、心の不調を抱える方の在宅療養を支援します。" />
+  <meta name="description" content="訪問看護ステーションSun＋（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護を提供しています。こころの不安に寄り添い、ご自宅での暮らしをそっと支えます。" />
 
   <!-- アイコン -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
@@ -283,6 +283,29 @@
       z-index: 10;
       text-align: center;
       transform: translateX(-6%);
+    }
+
+    /* ✅ 追加：ヒーローのバッジ（精神科特化を静かに明示） */
+    .hero-badge{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(3,155,229,0.12);
+      color: #607D8B;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .hero-badge i{
+      color: var(--accent-color);
+      font-size: 0.95em;
     }
 
     /* 背景画像 */
@@ -619,259 +642,52 @@
       line-height: 2;
     }
 
-    /* ===============================
-       ✅ Contact：スペシャルおしゃれカード
-       =============================== */
+    /* --- Contact --- */
+    .contact-area {
+      background-color: var(--bg-soft);
+      padding: 40px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
+    }
     .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .contact-note { margin-top: 6px; color: #556; font-size: 13px; }
 
-    .contact-card,
-    .access-card {
-      border-radius: 28px;
-      padding: 44px 36px;
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(79,195,247,0.22);
-      box-shadow:
-        0 28px 70px rgba(3,155,229,0.10),
-        0 8px 20px rgba(0,0,0,0.03);
+    /* ✅ 追加：Access側もカード化（住所非公開でも整う） */
+    .info-item{
       background: #fff;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(3,155,229,0.05);
+      border: 1px solid #E1F5FE;
     }
-
-    /* 左：白ベースにやわらかい光 */
-    .access-card{
-      background:
-        radial-gradient(520px 260px at 15% 20%, rgba(255,152,0,0.10), rgba(255,255,255,0) 60%),
-        radial-gradient(520px 260px at 85% 80%, rgba(79,195,247,0.16), rgba(255,255,255,0) 60%),
-        #ffffff;
-    }
-
-    /* 右：あなたの元の“青い空気感”を上品に進化 */
-    .contact-card{
-      background:
-        radial-gradient(520px 260px at 12% 18%, rgba(79,195,247,0.30), rgba(255,255,255,0) 60%),
-        radial-gradient(520px 260px at 92% 80%, rgba(225,245,254,0.95), rgba(255,255,255,0) 60%),
-        linear-gradient(180deg, rgba(225,245,254,0.65), rgba(255,255,255,0.95));
-      border: 1px solid rgba(79,195,247,0.26);
-    }
-
-    /* 背景の“ゆらぎ” */
-    .access-card::before,
-    .contact-card::before{
-      content:'';
-      position:absolute;
-      inset: -60px -80px auto auto;
-      width: 240px;
-      height: 240px;
-      background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.70), rgba(255,255,255,0) 60%);
-      transform: rotate(18deg);
-      pointer-events:none;
-      opacity: 0.75;
-    }
-
-    /* 見出しライン */
-    .card-head{
-      display:flex;
-      align-items:center;
-      gap: 14px;
-      margin-bottom: 18px;
-      position: relative;
-      z-index: 1;
-    }
-    .card-badge{
-      width: 46px;
-      height: 46px;
-      border-radius: 18px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(79,195,247,0.25);
-      box-shadow: 0 14px 35px rgba(3,155,229,0.12);
-      flex-shrink:0;
-    }
-    .card-badge i{
+    .info-item h3{
       color: var(--primary-dark);
-      font-size: 18px;
-    }
-    .card-head h3{
-      margin: 0;
-      font-size: 22px;
-      color: var(--primary-dark);
+      margin-bottom: 14px;
       font-family: 'Klee One', cursive;
-      letter-spacing: 0.04em;
-      line-height: 1.25;
-    }
-    .card-head p{
-      margin: 4px 0 0;
-      font-size: 13px;
-      color: #90A4AE;
-      letter-spacing: 0.12em;
-    }
-
-    /* Access 中身 */
-    .kv{
-      display:flex;
-      gap: 12px;
-      align-items:flex-start;
-      font-size: 14px;
-      color: #546E7A;
-      margin: 10px 0;
-      position: relative;
-      z-index: 1;
-    }
-    .kv strong{
-      min-width: 98px;
-      color: #455A64;
-      font-weight: 700;
-    }
-    .mini{
-      display:block;
-      font-size: 12px;
-      color: #90A4AE;
-      margin-top: 3px;
-      letter-spacing: 0.06em;
-      line-height: 1.7;
-    }
-
-    .privacy-note{
-      position: relative;
-      z-index: 1;
-      margin-top: 18px;
-      padding: 14px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(79,195,247,0.22);
-      background: rgba(247,250,255,0.78);
-      color: #607D8B;
-      font-size: 13px;
-      line-height: 1.9;
-    }
-
-    /* Contact 中身（“整って見える”チップ） */
-    .contact-lead{
-      position: relative;
-      z-index: 1;
-      margin: 10px 0 18px;
-      color: #607D8B;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .chip-list{
-      position: relative;
-      z-index: 1;
-      display: grid;
-      gap: 12px;
-      margin: 16px 0 18px;
-    }
-    .chip{
-      display:flex;
-      align-items:center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 18px;
-      border: 1px solid rgba(3,155,229,0.14);
-      background: rgba(255,255,255,0.76);
-      box-shadow: 0 18px 40px rgba(0,0,0,0.04);
-    }
-    .chip-left{
-      display:flex;
-      align-items:center;
-      gap: 12px;
-      min-width: 0;
-    }
-    .chip-icon{
-      width: 40px;
-      height: 40px;
-      border-radius: 16px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: rgba(255,152,0,0.12);
-      border: 1px solid rgba(255,152,0,0.18);
-      flex-shrink:0;
-    }
-    .chip-icon i{ color: var(--accent-color); font-size: 16px; }
-    .chip-text{ min-width: 0; }
-    .chip-text .label{
-      display:block;
-      font-size: 12px;
-      color: #90A4AE;
-      letter-spacing: 0.10em;
-      line-height: 1.2;
-    }
-    .chip-text .value{
-      display:block;
-      font-size: 15px;
-      color: #455A64;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 1.3;
-      margin-top: 2px;
-    }
-    .chip-action a{
-      font-size: 13px;
-      font-weight: 800;
-      color: var(--primary-dark);
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(79,195,247,0.22);
-      background: rgba(79,195,247,0.14);
-      white-space: nowrap;
-    }
-    .chip-action a:hover{
-      transform: translateY(-1px);
-      background: rgba(79,195,247,0.22);
-    }
-
-    /* “艶”ボタン：あなたの元の雰囲気を保ったまま高級感 */
-    .btn-luxe{
-      width: 100%;
-      display: inline-flex;
+      display: flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
-      padding: 16px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.55);
-      background: linear-gradient(135deg, rgba(79,195,247,1) 0%, rgba(3,155,229,1) 55%, rgba(3,155,229,0.92) 100%);
-      color: #fff;
-      font-weight: 900;
-      letter-spacing: 0.06em;
-      box-shadow: 0 22px 60px rgba(3,155,229,0.28);
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      z-index: 1;
     }
-    .btn-luxe::before{
-      content:'';
-      position:absolute;
-      inset: -45% -25% auto -25%;
-      height: 160%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.58), rgba(255,255,255,0) 58%);
-      transform: rotate(10deg);
-      pointer-events:none;
-    }
-    .btn-luxe:hover{
-      transform: translateY(-2px);
-      box-shadow: 0 28px 80px rgba(3,155,229,0.34);
+    .access-note{
+      margin-top: 14px;
+      font-size: 13px;
+      color: #607D8B;
+      line-height: 1.9;
+      background: #F7FAFF;
+      border: 1px solid rgba(79,195,247,0.2);
+      padding: 12px 14px;
+      border-radius: 14px;
     }
 
-    .contact-note { margin-top: 8px; color: #607D8B; font-size: 12px; position: relative; z-index: 1; }
-
-    /* ✅ フォーム（ボタン押下で表示） */
+    /* ===============================
+       ✅ フォーム（ボタン押下で表示）
+       =============================== */
     .contact-form-wrapper {
       display: none;
-      margin-top: 20px;
+      margin-top: 26px;
       animation: fadeInContact 0.4s ease forwards;
       text-align: left;
-      position: relative;
-      z-index: 2;
     }
     @keyframes fadeInContact {
       from { opacity: 0; transform: translateY(18px); }
@@ -882,9 +698,9 @@
       width: 100%;
       padding: 14px 16px;
       margin-bottom: 14px;
-      border-radius: 14px;
-      border: 1px solid rgba(0,0,0,0.16);
-      background: rgba(255,255,255,0.92);
+      border-radius: 12px;
+      border: 1px solid rgba(0,0,0,0.18);
+      background: #fff;
       font-family: inherit;
       font-size: 14px;
       outline: none;
@@ -932,6 +748,19 @@
       margin-bottom: 20px;
       font-weight: bold;
       font-family: 'Klee One', cursive;
+    }
+    .feature-list li {
+      margin-bottom: 15px;
+      padding-left: 20px;
+      position: relative;
+      font-size: 16px;
+    }
+    .feature-list li::before {
+      content: '●';
+      color: var(--primary-color);
+      position: absolute;
+      left: 0;
+      top: 0;
     }
 
     .qa-item { margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 25px; }
@@ -1013,8 +842,10 @@
       .hero { height: auto; padding: 120px 20px 60px; }
       .section { padding: 60px 5%; }
 
+      /* ヒーロー文字中央へ */
       .hero-inner{ transform: none; }
 
+      /* ✅ フッターを1カラムに */
       .footer-container{
         grid-template-columns: 1fr;
         gap: 24px;
@@ -1071,8 +902,11 @@
       .step-content h3 { flex-direction: row; font-size: 18px; }
       .step-icon { display: inline-block; color: var(--accent-color); font-size: 20px; }
 
-      .access-section { grid-template-columns: 1fr; gap: 22px; }
-      .access-card, .contact-card { padding: 34px 22px; }
+      .access-section { grid-template-columns: 1fr; }
+      .contact-area .btn { width: 100%; }
+
+      /* Philosophy グリッド */
+      .philosophy-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -1138,17 +972,22 @@
       <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ" />
 
       <div class="hero-inner">
-        <h1 class="fade-in-up">
-          心ほどける<span class="highlight">安心</span>を、<br />
-          日々の暮らしに<span class="highlight">プラス</span>する。
+        <div class="hero-badge fade-in-up">
+          <i class="fas fa-sun" aria-hidden="true"></i>
+          精神科に特化した訪問看護
+        </div>
+
+        <h1 class="fade-in-up delay-1">
+          こころに、<br />
+          あたたかな<span class="highlight">光</span>を。
         </h1>
 
-        <p class="fade-in-up delay-1">
-          私たちは利用者様の「その人らしい生活」に<br />
-          そっと寄り添うパートナーです。
+        <p class="fade-in-up delay-2">
+          不安に寄り添い、日々の暮らしをそっと照らします。<br />
+          神戸市・明石市を中心に在宅で支援します。
         </p>
 
-        <button onclick="showPage('page-detail')" class="btn fade-in-up delay-2">
+        <button onclick="showPage('page-detail')" class="btn fade-in-up delay-3">
           詳しく見る <i class="fas fa-arrow-right"></i>
         </button>
       </div>
@@ -1287,87 +1126,45 @@
       </div>
     </section>
 
-    <!-- Contact（✅スペシャルおしゃれカード版 / 住所非公開・地図なし） -->
+    <!-- Contact（✅ボタンでフォームを開く版） -->
     <section id="contact" class="section">
       <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
 
       <div class="access-section">
-        <!-- 左：Access -->
-        <div class="access-card fade-in-up delay-1">
-          <div class="card-head">
-            <div class="card-badge"><i class="fas fa-map-marker-alt"></i></div>
-            <div>
-              <h3>Access</h3>
-              <p>拠点・対応エリア</p>
-            </div>
-          </div>
+        <!-- ✅ 住所非公開プロ仕様：対応エリア＋拠点（市区まで） -->
+        <div class="info-item fade-in-up delay-1">
+          <h3><i class="fas fa-map-marker-alt"></i> Access</h3>
 
-          <div class="kv">
-            <strong>拠点（目安）</strong>
-            <div>
-              兵庫県神戸市西区
-              <span class="mini">※所在地の詳細は、お問い合わせ後に個別にご案内します。</span>
-            </div>
-          </div>
+          <p style="margin-bottom:10px;">
+            <strong>拠点（目安）</strong>：兵庫県神戸市西区<br>
+            <span style="font-size:13px; color:#607D8B;">※所在地の詳細は、お問い合わせ後に個別にご案内します。</span>
+          </p>
 
-          <div class="kv">
-            <strong>対応エリア</strong>
-            <div>
-              神戸市・明石市 ほか
-              <span class="mini">※近隣地域もお気軽にご相談ください。</span>
-            </div>
-          </div>
+          <p style="margin:14px 0 10px;">
+            <strong>対応エリア</strong>：神戸市・明石市 ほか<br>
+            <span style="font-size:13px; color:#607D8B;">※近隣地域もお気軽にご相談ください。</span>
+          </p>
 
-          <div class="privacy-note">
+          <div class="access-note">
             個人情報保護の観点から、当サイトでは所在地の詳細・地図の掲載をしておりません。<br>
             まずはお電話またはフォームよりご相談ください。
           </div>
         </div>
 
-        <!-- 右：Contact -->
-        <div class="contact-card fade-in-up delay-2">
-          <div class="card-head">
-            <div class="card-badge"><i class="fas fa-comment-dots"></i></div>
-            <div>
-              <h3>お問い合わせ・ご相談</h3>
-              <p>お気軽にご連絡ください</p>
-            </div>
-          </div>
+        <div class="contact-area fade-in-up delay-2">
+          <h3>お問い合わせ・ご相談</h3>
+          <p>お気軽にご連絡ください</p>
 
-          <p class="contact-lead">
-            Sun＋は、太陽のような安心をそっと届ける訪問看護を目指しています。<br>
-            まずは状況をお聞かせください。最適なご案内をいたします。
+          <p style="font-size: 18px; margin: 10px 0;">
+            <i class="fas fa-phone-alt" style="font-size:0.9em; margin-right: 8px;"></i>
+            <a href="tel:078-962-8017">078-962-8017</a>
           </p>
 
-          <div class="chip-list">
-            <div class="chip">
-              <div class="chip-left">
-                <div class="chip-icon"><i class="fas fa-phone-alt"></i></div>
-                <div class="chip-text">
-                  <span class="label">お電話</span>
-                  <span class="value"><a href="tel:078-962-8017">078-962-8017</a></span>
-                </div>
-              </div>
-              <div class="chip-action"><a href="tel:078-962-8017">発信</a></div>
-            </div>
+          <p class="contact-note">受付時間: 平日 9:00〜18:00</p>
 
-            <div class="chip">
-              <div class="chip-left">
-                <div class="chip-icon"><i class="fas fa-clock"></i></div>
-                <div class="chip-text">
-                  <span class="label">受付時間</span>
-                  <span class="value">平日 9:00〜17:00</span>
-                </div>
-              </div>
-              <div class="chip-action"><a href="#contact">相談</a></div>
-            </div>
-          </div>
-
-          <button id="open-form-btn" class="btn-luxe" type="button" onclick="openContactForm()">
-            フォームからのお問い合わせ <i class="fas fa-arrow-right"></i>
+          <button class="btn" type="button" onclick="openContactForm()">
+            フォームからのお問い合わせ
           </button>
-
-          <p class="contact-note"></p>
 
           <div id="contact-form-wrapper" class="contact-form-wrapper">
             <form
@@ -1379,16 +1176,15 @@
               <input type="email" name="email" placeholder="メールアドレス" required />
               <textarea name="message" rows="5" placeholder="ご相談内容をご自由にお書きください" required></textarea>
 
-              <!-- 迷惑送信対策（触らない） -->
               <input type="text" name="_gotcha" style="display:none" />
-
-              <!-- 件名（任意） -->
               <input type="hidden" name="_subject" value="【Sun＋HP】お問い合わせが届きました" />
 
               <button type="submit" class="btn" style="width:100%;">送信する</button>
-              <p class="form-note">※内容確認のため、担当者より折り返す場合があります。</p>
+
+              <p class="form-note">※送信後、入力内容はクライアント様のメールへ届きます。</p>
             </form>
           </div>
+
         </div>
       </div>
     </section>
@@ -1586,15 +1382,11 @@
     }
     hamburger.addEventListener('click', toggleMenu);
 
-    // ✅ フォームを開く（開いたらボタンは自然に消して“迷い”ゼロに）
+    // ✅ 追加：フォームを開く
     function openContactForm() {
       const form = document.getElementById('contact-form-wrapper');
-      const btn = document.getElementById('open-form-btn');
       if (!form) return;
-
       form.style.display = 'block';
-      if (btn) btn.style.display = 'none';
-
       form.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
