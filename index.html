@@ -303,11 +303,12 @@
   }
 
   .hero-inner{
-    position: relative;
-    z-index: 10;
-    text-align: center;
-    transform: translateX(-6%);
-    max-width: 980px;
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  transform: none;
+  max-width: 980px;
+  margin: 0 auto;
   }
 
   .hero-badge{
@@ -1058,6 +1059,10 @@
       max-width: 100%;
     }
   }
+    .pc-br{ display: inline; }
+@media (max-width: 768px){
+  .pc-br{ display: none; }
+}
   </style>
 </head>
 
@@ -1136,10 +1141,10 @@
           精神科に特化した訪問看護
         </div>
 
-        <!-- ✅ 改行は「スマホだけ」に統一 -->
         <h1 class="fade-in-up delay-1">
-          ご利用者様に、地域に、<br class="sp-br">
-          スタッフに、<span class="highlight">三方良し。</span>
+          ご利用者様に、地域に、<br class="pc-br">
+          スタッフに、<br class="pc-br">
+          <span class="highlight">三方良し。</span>
         </h1>
 
         <button onclick="showPage('page-detail')" class="btn fade-in-up delay-3">
