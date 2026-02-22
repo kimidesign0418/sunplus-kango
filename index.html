@@ -1646,84 +1646,76 @@
   </div>
 
   <!-- フッター -->
-  <footer>
-    <div class="footer-container">
-      <div class="footer-logo-area">
-        <div class="footer-logo">
-          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
-                  stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
+<footer>
+  <div class="footer-container">
+
+    <!-- 左：ブランド＆情報 -->
+    <div class="footer-logo-area">
+      <div class="footer-logo">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
+                stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+
+        <span class="footer-brand">
+          Sun
+          <svg class="plus-hand" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 4.5 C 13 8, 11 16, 12 19.5 M4.5 12 C 8 13, 16 11, 19.5 12"
+                  stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
+        </span>
+      </div>
 
-          <span class="footer-brand">
-            Sun
-            <svg class="plus-hand" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <path d="M12 4.5 C 13 8, 11 16, 12 19.5 M4.5 12 C 8 13, 16 11, 19.5 12"
-                    stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </span>
+      <p class="footer-title">訪問看護ステーション</p>
+
+      <div class="footer-info">
+        <p class="footer-address">
+          〒651-2132<br>
+          兵庫県神戸市西区森友1丁目12<br>
+          ビタミンテラス枝吉101
+        </p>
+
+        <p class="footer-area">
+          対応エリア：神戸市・明石市（全域）
+        </p>
+        <p class="footer-note">
+          ※状況により対応が難しい場合がございます。まずはお気軽にご相談ください。
+        </p>
+
+        <div class="footer-contact">
+          <a href="tel:078-962-8017" class="tel-link">TEL：078-962-8017</a>
+          <p class="footer-fax">FAX：078-962-8037</p>
         </div>
+      </div>
+    </div>
 
-        <p class="footer-title">訪問看護ステーション</p>
+    <!-- 右：メニュー -->
+    <div class="footer-links">
+      <h4>Menu</h4>
+      <ul>
+        <li><a href="#home">ホーム</a></li>
+        <li><a onclick="showPage('page-detail')">Sun＋について</a></li>
+        <li><a href="#service">サービス</a></li>
+      </ul>
+    </div>
 
-<div class="footer-info">
+    <div class="footer-links">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#flow">ご利用の流れ</a></li>
+        <li><a href="#recruit">採用情報</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+        <li><a onclick="showPage('page-privacy')">プライバシーポリシー</a></li>
+      </ul>
+    </div>
 
-  <p class="footer-address">
-    〒651-2132<br>
-    兵庫県神戸市西区森友1丁目12<br>
-  </p>
-
-  <p class="footer-area">
-    対応エリア：神戸市・明石市（全域）
-  </p>
-  <p class="footer-note">
-    ※状況により対応が難しい場合がございます。
-  </p>
-
-  <div class="footer-contact">
-    <a href="tel:078-962-8017" class="tel-link">
-      TEL：078-962-8017
-    </a>
-    <p class="footer-fax">
-      FAX：078-962-8037
-    </p>
   </div>
 
-</div>
-
-      <div class="footer-links">
-        <h4>Menu</h4>
-        <ul>
-          <li><a onclick="showPage('page-home')">ホーム</a></li>
-          <li><a onclick="showPage('page-detail')">Sun＋について</a></li>
-          <li><a href="#service">サービス</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h4>Info</h4>
-        <ul>
-          <li><a href="#flow">ご利用の流れ</a></li>
-          <li><a href="#recruit">採用情報</a></li>
-          <li><a href="#contact">お問い合わせ</a></li>
-          <li><a onclick="showPage('page-privacy')">プライバシーポリシー</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-links">
-        <h4>Social</h4>
-        <ul>
-          <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-          <li><a href="#"><i class="fab fa-line"></i> LINE公式</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-copy-area">
-      <p class="footer-copy">&copy; 2025 Sun＋ Visiting Nursing Station.</p>
-    </div>
-  </footer>
+  <div class="footer-copy-area">
+    <p class="footer-copy">&copy; 2025 Sun＋ Visiting Nursing Station.</p>
+  </div>
+</footer>
 
   <script>
     const hamburger = document.getElementById('hamburger');
