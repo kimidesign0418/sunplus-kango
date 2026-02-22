@@ -47,6 +47,10 @@
       --footer-bg: #0D47A1;
       --footer-text: #E3F2FD;
       --footer-link: #90CAF9;
+
+      /* 追加：より上品な影 */
+      --shadow-soft: 0 12px 30px rgba(0,0,0,0.06);
+      --shadow-mid: 0 18px 45px rgba(3,155,229,0.12);
     }
 
     /* --- アニメーション --- */
@@ -54,6 +58,7 @@
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      will-change: opacity, transform;
     }
     .fade-in-up.visible { opacity: 1; transform: translateY(0); }
     .delay-1 { transition-delay: 0.1s; }
@@ -64,6 +69,14 @@
     @keyframes spin-slow {
       from { transform: rotate(0deg); }
       to { transform: rotate(360deg); }
+    }
+
+    /* ✅ 追加：動きが苦手な端末（省電力/低スペ）配慮 */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .fade-in-up { transition: none; transform: none; opacity: 1; }
+      .sun-icon { animation: none !important; }
+      .card, .btn, .philosophy-item { transition: none !important; }
     }
 
     /* --- ヘッダー --- */
@@ -88,6 +101,7 @@
       gap: 12px;
       z-index: 1001;
       cursor: pointer;
+      user-select: none;
     }
 
     .sun-icon {
@@ -262,6 +276,27 @@
     }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4); }
 
+    /* ✅ 追加：控えめなサブボタン（カード内で映える） */
+    .btn-subtle{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(3,155,229,0.22);
+      background: rgba(255,255,255,0.78);
+      color: var(--primary-dark);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: 0.25s;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .btn-subtle:hover{ transform: translateY(-2px); border-color: rgba(3,155,229,0.35); }
+
     /* --- HERO --- */
     .hero {
       background: linear-gradient(120deg, #E1F5FE 0%, #fff 100%);
@@ -275,6 +310,7 @@
       padding: 20px;
       position: relative;
       overflow: hidden;
+      isolation: isolate;
     }
 
     /* ヒーロー文字（PCは少し左） */
@@ -283,9 +319,10 @@
       z-index: 10;
       text-align: center;
       transform: translateX(-6%);
+      max-width: 980px;
     }
 
-    /* ✅ 追加：ヒーローのバッジ（精神科特化を静かに明示） */
+    /* ヒーローのバッジ */
     .hero-badge{
       display: inline-flex;
       align-items: center;
@@ -308,15 +345,31 @@
       font-size: 0.95em;
     }
 
-    /* 背景画像 */
+    /* ✅ 背景画像（スマホで消えにくいように安定化） */
     .hero-bg {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       opacity: 0.35;
       z-index: 0;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+    }
+
+    /* ✅ 画像が無い/読込失敗でも成立するように薄いレイヤー */
+    .hero::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(600px 280px at 20% 20%, rgba(255,152,0,0.10), transparent 60%),
+        radial-gradient(640px 320px at 80% 30%, rgba(79,195,247,0.12), transparent 60%),
+        linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0.70));
+      z-index: 1;
+      pointer-events:none;
     }
 
     .hero h1 {
@@ -369,7 +422,7 @@
       border-radius: 22px;
       overflow: hidden;
       border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      box-shadow: var(--shadow-soft);
       transition: 0.4s;
       display: flex;
       flex-direction: column;
@@ -400,6 +453,7 @@
       display:block;
       transform: scale(1.02);
       transition: transform 0.4s ease;
+      backface-visibility: hidden;
     }
     .card:hover .card-img img{ transform: scale(1.06); }
 
@@ -467,6 +521,7 @@
       border: 1px solid #f0f7fb;
       transition: all 0.4s ease;
       position: relative;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
     }
     .philosophy-item:hover {
       transform: translateY(-12px);
@@ -642,18 +697,11 @@
       line-height: 2;
     }
 
-    /* --- Contact --- */
-    .contact-area {
-      background-color: var(--bg-soft);
-      padding: 40px;
-      border-radius: 24px;
-      text-align: center;
-      box-shadow: inset 0 0 20px rgba(79, 195, 247, 0.1);
-    }
+    /* --- Contact / Access --- */
     .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
     .contact-note { margin-top: 6px; color: #556; font-size: 13px; }
 
-    /* ✅ 追加：Access側もカード化（住所非公開でも整う） */
+    /* Access側カード */
     .info-item{
       background: #fff;
       padding: 40px;
@@ -680,18 +728,109 @@
       border-radius: 14px;
     }
 
-    /* ===============================
-       ✅ フォーム（ボタン押下で表示）
-       =============================== */
-    .contact-form-wrapper {
+    /* ✅ お問い合わせカード：プロ仕様に刷新（ガラス＋グラデ枠） */
+    .contact-area{
+      position: relative;
+      border-radius: 26px;
+      padding: 34px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.6);
+      box-shadow: var(--shadow-mid);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      overflow: hidden;
+      isolation: isolate;
+    }
+    .contact-area::before{
+      content:'';
+      position:absolute;
+      inset:-2px;
+      background: linear-gradient(135deg,
+        rgba(79,195,247,0.65),
+        rgba(255,152,0,0.35),
+        rgba(3,155,229,0.55)
+      );
+      z-index:-2;
+      filter: blur(10px);
+    }
+    .contact-area::after{
+      content:'';
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(600px 260px at 20% 15%, rgba(255,152,0,0.14), transparent 60%),
+        radial-gradient(520px 240px at 80% 25%, rgba(79,195,247,0.16), transparent 60%),
+        linear-gradient(to bottom, rgba(255,255,255,0.62), rgba(255,255,255,0.86));
+      z-index:-1;
+      pointer-events:none;
+    }
+    .contact-area h3{
+      font-family: 'Klee One', cursive;
+      color: var(--primary-dark);
+      font-size: 22px;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .contact-area > p{
+      color: #607D8B;
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+
+    .tel-box{
+      display:flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      padding: 18px 14px;
+      border-radius: 18px;
+      border: 1px solid rgba(3,155,229,0.14);
+      background: rgba(255,255,255,0.72);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+      margin: 16px 0 14px;
+    }
+    .tel-number{
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      color: #1B5E20;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tel-number i{ color: #2E7D32; }
+    .tel-sub{
+      font-size: 12px;
+      color: #607D8B;
+      line-height: 1.6;
+    }
+
+    .contact-cta-row{
+      display:flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    /* フォーム */
+    .contact-form-wrapper{
       display: none;
-      margin-top: 26px;
+      margin-top: 20px;
       animation: fadeInContact 0.4s ease forwards;
       text-align: left;
     }
     @keyframes fadeInContact {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
+    }
+    .contact-form{
+      margin-top: 8px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(3,155,229,0.14);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.06);
     }
     .contact-form input,
     .contact-form textarea {
@@ -839,13 +978,13 @@
       nav.desktop-nav { display: none; }
       .hamburger { display: block; }
 
-      .hero { height: auto; padding: 120px 20px 60px; }
+      .hero { height: auto; padding: 120px 20px 60px; min-height: 520px; }
       .section { padding: 60px 5%; }
 
       /* ヒーロー文字中央へ */
       .hero-inner{ transform: none; }
 
-      /* ✅ フッターを1カラムに */
+      /* フッターを1カラムに */
       .footer-container{
         grid-template-columns: 1fr;
         gap: 24px;
@@ -903,7 +1042,8 @@
       .step-icon { display: inline-block; color: var(--accent-color); font-size: 20px; }
 
       .access-section { grid-template-columns: 1fr; }
-      .contact-area .btn { width: 100%; }
+      .contact-cta-row{ flex-direction: column; }
+      .contact-area .btn, .contact-area .btn-subtle { width: 100%; }
 
       /* Philosophy グリッド */
       .philosophy-grid { grid-template-columns: 1fr; }
@@ -945,12 +1085,12 @@
       </ul>
     </nav>
 
-    <div class="hamburger" id="hamburger">
+    <div class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false" role="button" tabindex="0">
       <span></span><span></span><span></span>
     </div>
   </header>
 
-  <div class="mobile-nav-overlay" id="mobile-nav">
+  <div class="mobile-nav-overlay" id="mobile-nav" aria-hidden="true">
     <nav class="mobile-nav-content">
       <ul>
         <li><a href="#home">HOME</a></li>
@@ -969,7 +1109,16 @@
   <main id="page-home">
     <!-- Hero -->
     <section id="home" class="hero">
-      <img class="hero-bg" src="hero-visit.jpg" alt="訪問看護のイメージ" />
+      <!-- ✅ Heroは最重要：高優先で読み込み（スマホ表示不具合の回避にも効く） -->
+      <img
+        class="hero-bg"
+        src="hero-visit.jpg"
+        alt="訪問看護のイメージ"
+        width="1600"
+        height="900"
+        decoding="async"
+        fetchpriority="high"
+      />
 
       <div class="hero-inner">
         <div class="hero-badge fade-in-up">
@@ -1042,7 +1191,14 @@
       <div class="service-grid">
         <div class="card fade-in-up delay-1">
           <div class="card-img">
-            <img src="service-daily.jpg" loading="lazy" alt="窓辺でコーヒーを持つ手元の写真" />
+            <img
+              src="service-daily.jpg"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="900"
+              alt="窓辺でコーヒーを持つ手元の写真"
+            />
           </div>
           <div class="card-body">
             <h3 class="card-title">日常生活へのサポート</h3>
@@ -1052,7 +1208,14 @@
 
         <div class="card fade-in-up delay-2">
           <div class="card-img">
-            <img src="service-medical.jpg" loading="lazy" alt="配薬カレンダーの写真" />
+            <img
+              src="service-medical.jpg"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="900"
+              alt="配薬カレンダーの写真"
+            />
           </div>
           <div class="card-body">
             <h3 class="card-title">病状の観察と服薬支援</h3>
@@ -1062,7 +1225,14 @@
 
         <div class="card fade-in-up delay-3">
           <div class="card-img">
-            <img src="service-mental.jpg" loading="lazy" alt="カウンセリングの写真" />
+            <img
+              src="service-mental.jpg"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="900"
+              alt="カウンセリングの写真"
+            />
           </div>
           <div class="card-body">
             <h3 class="card-title">心理的なカウンセリング</h3>
@@ -1126,12 +1296,12 @@
       </div>
     </section>
 
-    <!-- Contact（✅ボタンでフォームを開く版） -->
+    <!-- Contact -->
     <section id="contact" class="section">
       <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
 
       <div class="access-section">
-        <!-- ✅ 住所非公開プロ仕様：対応エリア＋拠点（市区まで） -->
+        <!-- 住所非公開プロ仕様：対応エリア＋拠点（市区まで） -->
         <div class="info-item fade-in-up delay-1">
           <h3><i class="fas fa-map-marker-alt"></i> Access</h3>
 
@@ -1151,22 +1321,40 @@
           </div>
         </div>
 
+        <!-- ✅ おしゃれ強化版 -->
         <div class="contact-area fade-in-up delay-2">
           <h3>お問い合わせ・ご相談</h3>
-          <p>お気軽にご連絡ください</p>
+          <p>まずはお気軽に。状況を伺い、最適な流れをご案内します。</p>
 
-          <p style="font-size: 18px; margin: 10px 0;">
-            <i class="fas fa-phone-alt" style="font-size:0.9em; margin-right: 8px;"></i>
-            <a href="tel:078-962-8017">078-962-8017</a>
-          </p>
+          <div class="tel-box" role="group" aria-label="電話でのお問い合わせ">
+            <div class="tel-number">
+              <i class="fas fa-phone-alt" aria-hidden="true"></i>
+              <a href="tel:078-962-8017" style="color:inherit;">078-962-8017</a>
+            </div>
+            <div class="tel-sub">
+              受付時間：平日 9:00〜18:00<br>
+              <span style="opacity:.85;">※緊急時は主治医・関係機関へご連絡ください</span>
+            </div>
+          </div>
 
-          <p class="contact-note">受付時間: 平日 9:00〜18:00</p>
+          <div class="contact-cta-row">
+            <button
+              class="btn"
+              type="button"
+              onclick="toggleContactForm()"
+              aria-controls="contact-form-wrapper"
+              aria-expanded="false"
+              id="contactFormToggleBtn"
+            >
+              フォームからのお問い合わせ <i class="fas fa-envelope"></i>
+            </button>
 
-          <button class="btn" type="button" onclick="openContactForm()">
-            フォームからのお問い合わせ
-          </button>
+            <a class="btn-subtle" href="#recruit" onclick="closeContactForm(true)">
+              採用の方はこちら <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
 
-          <div id="contact-form-wrapper" class="contact-form-wrapper">
+          <div id="contact-form-wrapper" class="contact-form-wrapper" aria-hidden="true">
             <form
               class="contact-form"
               action="https://formspree.io/f/YOUR_FORMSPREE_ID"
@@ -1376,18 +1564,65 @@
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobile-nav');
 
-    function toggleMenu() {
-      hamburger.classList.toggle('active');
-      mobileNav.classList.toggle('active');
-    }
-    hamburger.addEventListener('click', toggleMenu);
+    function toggleMenu(forceClose = false) {
+      const willOpen = forceClose ? false : !hamburger.classList.contains('active');
 
-    // ✅ 追加：フォームを開く
-    function openContactForm() {
-      const form = document.getElementById('contact-form-wrapper');
-      if (!form) return;
-      form.style.display = 'block';
-      form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      hamburger.classList.toggle('active', willOpen);
+      mobileNav.classList.toggle('active', willOpen);
+
+      hamburger.setAttribute('aria-expanded', String(willOpen));
+      mobileNav.setAttribute('aria-hidden', String(!willOpen));
+    }
+
+    hamburger.addEventListener('click', () => toggleMenu(false));
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') toggleMenu(false);
+    });
+
+    // ✅ 背景クリックで閉じる（体験がプロっぽくなる）
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) toggleMenu(true);
+    });
+
+    // ===============================
+    // ✅ フォーム開閉（もう一回押すと閉じる）
+    // ===============================
+    function toggleContactForm() {
+      const wrapper = document.getElementById('contact-form-wrapper');
+      const btn = document.getElementById('contactFormToggleBtn');
+      if (!wrapper || !btn) return;
+
+      const isOpen = wrapper.style.display === 'block';
+      if (isOpen) {
+        closeContactForm(false);
+        return;
+      }
+
+      wrapper.style.display = 'block';
+      wrapper.setAttribute('aria-hidden', 'false');
+      btn.setAttribute('aria-expanded', 'true');
+
+      // 少し待ってからスクロール（表示→位置計算のズレ防止）
+      setTimeout(() => {
+        wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 50);
+    }
+
+    function closeContactForm(scrollToTop) {
+      const wrapper = document.getElementById('contact-form-wrapper');
+      const btn = document.getElementById('contactFormToggleBtn');
+      if (!wrapper || !btn) return;
+
+      wrapper.style.display = 'none';
+      wrapper.setAttribute('aria-hidden', 'true');
+      btn.setAttribute('aria-expanded', 'false');
+
+      if (scrollToTop) {
+        setTimeout(() => {
+          const contact = document.getElementById('contact');
+          if (contact) contact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 50);
+      }
     }
 
     // --- ページ切り替え機能 (SPA風) ---
@@ -1401,6 +1636,9 @@
         target.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'auto' });
 
+        // ページ切替時、モバイルメニューは閉じる
+        toggleMenu(true);
+
         if (pageId !== 'page-home') {
           const content = target.querySelector('.fade-in-up');
           if (content) {
@@ -1411,14 +1649,14 @@
       }
     }
 
-    // リンク制御（ヘッダー & モバイル）
+    // リンク制御（ヘッダー & モバイル & ページ内）
     document.querySelectorAll('a[href^="#"], .mobile-nav-content a').forEach(link => {
       link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
         if (!href) return;
 
         e.preventDefault();
-        if (hamburger.classList.contains('active')) toggleMenu();
+        if (hamburger.classList.contains('active')) toggleMenu(true);
 
         const targetId = href;
 
@@ -1444,7 +1682,10 @@
     // Intersection Observer（スクロールアニメ）
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
       });
     }, { threshold: 0.1 });
 
