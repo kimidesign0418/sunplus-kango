@@ -1197,6 +1197,185 @@
   opacity: 0.85;
   margin: 0;
 }
+
+    /* ===============================
+   Footer v2（横長・洗練・3カラム）
+=============================== */
+
+.site-footer{
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  margin-top: auto;
+}
+
+.footer-v2{
+  padding: 56px 5% 34px;
+  display: grid;
+  grid-template-columns: 1.05fr 1.15fr 1fr; /* 左/中央/右の重さ調整 */
+  gap: 44px;
+  align-items: start;
+}
+
+/* 共通 */
+.footer-v2 .footer-col{
+  min-width: 0;
+}
+
+.footer-v2 .footer-logo{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.footer-v2 .sun-icon{
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  animation: none; /* フッターは落ち着かせる */
+}
+
+.footer-v2 .footer-brand-name{
+  font-family: 'Caveat', cursive;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--footer-text);
+}
+
+.footer-v2 .plus-hand{
+  width: 0.85em;
+  height: 0.85em;
+  transform: translateY(1px);
+}
+
+.footer-v2 .footer-title{
+  font-size: 13px;
+  opacity: .88;
+  letter-spacing: .08em;
+  margin: 0 0 14px;
+}
+
+.footer-v2 .footer-contacts{
+  display:flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.footer-v2 .tel-link{
+  display: inline-flex;
+  align-items: center;
+  font-weight: 900;
+  letter-spacing: .03em;
+  color: #C8E6FF;
+  text-decoration: none;
+}
+
+.footer-v2 .tel-link:hover{ color: #fff; }
+
+.footer-v2 .footer-fax{
+  font-size: 13px;
+  opacity: .85;
+}
+
+/* 中央（住所・エリア） */
+.footer-v2 .footer-address{
+  font-size: 13px;
+  opacity: .88;
+  line-height: 1.9;
+  margin: 0 0 14px;
+}
+
+.footer-v2 .footer-area{
+  font-size: 13px;
+  margin: 0 0 8px;
+  opacity: .95;
+}
+
+.footer-v2 .footer-note{
+  font-size: 12px;
+  opacity: .78;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* 右（Menu/Info） */
+.footer-v2 .footer-nav-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.footer-v2 .footer-links h4{
+  font-size: 14px;
+  color: var(--footer-link);
+  font-weight: 800;
+  letter-spacing: .08em;
+  margin-bottom: 12px;
+}
+
+.footer-v2 .footer-links a{
+  font-size: 13px;
+  opacity: 0.82;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.footer-v2 .footer-links a:hover{
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+.footer-v2 .footer-links li{
+  margin: 10px 0;
+}
+
+/* 下線（上品な仕切り） */
+.footer-v2-copy{
+  padding: 18px 5% 22px;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  text-align: center;
+}
+
+.footer-v2-copy .footer-copy{
+  font-size: 12px;
+  opacity: 0.6;
+  margin: 0;
+}
+
+/* レスポンシブ */
+@media (max-width: 980px){
+  .footer-v2{
+    grid-template-columns: 1fr;
+    gap: 26px;
+    text-align: left;
+  }
+  .footer-v2 .footer-nav-grid{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px){
+  .footer-v2{
+    text-align: center;
+  }
+  .footer-v2 .footer-logo{
+    justify-content: center;
+  }
+  .footer-v2 .footer-contacts{
+    align-items: center;
+  }
+  .footer-v2 .footer-nav-grid{
+    grid-template-columns: 1fr;
+  }
+  .footer-v2 .footer-links ul{
+    padding: 0;
+  }
+}
   </style>
 </head>
 
@@ -1645,20 +1824,19 @@
     </div>
   </div>
 
-  <!-- フッター -->
-<footer>
-  <div class="footer-container">
-
-    <!-- 左：ブランド＆情報 -->
-    <div class="footer-logo-area">
+<!-- フッター -->
+<footer class="site-footer">
+  <div class="footer-container footer-v2">
+    <!-- ① ブランド・連絡先（左） -->
+    <div class="footer-col footer-brand">
       <div class="footer-logo">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
                 stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
         </svg>
 
-        <span class="footer-brand">
+        <span class="footer-brand-name">
           Sun
           <svg class="plus-hand" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <path d="M12 4.5 C 13 8, 11 16, 12 19.5 M4.5 12 C 8 13, 16 11, 19.5 12"
@@ -1669,50 +1847,54 @@
 
       <p class="footer-title">訪問看護ステーション</p>
 
-      <div class="footer-info">
-        <p class="footer-address">
-          〒651-2132<br>
-          兵庫県神戸市西区森友1丁目12<br>
-          ビタミンテラス枝吉101
-        </p>
-
-        <p class="footer-area">
-          対応エリア：神戸市・明石市（全域）
-        </p>
-        <p class="footer-note">
-          ※状況により対応が難しい場合がございます。まずはお気軽にご相談ください。
-        </p>
-
-        <div class="footer-contact">
-          <a href="tel:078-962-8017" class="tel-link">TEL：078-962-8017</a>
-          <p class="footer-fax">FAX：078-962-8037</p>
-        </div>
+      <div class="footer-contacts">
+        <a href="tel:078-962-8017" class="tel-link">TEL：078-962-8017</a>
+        <div class="footer-fax">FAX：078-962-8037</div>
       </div>
     </div>
 
-    <!-- 右：メニュー -->
-    <div class="footer-links">
-      <h4>Menu</h4>
-      <ul>
-        <li><a href="#home">ホーム</a></li>
-        <li><a onclick="showPage('page-detail')">Sun＋について</a></li>
-        <li><a href="#service">サービス</a></li>
-      </ul>
+    <!-- ② 住所・対応エリア（中央） -->
+    <div class="footer-col footer-info">
+      <p class="footer-address">
+        〒651-2132<br>
+        兵庫県神戸市西区森友1丁目12<br>
+        ビタミンテラス枝吉101
+      </p>
+
+      <p class="footer-area">
+        対応エリア：<strong>神戸市・明石市（全域）</strong>
+      </p>
+      <p class="footer-note">
+        ※状況により対応が難しい場合がございます。まずはお気軽にご相談ください。
+      </p>
     </div>
 
-    <div class="footer-links">
-      <h4>Info</h4>
-      <ul>
-        <li><a href="#flow">ご利用の流れ</a></li>
-        <li><a href="#recruit">採用情報</a></li>
-        <li><a href="#contact">お問い合わせ</a></li>
-        <li><a onclick="showPage('page-privacy')">プライバシーポリシー</a></li>
-      </ul>
-    </div>
+    <!-- ③ ナビ（右） -->
+    <nav class="footer-col footer-nav" aria-label="フッターメニュー">
+      <div class="footer-nav-grid">
+        <div class="footer-links">
+          <h4>Menu</h4>
+          <ul>
+            <li><a onclick="showPage('page-home')">ホーム</a></li>
+            <li><a onclick="showPage('page-detail')">Sun＋について</a></li>
+            <li><a href="#service">サービス</a></li>
+          </ul>
+        </div>
 
+        <div class="footer-links">
+          <h4>Info</h4>
+          <ul>
+            <li><a href="#flow">ご利用の流れ</a></li>
+            <li><a href="#recruit">採用情報</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+            <li><a onclick="showPage('page-privacy')">プライバシーポリシー</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
 
-  <div class="footer-copy-area">
+  <div class="footer-copy-area footer-v2-copy">
     <p class="footer-copy">&copy; 2025 Sun＋ Visiting Nursing Station.</p>
   </div>
 </footer>
