@@ -1105,6 +1105,55 @@
 @media (max-width: 768px){
   .pc-br{ display: none; }
 }
+    /* ===============================
+   Contactセクション整形（完成版）
+=============================== */
+
+.access-section{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: stretch;
+}
+
+/* カード共通デザイン */
+.info-item,
+.contact-area{
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(79,195,247,0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* タイトル統一 */
+.card-title{
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--primary-dark);
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Klee One', cursive;
+}
+
+.card-title i{
+  color: var(--accent-color);
+}
+
+/* スマホは縦並び */
+@media (max-width: 768px){
+  .access-section{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
   </style>
 </head>
 
@@ -1356,7 +1405,9 @@
 
       <div class="access-section">
   <div class="info-item fade-in-up delay-1">
-    <h3><i class="fas fa-building"></i> Information</h3>
+    <h3 class="card-title">
+      <i class="fas fa-map-marker-alt"></i> Access
+    </h3>
 
     <div class="info-block">
       <p class="info-label">所在地</p>
@@ -1391,7 +1442,9 @@
 </div>
 
         <div class="contact-area fade-in-up delay-2">
-          <h3>お問い合わせ・ご相談</h3>
+          <h3 class="card-title">
+          <i class="fas fa-envelope"></i> Contact
+          </h3>
           <p>まずはお気軽に。状況を伺い、最適な流れをご案内します。</p>
 
           <div class="tel-box" role="group" aria-label="電話でのお問い合わせ">
