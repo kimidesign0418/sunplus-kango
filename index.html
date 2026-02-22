@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Klee+One:wght@400;600&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <style>
-/* --- 基本設定 --- */
+  /* --- 基本設定 --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -73,11 +73,18 @@ ul { list-style: none; }
   to { transform: rotate(360deg); }
 }
 
+/* ✅ 省電力/低スペ配慮 */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .fade-in-up { transition: none; transform: none; opacity: 1; }
   .sun-icon { animation: none !important; }
   .card, .btn, .philosophy-item { transition: none !important; }
+}
+
+/* ✅ 体感速度UP（CSSだけでできる範囲） */
+.section {
+  content-visibility: auto;
+  contain-intrinsic-size: 900px;
 }
 
 /* --- ヘッダー --- */
@@ -275,29 +282,9 @@ nav.desktop-nav a:hover::after { width: 100%; }
   z-index: 10;
   transition: all 0.3s ease;
   white-space: nowrap;
+  text-align: center;
 }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4); }
-
-.btn-subtle{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-  padding: 14px 20px;
-  border-radius: 999px;
-  border: 1px solid rgba(3,155,229,0.22);
-  background: rgba(255,255,255,0.78);
-  color: var(--primary-dark);
-  font-weight: 700;
-  letter-spacing: 0.03em;
-  cursor: pointer;
-  transition: 0.25s;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  white-space: nowrap;
-}
-.btn-subtle:hover{ transform: translateY(-2px); border-color: rgba(3,155,229,0.35); }
 
 /* --- HERO --- */
 .hero {
@@ -340,7 +327,10 @@ nav.desktop-nav a:hover::after { width: 100%; }
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
-.hero-badge i{ color: var(--accent-color); font-size: 0.95em; }
+.hero-badge i{
+  color: var(--accent-color);
+  font-size: 0.95em;
+}
 
 .hero-bg {
   position: absolute;
@@ -535,21 +525,9 @@ nav.desktop-nav a:hover::after { width: 100%; }
   height: 70px;
   border-radius: 20px;
 }
-.philosophy-item:nth-child(1)::before {
-  content: "\f004";
-  color: #FF7043;
-  background: #FFF3F0;
-}
-.philosophy-item:nth-child(2)::before {
-  content: "\f4d8";
-  color: var(--primary-color);
-  background: #E1F5FE;
-}
-.philosophy-item:nth-child(3)::before {
-  content: "\f185";
-  color: var(--accent-color);
-  background: #FFF8E1;
-}
+.philosophy-item:nth-child(1)::before { content: "\f004"; color: #FF7043; background: #FFF3F0; }
+.philosophy-item:nth-child(2)::before { content: "\f4d8"; color: var(--primary-color); background: #E1F5FE; }
+.philosophy-item:nth-child(3)::before { content: "\f185"; color: var(--accent-color); background: #FFF8E1; }
 .philosophy-item h4 {
   font-size: 1.35rem;
   color: var(--primary-dark);
@@ -563,7 +541,7 @@ nav.desktop-nav a:hover::after { width: 100%; }
   line-height: 1.8;
 }
 
-/* --- Flow (PC) --- */
+/* --- Flow --- */
 .steps { background-color: var(--step-bg); }
 
 .step-container {
@@ -620,6 +598,7 @@ nav.desktop-nav a:hover::after { width: 100%; }
   transition: 0.3s;
 }
 .step-item:hover .step-number { transform: scale(1.15); color: var(--accent-color); }
+
 .step-icon { display: none; }
 
 .step-content {
@@ -726,7 +705,7 @@ nav.desktop-nav a:hover::after { width: 100%; }
   border-radius: 14px;
 }
 
-/* ✅ お問い合わせカード（水色統一） */
+/* ✅ Contactカード（水色） */
 .contact-area{
   position: relative;
   border-radius: 26px;
@@ -739,7 +718,9 @@ nav.desktop-nav a:hover::after { width: 100%; }
   overflow: hidden;
   isolation: isolate;
   align-self: start;
-  text-align: center; /* ✅ PCも含め中央基準 */
+
+  /* ✅ 重要：全体を中央基準に固定 */
+  text-align: center;
 }
 .contact-area::after{
   content:'';
@@ -753,7 +734,7 @@ nav.desktop-nav a:hover::after { width: 100%; }
   pointer-events:none;
 }
 
-/* ✅ 見出しフォント：Accessと同じ系（inherit） */
+/* ✅ 見出しフォント（Accessと同系） */
 .contact-area h3{
   font-family: inherit;
   color: var(--primary-dark);
@@ -768,6 +749,7 @@ nav.desktop-nav a:hover::after { width: 100%; }
   margin-bottom: 18px;
 }
 
+/* 電話ボックス */
 .tel-box{
   display:flex;
   flex-direction: column;
@@ -779,7 +761,8 @@ nav.desktop-nav a:hover::after { width: 100%; }
   background: rgba(255,255,255,0.78);
   box-shadow: 0 10px 28px rgba(0,0,0,0.06);
   margin: 16px auto 14px;
-  text-align: center;
+  max-width: 520px;
+  width: 100%;
 }
 .tel-number{
   font-size: 22px;
@@ -797,15 +780,29 @@ nav.desktop-nav a:hover::after { width: 100%; }
   line-height: 1.6;
 }
 
-/* ✅ CTA行：中央揃えの基準はここ（親で揃える） */
+/* ✅ CTA：ここが“右寄り”の最重要修正ポイント */
 .contact-cta-row{
   width: 100%;
   display:flex;
-  gap: 12px;
+  flex-direction: column;
+  align-items: center;     /* ← これでズレの逃げ道を塞ぐ */
   justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
+  gap: 12px;
   margin-top: 18px;
+}
+
+/* iOSのボタン挙動差を潰す */
+.contact-area button.btn{
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* ✅ ボタンを必ず中央・最大幅に固定 */
+.contact-area .btn{
+  display:block;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
 }
 
 /* フォーム */
@@ -813,19 +810,22 @@ nav.desktop-nav a:hover::after { width: 100%; }
   display: none;
   margin-top: 20px;
   animation: fadeInContact 0.35s ease forwards;
-  text-align: left; /* フォーム入力は左の方が打ちやすい */
+  text-align: left;
+  width: 100%;
 }
 @keyframes fadeInContact {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .contact-form{
-  margin-top: 8px;
+  margin: 8px auto 0;
   padding: 18px;
   border-radius: 18px;
   background: rgba(255,255,255,0.82);
   border: 1px solid rgba(3,155,229,0.14);
   box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  max-width: 520px;
+  width: 100%;
 }
 .contact-form input,
 .contact-form textarea {
@@ -963,7 +963,7 @@ footer {
 }
 
 /* =========================================
-   ✅ モバイル最終調整（統合・競合なし）
+   ✅ モバイル最終調整
    ========================================= */
 @media (max-width: 768px) {
   header { padding: 12px 5%; }
@@ -978,13 +978,13 @@ footer {
 
   .hero-inner{ transform: none; }
 
-  /* 採用カードのボタンを少しだけコンパクトに */
+  /* ✅ 採用ボタン：スマホで崩れにくいサイズ */
   .recruit-simple-box .btn{
-    padding: 14px 36px;
+    padding: 14px 34px;
     font-size: 15px;
   }
 
-  /* フッターを1カラムに */
+  /* フッター */
   .footer-container{
     grid-template-columns: 1fr;
     gap: 24px;
@@ -1006,9 +1006,7 @@ footer {
 
   /* Flow モバイル */
   .step-container { padding-left: 0; max-width: 100%; }
-  .step-container::before {
-    left: 20px; top: 0; height: calc(100% - 40px); transform: none; width: 4px;
-  }
+  .step-container::before { left: 20px; top: 0; height: calc(100% - 40px); transform: none; width: 4px; }
   .step-item { flex-direction: row; margin-bottom: 40px; align-items: flex-start; }
 
   .step-icon-container {
@@ -1033,37 +1031,22 @@ footer {
     border-color: transparent #fff transparent transparent !important;
     right: auto !important;
   }
-  .step-item:nth-child(even) .step-content {
-    margin: 0 !important;
-    border: none;
-  }
-
+  .step-item:nth-child(even) .step-content { margin: 0 !important; border: none; }
   .step-content h3 { flex-direction: row; font-size: 18px; }
   .step-icon { display: inline-block; color: var(--accent-color); font-size: 20px; }
 
-  /* Access → 1カラム */
   .access-section { grid-template-columns: 1fr; }
 
-  /* ✅ Contact：スマホ中央ズレ“確定で止める” */
-  .contact-cta-row{
-    flex-direction: column;
-    align-items: center;   /* ← ここが決め手 */
-    justify-content: center;
-    width: 100%;
+  /* ✅ Contact：スマホで完全センター固定（ここが最終勝ち） */
+  .contact-area{
+    padding: 26px;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
-  .contact-area .btn{
-    width: min(420px, 100%);
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  .tel-box, .contact-area .btn, .contact-form{
+    max-width: 100%;
   }
-  .tel-box{
-    width: min(420px, 100%);
-  }
-
-  /* Philosophy グリッド */
-  .philosophy-grid { grid-template-columns: 1fr; }
-}   
+}
   </style>
 </head>
 
@@ -1363,10 +1346,8 @@ footer {
               aria-expanded="false"
               id="contactFormToggleBtn"
             >
-              フォームからのお問い合わせ <i class="fas fa-envelope"></i>
+              お問い合わせ <i class="fas fa-envelope"></i>
             </button>
-
-            <!-- ✅ 修正②：採用の方はこちらボタンを削除 -->
           </div>
 
           <div id="contact-form-wrapper" class="contact-form-wrapper" aria-hidden="true">
@@ -1384,7 +1365,7 @@ footer {
 
               <button type="submit" class="btn" style="width:100%;">送信する</button>
 
-              <p class="form-note">※送信後、入力内容はクライアント様のメールへ届きます。</p>
+              <p class="form-note"></p>
             </form>
           </div>
 
