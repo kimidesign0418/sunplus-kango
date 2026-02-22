@@ -1400,10 +1400,9 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
-      <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
+    <section id="contact" class="section"> <div class="section-title">Contact<span>お問い合わせ・アクセス</span></div>
+    <div class="access-section">
 
-      <div class="access-section">
   <div class="info-item fade-in-up delay-1">
     <h3 class="card-title">
       <i class="fas fa-map-marker-alt"></i> Access
@@ -1420,78 +1419,65 @@
 
     <div class="info-block">
       <p class="info-label">営業時間</p>
-      <p class="info-main">
-        平日 9:00〜18:00
-      </p>
-      <p class="info-sub">
-        （休業日：土日祝）
-      </p>
+      <p class="info-main">平日 9:00〜18:00</p>
+      <p class="info-sub">（休業日：土日祝）</p>
     </div>
 
     <div class="info-block">
       <p class="info-label">対応エリア</p>
-      <p class="area-main">
-        神戸市・明石市（全域）
-      </p>
+      <p class="area-main">神戸市・明石市（全域）</p>
       <p class="area-note">
         ※状況により対応が難しい場合がございます。まずはお気軽にご相談ください。
       </p>
     </div>
-
   </div>
-</div>
 
-        <div class="contact-area fade-in-up delay-2">
-          <h3 class="card-title">
-          <i class="fas fa-envelope"></i> Contact
-          </h3>
-          <p>まずはお気軽に。状況を伺い、最適な流れをご案内します。</p>
+  <div class="contact-area fade-in-up delay-2">
+    <h3 class="card-title">
+      <i class="fas fa-envelope"></i> Contact
+    </h3>
+    <p>まずはお気軽に。状況を伺い、最適な流れをご案内します。</p>
 
-          <div class="tel-box" role="group" aria-label="電話でのお問い合わせ">
-            <div class="tel-number">
-              <i class="fas fa-phone-alt" aria-hidden="true"></i>
-              <a href="tel:078-962-8017" style="color:inherit;">078-962-8017</a>
-            </div>
-            <div class="tel-sub">
-              受付時間：平日 9:00〜18:00<br>
-              <span style="opacity:.85;">※緊急時は主治医・関係機関へご連絡ください</span>
-            </div>
-          </div>
-
-          <div class="contact-cta-row">
-            <button
-              class="btn"
-              type="button"
-              onclick="toggleContactForm()"
-              aria-controls="contact-form-wrapper"
-              aria-expanded="false"
-              id="contactFormToggleBtn"
-            >
-              お問い合わせ <i class="fas fa-envelope"></i>
-            </button>
-          </div>
-
-          <div id="contact-form-wrapper" class="contact-form-wrapper" aria-hidden="true">
-            <form
-              class="contact-form"
-              action="https://formspree.io/f/mykdnnqq"
-              method="POST"
-            >
-              <input type="text" name="name" placeholder="お名前（例：山田 太郎）" required />
-              <input type="email" name="email" placeholder="メールアドレス" required />
-              <textarea name="message" rows="5" placeholder="ご相談内容をご自由にお書きください" required></textarea>
-
-              <input type="text" name="_gotcha" style="display:none" />
-              <input type="hidden" name="_subject" value="【Sun＋HP】お問い合わせが届きました" />
-
-              <button type="submit" class="btn" style="width:100%;">送信する</button>
-
-              <p class="form-note"></p>
-            </form>
-          </div>
-
-        </div>
+    <div class="tel-box" role="group" aria-label="電話でのお問い合わせ">
+      <div class="tel-number">
+        <i class="fas fa-phone-alt" aria-hidden="true"></i>
+        <a href="tel:078-962-8017" style="color:inherit;">078-962-8017</a>
       </div>
+      <div class="tel-sub">
+        受付時間：平日 9:00〜18:00<br>
+        <span style="opacity:.85;">※緊急時は主治医・関係機関へご連絡ください</span>
+      </div>
+    </div>
+
+    <div class="contact-cta-row">
+      <button
+        class="btn"
+        type="button"
+        onclick="toggleContactForm()"
+        aria-controls="contact-form-wrapper"
+        aria-expanded="false"
+        id="contactFormToggleBtn"
+      >
+        お問い合わせ <i class="fas fa-envelope"></i>
+      </button>
+    </div>
+
+    <div id="contact-form-wrapper" class="contact-form-wrapper" aria-hidden="true">
+      <form class="contact-form" action="https://formspree.io/f/mykdnnqq" method="POST">
+        <input type="text" name="name" placeholder="お名前（例：山田 太郎）" required />
+        <input type="email" name="email" placeholder="メールアドレス" required />
+        <textarea name="message" rows="5" placeholder="ご相談内容をご自由にお書きください" required></textarea>
+
+        <input type="text" name="_gotcha" style="display:none" />
+        <input type="hidden" name="_subject" value="【Sun＋HP】お問い合わせが届きました" />
+
+        <button type="submit" class="btn" style="width:100%;">送信する</button>
+        <p class="form-note"></p>
+      </form>
+    </div>
+  </div>
+
+</div>
     </section>
   </main>
 
