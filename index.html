@@ -1154,6 +1154,49 @@
     gap: 24px;
   }
 }
+
+    /* ✅ 左右カードの高さを無理に揃えない（Accessが縦長にならない） */
+.access-section{
+  align-items: start;  /* stretch → start */
+}
+
+/* ✅ Accessカードは中身の高さで止める */
+.info-item{
+  align-self: start;
+  height: fit-content;
+}
+    /* ===============================
+   Footer 情報整形
+=============================== */
+
+.footer-address{
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.footer-area{
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+.footer-note{
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 14px;
+}
+
+.footer-contact{
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-fax{
+  font-size: 13px;
+  opacity: 0.85;
+  margin: 0;
+}
   </style>
 </head>
 
@@ -1623,12 +1666,31 @@
         </div>
 
         <p class="footer-title">訪問看護ステーション</p>
-        <div class="footer-info">
-          <p>拠点：兵庫県神戸市西区（詳細は個別にご案内）</p>
-          <p style="opacity:.85;">対応：神戸市・明石市 ほか</p>
-          <a href="tel:078-962-8017" class="tel-link">078-962-8017</a>
-        </div>
-      </div>
+
+<div class="footer-info">
+
+  <p class="footer-address">
+    〒651-2132<br>
+    兵庫県神戸市西区森友1丁目12<br>
+  </p>
+
+  <p class="footer-area">
+    対応エリア：神戸市・明石市（全域）
+  </p>
+  <p class="footer-note">
+    ※状況により対応が難しい場合がございます。
+  </p>
+
+  <div class="footer-contact">
+    <a href="tel:078-962-8017" class="tel-link">
+      TEL：078-962-8017
+    </a>
+    <p class="footer-fax">
+      FAX：078-962-8037
+    </p>
+  </div>
+
+</div>
 
       <div class="footer-links">
         <h4>Menu</h4>
