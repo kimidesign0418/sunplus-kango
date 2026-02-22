@@ -7,6 +7,9 @@
   <title>精神科特化 訪問看護ステーション Sun＋｜神戸市・明石市</title>
   <meta name="description" content="訪問看護ステーションSun＋（サンプラス）は、神戸市・明石市を中心に精神科に特化した訪問看護を提供しています。こころの不安に寄り添い、ご自宅での暮らしをそっと支えます。" />
 
+  <!-- ✅ 追加：Hero画像を最優先で先読み（スマホで表示されやすく） -->
+  <link rel="preload" as="image" href="./hero-visit.jpg" fetchpriority="high">
+
   <!-- アイコン -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
@@ -698,7 +701,12 @@
     }
 
     /* --- Contact / Access --- */
-    .access-section { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+    .access-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start; /* ✅ 追加：片方が伸びても隣が引っ張られない */
+    }
     .contact-note { margin-top: 6px; color: #556; font-size: 13px; }
 
     /* Access側カード */
@@ -708,6 +716,7 @@
       border-radius: 24px;
       box-shadow: 0 10px 30px rgba(3,155,229,0.05);
       border: 1px solid #E1F5FE;
+      align-self: start;
     }
     .info-item h3{
       color: var(--primary-dark);
@@ -728,39 +737,28 @@
       border-radius: 14px;
     }
 
-    /* ✅ お問い合わせカード：プロ仕様に刷新（ガラス＋グラデ枠） */
+    /* ✅ 修正：お問い合わせカードを水色基調に（全体と統一） */
     .contact-area{
       position: relative;
       border-radius: 26px;
       padding: 34px;
-      background: rgba(255,255,255,0.72);
-      border: 1px solid rgba(255,255,255,0.6);
+      background: linear-gradient(135deg, rgba(225,245,254,0.86), rgba(255,255,255,0.92));
+      border: 1px solid rgba(79,195,247,0.28);
       box-shadow: var(--shadow-mid);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       overflow: hidden;
       isolation: isolate;
-    }
-    .contact-area::before{
-      content:'';
-      position:absolute;
-      inset:-2px;
-      background: linear-gradient(135deg,
-        rgba(79,195,247,0.65),
-        rgba(255,152,0,0.35),
-        rgba(3,155,229,0.55)
-      );
-      z-index:-2;
-      filter: blur(10px);
+      align-self: start; /* ✅ 念のため：高さ連動をさらに防止 */
     }
     .contact-area::after{
       content:'';
       position:absolute;
       inset:0;
       background:
-        radial-gradient(600px 260px at 20% 15%, rgba(255,152,0,0.14), transparent 60%),
-        radial-gradient(520px 240px at 80% 25%, rgba(79,195,247,0.16), transparent 60%),
-        linear-gradient(to bottom, rgba(255,255,255,0.62), rgba(255,255,255,0.86));
+        radial-gradient(520px 240px at 15% 20%, rgba(79,195,247,0.18), transparent 60%),
+        radial-gradient(520px 240px at 85% 25%, rgba(3,155,229,0.10), transparent 60%),
+        linear-gradient(to bottom, rgba(255,255,255,0.55), rgba(255,255,255,0.78));
       z-index:-1;
       pointer-events:none;
     }
@@ -785,7 +783,7 @@
       padding: 18px 14px;
       border-radius: 18px;
       border: 1px solid rgba(3,155,229,0.14);
-      background: rgba(255,255,255,0.72);
+      background: rgba(255,255,255,0.78);
       box-shadow: 0 10px 28px rgba(0,0,0,0.06);
       margin: 16px 0 14px;
     }
@@ -817,18 +815,18 @@
     .contact-form-wrapper{
       display: none;
       margin-top: 20px;
-      animation: fadeInContact 0.4s ease forwards;
+      animation: fadeInContact 0.35s ease forwards;
       text-align: left;
     }
     @keyframes fadeInContact {
-      from { opacity: 0; transform: translateY(18px); }
+      from { opacity: 0; transform: translateY(14px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .contact-form{
       margin-top: 8px;
       padding: 18px;
       border-radius: 18px;
-      background: rgba(255,255,255,0.78);
+      background: rgba(255,255,255,0.82);
       border: 1px solid rgba(3,155,229,0.14);
       box-shadow: 0 10px 24px rgba(0,0,0,0.06);
     }
@@ -1109,15 +1107,16 @@
   <main id="page-home">
     <!-- Hero -->
     <section id="home" class="hero">
-      <!-- ✅ Heroは最重要：高優先で読み込み（スマホ表示不具合の回避にも効く） -->
+      <!-- ✅ Heroは最重要：先読み＋eager＋high（スマホ対策） -->
       <img
         class="hero-bg"
-        src="hero-visit.jpg"
+        src="./hero-visit.jpg"
         alt="訪問看護のイメージ"
         width="1600"
         height="900"
         decoding="async"
         fetchpriority="high"
+        loading="eager"
       />
 
       <div class="hero-inner">
@@ -1192,7 +1191,7 @@
         <div class="card fade-in-up delay-1">
           <div class="card-img">
             <img
-              src="service-daily.jpg"
+              src="./service-daily.jpg"
               loading="lazy"
               decoding="async"
               width="1200"
@@ -1209,7 +1208,7 @@
         <div class="card fade-in-up delay-2">
           <div class="card-img">
             <img
-              src="service-medical.jpg"
+              src="./service-medical.jpg"
               loading="lazy"
               decoding="async"
               width="1200"
@@ -1226,7 +1225,7 @@
         <div class="card fade-in-up delay-3">
           <div class="card-img">
             <img
-              src="service-mental.jpg"
+              src="./service-mental.jpg"
               loading="lazy"
               decoding="async"
               width="1200"
@@ -1321,7 +1320,7 @@
           </div>
         </div>
 
-        <!-- ✅ おしゃれ強化版 -->
+        <!-- ✅ 水色統一版 -->
         <div class="contact-area fade-in-up delay-2">
           <h3>お問い合わせ・ご相談</h3>
           <p>まずはお気軽に。状況を伺い、最適な流れをご案内します。</p>
@@ -1579,7 +1578,7 @@
       if (e.key === 'Enter' || e.key === ' ') toggleMenu(false);
     });
 
-    // ✅ 背景クリックで閉じる（体験がプロっぽくなる）
+    // ✅ 背景クリックで閉じる
     mobileNav.addEventListener('click', (e) => {
       if (e.target === mobileNav) toggleMenu(true);
     });
@@ -1602,7 +1601,6 @@
       wrapper.setAttribute('aria-hidden', 'false');
       btn.setAttribute('aria-expanded', 'true');
 
-      // 少し待ってからスクロール（表示→位置計算のズレ防止）
       setTimeout(() => {
         wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }, 50);
