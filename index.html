@@ -938,78 +938,7 @@
   }
   .policy-content p { margin-bottom: 15px; font-size: 14px; line-height: 1.8; color: #555; }
 
-  /* --- FOOTER --- */
-  footer {
-    background-color: var(--footer-bg);
-    color: var(--footer-text);
-    padding: 60px 5% 20px;
-    position: relative;
-    overflow: hidden;
-    margin-top: auto;
-  }
-  .footer-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  .footer-logo {
-    font-size: 36px;
-    font-weight: 700;
-    color: var(--footer-text);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 10px;
-    font-family: 'Caveat', cursive;
-  }
-  .footer-title{
-    font-size: 14px;
-    opacity: .9;
-    margin-top: 6px;
-    margin-bottom: 12px;
-    letter-spacing: .05em;
-  }
-  .footer-info p{
-    font-size: 13px;
-    opacity: .85;
-    line-height: 1.8;
-    margin-bottom: 6px;
-  }
-  .tel-link{
-    display: inline-block;
-    margin-top: 10px;
-    font-weight: 900;
-    letter-spacing: .03em;
-    color: #C8E6FF;
-    text-decoration: none;
-  }
-  .tel-link:hover{ color: #fff; }
-
-  .footer-links h4 {
-    font-size: 16px;
-    color: var(--footer-link);
-    font-weight: bold;
-    margin-bottom: 15px;
-  }
-  .footer-links a { font-size: 14px; opacity: 0.75; transition: 0.3s; cursor: pointer; }
-  .footer-links a:hover { opacity: 1; color: var(--accent-color); }
-  .footer-copy-area { text-align: center; padding-top: 20px; }
-  .footer-copy { font-size: 12px; opacity: 0.5; }
-
-  .footer-brand{
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .footer-brand .plus-hand{
-    width: 0.85em;
-    height: 0.85em;
-    transform: translateY(1px);
-  }
+  
 
   /* =========================================
      ✅ モバイル最終調整
@@ -1040,24 +969,6 @@
       font-size: 15px;
     }
 
-    .footer-container{
-      grid-template-columns: 1fr;
-      gap: 24px;
-      text-align: center;
-    }
-    .footer-logo-area{
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .footer-logo{
-      justify-content: center;
-      margin: 0 auto 10px;
-    }
-    .footer-links{ text-align: center; }
-    .footer-links ul{ padding: 0; }
-    .footer-links li{ margin: 10px 0; }
 
     /* Flow モバイル */
     .step-container { padding-left: 0; max-width: 100%; }
@@ -1826,11 +1737,12 @@
 
 <!-- フッター -->
 <footer class="site-footer">
-  <div class="footer-container footer-v2">
-    <!-- ① ブランド・連絡先（左） -->
-    <div class="footer-col footer-brand">
+  <div class="footer-v2 footer-container">
+
+    <!-- 左：ロゴ＋TEL/FAX -->
+    <div class="footer-col">
       <div class="footer-logo">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="12" cy="12" r="5" fill="var(--accent-color)"/>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"
                 stroke="var(--accent-color)" stroke-width="2.5" stroke-linecap="round"/>
@@ -1849,29 +1761,26 @@
 
       <div class="footer-contacts">
         <a href="tel:078-962-8017" class="tel-link">TEL：078-962-8017</a>
-        <div class="footer-fax">FAX：078-962-8037</div>
+        <p class="footer-fax">FAX：078-962-8037</p>
       </div>
     </div>
 
-    <!-- ② 住所・対応エリア（中央） -->
-    <div class="footer-col footer-info">
+    <!-- 中央：住所＋エリア -->
+    <div class="footer-col">
       <p class="footer-address">
         〒651-2132<br>
         兵庫県神戸市西区森友1丁目12<br>
         ビタミンテラス枝吉101
       </p>
 
-      <p class="footer-area">
-        対応エリア：<strong>神戸市・明石市（全域）</strong>
-      </p>
-      <p class="footer-note">
-        ※状況により対応が難しい場合がございます。まずはお気軽にご相談ください。
-      </p>
+      <p class="footer-area">対応エリア：神戸市・明石市（全域）</p>
+      <p class="footer-note">※状況により対応が難しい場合がございます。まずはお気軽にご相談ください。</p>
     </div>
 
-    <!-- ③ ナビ（右） -->
-    <nav class="footer-col footer-nav" aria-label="フッターメニュー">
+    <!-- 右：Menu / Info -->
+    <div class="footer-col">
       <div class="footer-nav-grid">
+
         <div class="footer-links">
           <h4>Menu</h4>
           <ul>
@@ -1890,11 +1799,13 @@
             <li><a onclick="showPage('page-privacy')">プライバシーポリシー</a></li>
           </ul>
         </div>
+
       </div>
-    </nav>
+    </div>
+
   </div>
 
-  <div class="footer-copy-area footer-v2-copy">
+  <div class="footer-v2-copy">
     <p class="footer-copy">&copy; 2025 Sun＋ Visiting Nursing Station.</p>
   </div>
 </footer>
