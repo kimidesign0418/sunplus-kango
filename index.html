@@ -276,6 +276,7 @@
       position: relative;
       z-index: 10;
       transition: all 0.3s ease;
+      white-space: nowrap;
     }
     .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(3, 155, 229, 0.4); }
 
@@ -297,6 +298,7 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.05);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
+      white-space: nowrap;
     }
     .btn-subtle:hover{ transform: translateY(-2px); border-color: rgba(3,155,229,0.35); }
 
@@ -705,9 +707,8 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 50px;
-      align-items: start; /* ✅ 追加：片方が伸びても隣が引っ張られない */
+      align-items: start; /* ✅ 片方が伸びても隣が引っ張られない */
     }
-    .contact-note { margin-top: 6px; color: #556; font-size: 13px; }
 
     /* Access側カード */
     .info-item{
@@ -737,7 +738,7 @@
       border-radius: 14px;
     }
 
-    /* ✅ 修正：お問い合わせカードを水色基調に（全体と統一） */
+    /* ✅ お問い合わせカード（水色統一） */
     .contact-area{
       position: relative;
       border-radius: 26px;
@@ -749,7 +750,7 @@
       -webkit-backdrop-filter: blur(12px);
       overflow: hidden;
       isolation: isolate;
-      align-self: start; /* ✅ 念のため：高さ連動をさらに防止 */
+      align-self: start;
     }
     .contact-area::after{
       content:'';
@@ -762,12 +763,15 @@
       z-index:-1;
       pointer-events:none;
     }
+
+    /* ✅ 修正①：お問い合わせカードの見出しフォントをAccessと同系に（本文系） */
     .contact-area h3{
-      font-family: 'Klee One', cursive;
+      font-family: inherit;       /* ← ここが変更点（Klee Oneをやめる） */
       color: var(--primary-dark);
       font-size: 22px;
       margin-bottom: 6px;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.03em;
+      font-weight: 800;
     }
     .contact-area > p{
       color: #607D8B;
@@ -982,6 +986,12 @@
       /* ヒーロー文字中央へ */
       .hero-inner{ transform: none; }
 
+      /* ✅ 修正③：採用カードのボタンをスマホで少しだけコンパクトに */
+      .recruit-simple-box .btn{
+        padding: 14px 36px;
+        font-size: 15px;
+      }
+
       /* フッターを1カラムに */
       .footer-container{
         grid-template-columns: 1fr;
@@ -1107,7 +1117,6 @@
   <main id="page-home">
     <!-- Hero -->
     <section id="home" class="hero">
-      <!-- ✅ Heroは最重要：先読み＋eager＋high（スマホ対策） -->
       <img
         class="hero-bg"
         src="./hero-visit.jpg"
@@ -1291,7 +1300,9 @@
           精神科未経験の方や、子育て中の方も歓迎しております。<br />
           勤務時間や条件など、まずはお気軽にご相談ください。
         </p>
-        <a href="#contact" class="btn fade-in-up delay-2">採用について問い合わせる <i class="fas fa-envelope"></i></a>
+
+        <!-- ✅ 修正③：文言を短くしてスマホ崩れを回避 -->
+        <a href="#contact" class="btn fade-in-up delay-2">採用の相談をする <i class="fas fa-envelope"></i></a>
       </div>
     </section>
 
@@ -1320,7 +1331,6 @@
           </div>
         </div>
 
-        <!-- ✅ 水色統一版 -->
         <div class="contact-area fade-in-up delay-2">
           <h3>お問い合わせ・ご相談</h3>
           <p>まずはお気軽に。状況を伺い、最適な流れをご案内します。</p>
@@ -1348,9 +1358,7 @@
               フォームからのお問い合わせ <i class="fas fa-envelope"></i>
             </button>
 
-            <a class="btn-subtle" href="#recruit" onclick="closeContactForm(true)">
-              採用の方はこちら <i class="fas fa-arrow-right"></i>
-            </a>
+            <!-- ✅ 修正②：採用の方はこちらボタンを削除 -->
           </div>
 
           <div id="contact-form-wrapper" class="contact-form-wrapper" aria-hidden="true">
@@ -1578,14 +1586,10 @@
       if (e.key === 'Enter' || e.key === ' ') toggleMenu(false);
     });
 
-    // ✅ 背景クリックで閉じる
     mobileNav.addEventListener('click', (e) => {
       if (e.target === mobileNav) toggleMenu(true);
     });
 
-    // ===============================
-    // ✅ フォーム開閉（もう一回押すと閉じる）
-    // ===============================
     function toggleContactForm() {
       const wrapper = document.getElementById('contact-form-wrapper');
       const btn = document.getElementById('contactFormToggleBtn');
@@ -1623,7 +1627,6 @@
       }
     }
 
-    // --- ページ切り替え機能 (SPA風) ---
     function showPage(pageId) {
       document.getElementById('page-home').style.display = 'none';
       document.getElementById('page-detail').style.display = 'none';
@@ -1634,7 +1637,6 @@
         target.style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'auto' });
 
-        // ページ切替時、モバイルメニューは閉じる
         toggleMenu(true);
 
         if (pageId !== 'page-home') {
@@ -1647,7 +1649,6 @@
       }
     }
 
-    // リンク制御（ヘッダー & モバイル & ページ内）
     document.querySelectorAll('a[href^="#"], .mobile-nav-content a').forEach(link => {
       link.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -1677,7 +1678,6 @@
       });
     });
 
-    // Intersection Observer（スクロールアニメ）
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
