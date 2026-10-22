@@ -183,12 +183,12 @@ span.pc,br.pc,a.pc{display:inline}
 .ftr-brand .logo{height:44px;width:auto}
 .ftr-brand img{width:30px;height:30px;object-fit:contain}
 .ftr-brand .name{font-size:19px;letter-spacing:.06em}
-.ftr-nav{display:flex;justify-content:center;font-size:12.5px;letter-spacing:.06em;color:var(--ink)}
-.ftr-nav a{padding:0 14px;border-left:1px solid var(--line);white-space:nowrap}
+.ftr-nav{display:flex;flex-wrap:wrap;gap:8px 26px;justify-content:center;font-size:12.5px;letter-spacing:.06em;color:var(--ink)}
+.ftr-nav a{white-space:nowrap}
 .ftr-nav a:first-child{border-left:0}
 .ftr-nav.sp{display:none}
 .ftr-addr{display:none}
-.ftr-copy{font-size:11.5px;letter-spacing:.06em;color:var(--mute);text-align:right;line-height:1.7}
+.ftr-copy{white-space:nowrap;font-size:11.5px;letter-spacing:.06em;color:var(--mute);text-align:right;line-height:1.7}
 .ftr-copy span{display:block}
 .ftr-copy .sep{display:none}
 .ftr-credit{grid-column:1/-1;font-size:10.5px;color:var(--mute);letter-spacing:.06em;text-align:right;margin-top:-10px}
@@ -381,7 +381,7 @@ span.pc,br.pc,a.pc{display:inline}
   .ftr-brand .logo{height:40px}
   .ftr-nav.pc{display:none}
   .ftr-nav.sp{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px 0;font-size:12px}
-  .ftr-nav.sp a{padding:0 10px}
+  .ftr-nav.sp a{padding:0 10px;border-left:1px solid var(--line)}
   .ftr-nav.sp a:nth-child(1),.ftr-nav.sp a:nth-child(4),.ftr-nav.sp a:nth-child(7){border-left:0;padding-left:0}
   .ftr-addr{display:block;font-size:11.5px;color:var(--mute);line-height:1.8}
   .ftr-copy{text-align:left;font-size:10.5px}
